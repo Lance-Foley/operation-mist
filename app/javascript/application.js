@@ -3,4 +3,4 @@
 import "chartkick"
 import Highcharts from "highcharts"
 
-window.Highcharts = Hiharts
+window.Highcharts = Highcharts

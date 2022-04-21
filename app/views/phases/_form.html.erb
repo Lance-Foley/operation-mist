@@ -1,0 +1,52 @@
+<%= form_with(model: phase) do |form| %>
+  <% if phase.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(phase.errors.count, "error") %> prohibited this phase from being saved:</h2>
+
+      <ul>
+        <% phase.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :hours_per_week, style: "display: block" %>
+    <%= form.text_field :hours_per_week %>
+  </div>
+
+  <div>
+    <%= form.label :hours_per_month, style: "display: block" %>
+    <%= form.text_field :hours_per_month %>
+  </div>
+
+  <div>
+    <%= form.label :three_month_hours, style: "display: block" %>
+    <%= form.text_field :three_month_hours %>
+  </div>
+
+  <div>
+    <%= form.label :six_month_hours, style: "display: block" %>
+    <%= form.text_field :six_month_hours %>
+  </div>
+
+  <div>
+    <%= form.label :nine_month_hours, style: "display: block" %>
+    <%= form.text_field :nine_month_hours %>
+  </div>
+
+  <div>
+    <%= form.label :twelve_month_hours, style: "display: block" %>
+    <%= form.text_field :twelve_month_hours %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

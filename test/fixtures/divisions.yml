@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  hours_per_week: 1.5
+  hours_per_month: 1.5
+  three_month_hours: 1.5
+  six_month_hours: 1.5
+  nine_month_hours: 1.5
+  twelve_month_hours: 1.5
+
+two:
+  name: MyString
+  hours_per_week: 1.5
+  hours_per_month: 1.5
+  three_month_hours: 1.5
+  six_month_hours: 1.5
+  nine_month_hours: 1.5
+  twelve_month_hours: 1.5

@@ -9,7 +9,8 @@
     "bootstrap-icons": "^1.8.1",
     "esbuild": "^0.14.36",
     "highcharts": "^10.0.0",
-    "sass": "^1.50.1"
+    "sass": "^1.50.1",
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",

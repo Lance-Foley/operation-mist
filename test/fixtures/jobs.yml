@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2022-04-19 13:40:10
+  end_date: 2022-04-19 13:40:10
+  crew: MyString
+  man_hours: 1.5
+  phase: MyString
+  division: MyString
+  total_cost: 1.5
+  sub_cost: 1.5
+  hours_per_week: 1.5
+  weeks: 1.5
+  week_remaining: 1.5
+  hours_remaining: 1.5
+  three_month_hours: 1.5
+  six_month_hours: 1.5
+  nine_month_hours: 1.5
+  twelve_month_hours: 1.5
+
+two:
+  name: MyString
+  start_date: 2022-04-19 13:40:10
+  end_date: 2022-04-19 13:40:10
+  crew: MyString
+  man_hours: 1.5
+  phase: MyString
+  division: MyString
+  total_cost: 1.5
+  sub_cost: 1.5
+  hours_per_week: 1.5
+  weeks: 1.5
+  week_remaining: 1.5
+  hours_remaining: 1.5
+  three_month_hours: 1.5
+  six_month_hours: 1.5
+  nine_month_hours: 1.5
+  twelve_month_hours: 1.5

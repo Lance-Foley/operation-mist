@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Crews</h1>
+
+<div id="crews">
+  <% @crews.each do |crew| %>
+    <%= render crew %>
+    <p>
+      <%= link_to "Show this crew", crew %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New crew", new_crew_path %>

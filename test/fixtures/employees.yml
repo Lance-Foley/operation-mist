@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  crew: MyString
+  division: MyString
+  man_hours_per_week: 1.5
+  man_hours_per_month: 1.5
+  man_hours_three_months: 1.5
+  man_hours_six_months: 1.5
+  man_hours_nine_months: 1.5
+  man_hours_per_twelve_months: 1.5
+  contr_hours_per_week: 1.5
+  contr_hour_per_month: 1.5
+  contr_hours_three_months: 1.5
+  contr_hours_nine_months: 1.5
+  contr_hours_twelve_months: 1.5
+
+two:
+  name: MyString
+  crew: MyString
+  division: MyString
+  man_hours_per_week: 1.5
+  man_hours_per_month: 1.5
+  man_hours_three_months: 1.5
+  man_hours_six_months: 1.5
+  man_hours_nine_months: 1.5
+  man_hours_per_twelve_months: 1.5
+  contr_hours_per_week: 1.5
+  contr_hour_per_month: 1.5
+  contr_hours_three_months: 1.5
+  contr_hours_nine_months: 1.5
+  contr_hours_twelve_months: 1.5

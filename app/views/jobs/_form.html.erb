@@ -1,0 +1,64 @@
+
+
+<%= form_with(model: job) do |form| %>
+  <% if job.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% job.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col">
+    <%= form.label :name, style: "display: block",class:"form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="col">
+    <%= form.label :start_date, style: "display: block",class:"form-label" %>
+    <%= form.datetime_field :start_date, class: "form-control" %>
+  </div>
+  <div class="col">
+    <%= form.label :end_date, style: "display: block",class:"form-label" %>
+    <%= form.datetime_field :end_date, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= form.label :man_hours, style: "display: block",class:"form-label" %>
+    <%= form.text_field :man_hours, class: "form-control"  %>
+  </div>
+  <div class="col">
+    <%= form.label :total_cost, style: "display: block",class:"form-label" %>
+    <%= form.text_field :total_cost, class: "form-control" %>
+  </div>
+  <div class="col">
+    <%= form.label :sub_cost, style: "display: block",class:"form-label" %>
+    <%= form.text_field :sub_cost, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= form.label :crew, style: "display: block",class:"form-label" %>
+    <%= form.collection_select :crew, Crew.all,:name, :name,  class: "form-select"  %>
+  </div>
+  <div class="col">
+    <%= form.label :phase, style: "display: block",class: "form-label" %>
+    <%= form.collection_select :phase, Phase.all,:name,:name, class: "form-select" %>
+  </div>
+  <div class="col">
+    <%= form.label :division, style: "display: block",class:"form-label" %>
+    <%= form.collection_select :division, Division.all,:name,:name, class: "form-select" %>
+  </div>
+</div>
+
+
+    <%= form.submit %>
+
+<% end %>
+

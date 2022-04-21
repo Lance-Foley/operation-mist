@@ -1,0 +1,53 @@
+<div class="container ">
+<div class="row mt-3 ">
+  <div class="col-4">
+    <div class="card" style="width: 18rem; ">
+     <h4 class="text-center"> <%= Job.all.sum(:three_month_hours) %></h4>
+      <div class="card-body">
+        <p class="card-text">Three Month Contracted Hours</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card" style="width: 18rem; ">
+      <h4 class="text-center"> <%= Employee.all.sum(:man_hours_three_months).round(1) %></h4>
+      <div class="card-body">
+        <p class="card-text">Three Month Work Force Hours</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card" style="width: 18rem; ">
+      <h4 class="text-center"> <%= Job.all.sum(:week_remaining) %></h4>
+      <div class="card-body">
+        <p class="card-text">Weeks Of Contracted Work</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col mt-2">
+    <div class="card">
+      <h5 class="card-title text-center">Three Month Workload Per Crew</h5>
+      <div class="card-body">
+        <%= bar_chart [{name: "Contracted Hours", data:Job.group(:crew).where(crew: ["Field 1","Field 2","Field 3","Field 4"]).sum(:three_month_hours)},
+                       {name: "Available Hours", data:Employee.group(:crew).where(crew: ["Field 1","Field 2","Field 3","Field 4"]).sum(:man_hours_three_months)},]
+        %>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">
+  <div class="col mt-2">
+    <div class="card">
+      <h5 class="card-title text-center">Division Three Month Workload</h5>
+      <div class="card-body">
+        <%= bar_chart [{name: "Contracted Hours", data:Job.group(:division).where(division: ["Field","Shop","Project Management","Design"]).sum(:three_month_hours)},
+                       {name: "Available Hours", data:Employee.group(:division).where(division: ["Field","Shop","Project Management","Design"]).sum(:man_hours_three_months)}]
+        %>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>

@@ -1,0 +1,2 @@
+json.extract! crew, :id, :name, :contracted_hours_per_week, :available_hours_per_week, :contracted_hours_per_month, :available_hours_per_month, :contracted_hours_three_months, :available_hours_three_months, :contracted_hours_six_months, :available_hours_six_months, :contracted_hours_nine_months, :available_hours_nine_months, :contracted_hours_twelve_months, :available_hours_twelve_months, :created_at, :updated_at
+json.url crew_url(crew, format: :json)

@@ -1,0 +1,71 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+    <th scope="col">Crew</th>
+    <th scope="col">Hours</th>
+    <th scope="col">Phase</th>
+    <th scope="col">Division</th>
+    <th scope="col">Total Cost</th>
+    <th scope="col">Sub Cost</th>
+    <th scope="col">Hours Per Week</th>
+    <th scope="col">Weeks</th>
+    <th scope="col">Weeks Remaining</th>
+    <th scope="col">View</th>
+
+    </thead>
+    <tbody>
+
+<%= render @job %>
+
+    </tbody>
+  </table>
+<div class="row">
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title">Hours Remaining</h5>
+        <h3><%= @job.hours_remaining %></h3>
+      </div>
+    </div>
+</div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title">Three Month Hours</h5>
+          <h3><%= @job.three_month_hours %></h3>
+        </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title">Six Month Hours</h5>
+        <h3><%= @job.six_month_hours %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title">Nine Month Hours</h5>
+        <h3><%= @job.nine_month_hours %></h3>
+      </div>
+    </div>
+  </div>
+<div>
+  <%= link_to "Edit this job", edit_job_path(@job) %> |
+  <%= link_to "Back to jobs", jobs_path %>
+  <%= button_to "Destroy this job", @job, method: :delete %>
+</div>
+</div>
+</div>

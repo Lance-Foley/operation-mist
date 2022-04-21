@@ -3,12 +3,29 @@
 <h1>Phases</h1>
 
 <div id="phases">
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+    <th scope="col">Name</th>
+    <th scope="col">Hours Per Week</th>
+    <th scope="col">3 Month Hours</th>
+    <th scope="col">6 Month Hours</th>
+    <th scope="col">9 Month Hours</th>
+    <th scope="col">12 Month Hours</th>
+    <th scope="col">View</th>
+
+
+    </thead>
+    <tbody>
+
+
   <% @phases.each do |phase| %>
     <%= render phase %>
-    <p>
-      <%= link_to "Show this phase", phase %>
-    </p>
+
   <% end %>
+    </tbody>
+  </table>
+
 </div>
 
 <%= link_to "New phase", new_phase_path %>

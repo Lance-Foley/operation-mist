@@ -1,6 +1,18 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @crew %>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Crew</th>
+    <th>Role</th>
+    <th>Hours Per Week</th>
+    <th>View</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @crew %>
+  </tbody>
+</table>
 
 <div>
   <%= link_to "Edit this crew", edit_crew_path(@crew) %> |

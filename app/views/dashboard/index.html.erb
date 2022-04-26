@@ -1,0 +1,107 @@
+<div class="container ">
+
+  <div class="row mt-3">
+    <div class="col-8">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title text-center">Field</h5>
+              <p class="text-center">Three Month Workload Per Crew</p>
+            </div>
+            <h6 class="text-center">Remaining Time In Months Will All Crews Working
+              (<%= @Field_Months_Remaining.round(2) %>)</h6>
+            <div class="card-body">
+              <%= bar_chart dashboard_three_month_workload_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <div class="card">
+            <h5 class="card-title text-center">Division Three Month Workload</h5>
+            <div class="card-body">
+              <%= bar_chart [{ name: "Contracted Hours", data: Job.group(:division).where(division: ["Field", "Shop", "Project Management", "Design"]).sum(:three_month_hours) },
+                             { name: "Available Hours", data: Employee.group(:division).where(division: ["Field", "Shop", "Project Management", "Design"]).sum(:man_hours_three_months) }]
+              %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="text-center">Field 1</h6>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-5">
+                  <div class="card-body">
+                    <p class="text-center">Scheduled</p>
+                    <h4 class="text-center">M/<%= @Field_1_Months_Remaining.round(2) %></h4>
+                  </div>
+                  <div class="container">
+                    <h6 class="text-center">Foreman</h6>
+                    <li class="text-center"><%= Employee.where(role: "Foreman").where(crew: "Field 1")[0].name %></li>
+                    <hr class="dropdown-divider">
+                    <h6 class="text-center">Crew</h6>
+                    <li class="text-center"><%= Employee.where(role: "Carpenter").where(crew: "Field 1")[0].name %></li>
+                  </div>
+                </div>
+                <div class="col">
+                  <%= column_chart dashboard_field_one_workload_path %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="text-center">Field 2</h6>
+            </div>
+            <div class="card-body">
+              <p class="text-center">Scheduled Months Of Work</p>
+              <h4 class="text-center"><%= @Field_2_Months_Remaining.round(2) %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="text-center">Field 2</h6>
+            </div>
+            <div class="card-body">
+              <p class="text-center">Scheduled Months Of Work</p>
+              <h4 class="text-center"><%= @Field_3_Months_Remaining.round(2) %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="text-center">Field 2</h6>
+            </div>
+            <div class="card-body">
+              <p class="text-center">Scheduled Months Of Work</p>
+              <h4 class="text-center"><%= @Field_4_Months_Remaining.round(2) %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

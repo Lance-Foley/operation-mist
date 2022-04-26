@@ -11,6 +11,7 @@ class Job < ApplicationRecord
     twelve_months_from_now = today + 365
     end_date_minus_today = end_date.to_datetime - today
     start_date_minus_today = start_date.to_datetime - today
+    @Field_Months_Remaining = Job.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:twelve_month_hours) / Employee.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:man_hours_twelve_months)
     ###################################################################################
     # Calculate Weeks Remaining
     if today > start_date.to_datetime
@@ -27,8 +28,8 @@ class Job < ApplicationRecord
     if today > start_date.to_datetime
       if (week_remaining * hours_per_week) < 0
         self.hours_remaining = 0
-        else
-          self.hours_remaining = (week_remaining * hours_per_week)
+      else
+        self.hours_remaining = (week_remaining * hours_per_week)
       end
     else
       self.hours_remaining = (weeks * hours_per_week)
@@ -38,7 +39,7 @@ class Job < ApplicationRecord
     # Calculate Hours In Three Months
     if today > start_date.to_datetime
       if end_date.to_datetime > three_months_from_now
-        self.three_month_hours = ((three_months_from_now - today).to_f/ 7 * hours_per_week)
+        self.three_month_hours = ((three_months_from_now - today).to_f / 7 * hours_per_week)
       elsif end_date.to_datetime < three_months_from_now
         self.three_month_hours = end_date_minus_today.to_f / 7 * hours_per_week
       else
@@ -91,32 +92,32 @@ class Job < ApplicationRecord
     end
 
     ##################################################################################
-       # Calculate Hours In Nine Months
-        if today > start_date.to_datetime
-          if end_date.to_datetime > nine_months_from_now
-            self.nine_month_hours = ((nine_months_from_now - today).to_f / 7 * hours_per_week).round(2)
-          elsif end_date.to_datetime < nine_months_from_now
-            self.nine_month_hours = end_date_minus_today.to_f / 7 * hours_per_week
-          else
-            self.nine_month_hours = 0
-          end
+    # Calculate Hours In Nine Months
+    if today > start_date.to_datetime
+      if end_date.to_datetime > nine_months_from_now
+        self.nine_month_hours = ((nine_months_from_now - today).to_f / 7 * hours_per_week).round(2)
+      elsif end_date.to_datetime < nine_months_from_now
+        self.nine_month_hours = end_date_minus_today.to_f / 7 * hours_per_week
+      else
+        self.nine_month_hours = 0
+      end
+    else
+      if today < start_date.to_datetime
+        if end_date.to_datetime > nine_months_from_now and
+          start_date.to_datetime < nine_months_from_now and
+          week_remaining != 0
+          self.nine_month_hours = ((nine_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(2)
+        elsif end_date.to_datetime < nine_months_from_now and
+          start_date.to_datetime < nine_months_from_now and
+          week_remaining != 0
+          self.nine_month_hours = hours_remaining
         else
-          if today < start_date.to_datetime
-            if end_date.to_datetime > nine_months_from_now and
-              start_date.to_datetime < nine_months_from_now and
-              week_remaining != 0
-              self.nine_month_hours = ((nine_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(2)
-            elsif end_date.to_datetime < nine_months_from_now and
-              start_date.to_datetime < nine_months_from_now and
-              week_remaining != 0
-              self.nine_month_hours = hours_remaining
-            else
-              self.nine_month_hours = 0
-            end
-          else
-            self.nine_month_hours = 0
-          end
+          self.nine_month_hours = 0
         end
+      else
+        self.nine_month_hours = 0
+      end
+    end
 
     ###########################################################################
     # # Calculate Hours In Twelve Months
@@ -147,8 +148,8 @@ class Job < ApplicationRecord
     end
 
     # ##########################################################################
-        super
+    super
 
-    end
   end
+end
 

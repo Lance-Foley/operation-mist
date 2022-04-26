@@ -1,26 +1,27 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
 
-<h1>Employees</h1>
+  <h1>Employees</h1>
 
-<div id="employees">
-  <table class="table table-striped table-hover table-bordered">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Division</th>
-      <th>Hours Per Week</th>
-      <th>View</th>
-    </tr>
-    </thead>
-    <tbody>
+  <div id="employees">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Division</th>
+        <th>Role</th>
+        <th>Hours Per Week</th>
+        <th>View</th>
+      </tr>
+      </thead>
+      <tbody>
 
-  <% @employees.each do |employee| %>
-    <%= render employee %>
-  <% end %>
-    </tbody>
-  </table>
-</div>
+      <% @employees.each do |employee| %>
+        <%= render employee %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<%= link_to "New employee", new_employee_path , class: "btn btn-secondary" %>
+  <%= link_to "New employee", new_employee_path, class: "btn btn-secondary" %>
 </div>

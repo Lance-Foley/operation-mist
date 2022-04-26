@@ -1,6 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @division %>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Crew</th>
+    <th>Role</th>
+    <th>Hours Per Week</th>
+    <th>View</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @division %>
+  </tbody>
+</table>
 
 <div>
   <%= link_to "Edit this division", edit_division_path(@division) %> |

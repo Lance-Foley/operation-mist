@@ -11,13 +11,13 @@
   </tr>
   </thead>
   <tbody>
-  <%= render @phase %>
+  <%= render @role %>
   </tbody>
 </table>
 
 <div>
-  <%= link_to "Edit this phase", edit_phase_path(@phase) %> |
-  <%= link_to "Back to phases", phases_path %>
+  <%= link_to "Edit this role", edit_role_path(@role) %> |
+  <%= link_to "Back to roles", roles_path %>
 
-  <%= button_to "Destroy this phase", @phase, method: :delete %>
+  <%= button_to "Destroy this role", @role, method: :delete %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_163529) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_105919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_163529) do
     t.string "name"
     t.string "crew"
     t.string "division"
-    t.float "man_hours_per_week"
+    t.float "man_hours_per_week", default: 40.0
     t.float "man_hours_per_month"
     t.float "man_hours_three_months"
     t.float "man_hours_six_months"
@@ -72,8 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_163529) do
     t.decimal "man_hours", precision: 15, scale: 2, null: false
     t.string "phase"
     t.string "division"
-    t.decimal "total_cost", precision: 15, scale: 2, null: false
-    t.decimal "sub_cost", precision: 15, scale: 2, null: false
+    t.decimal "total_cost", default: "0.0", null: false
+    t.decimal "sub_cost", default: "0.0", null: false
     t.decimal "hours_per_week", precision: 15, scale: 2, null: false
     t.decimal "weeks", precision: 15, scale: 2, null: false
     t.decimal "week_remaining", precision: 15, scale: 2, null: false
@@ -96,6 +96,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_163529) do
     t.float "twelve_month_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "role", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

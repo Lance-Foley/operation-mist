@@ -4,7 +4,6 @@ class Job < ApplicationRecord
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     self.hours_per_week = (man_hours / weeks).to_f
-
     today = (Time.now.midnight.to_datetime)
     three_months_from_now = today + 91.205
     six_months_from_now = today + 182.5

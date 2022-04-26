@@ -11,9 +11,16 @@
     <%#= javascript_importmap_tags %>
     <%= javascript_importmap_tags %>
   </head>
+<header>
 
-  <body>
   <%= render "home/header" %>
+  <% if notice  %>
+  <p class="notice"><%= notice %></p>
+    <% elsif alert%>
+  <p class="alert"><%= alert %></p>
+    <% end %>
+</header>
+  <body>
     <%= yield %>
   </body>
 </html>

@@ -77,3 +77,4 @@ group :test do
 end
 
 gem "importmap-rails", "~> 1.0"
+gem 'devise'

@@ -5,3 +5,61 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+crew_array = [ "Field 1", "Field 2", "Field 3", "Field 4","Arch-Design", "Cabinet-Design",
+                     "Interior-Design", "PM(1)","PM(2)","Shop"]
+phase_array = ["Framing", "Demo", "Foundation", "Interior-Finishing", "Arch-Design", "Cabinet-Design",
+                       "Interior-Design", "Punch-List", "Project Management"]
+division_array = ["New Construction", "Remodel-Repair", "Design","PHM", "Admin", "Shop"]
+
+name_array = ["Lance Foley", "Bret A", "Tracey R", "Lee Homola", "Kurt R","Nathan R","Reed B","Ken P","Adam","Jake E","Connor V","Eric B","Dan B","Dan W"," James E","Hunter G","Paul J"]
+crews = Crew.create([{name: "Field 1"},{name: "Field 2"},{name: "Field 3"},
+                     {name: "Field 4"},{name: "Arch-Design"},{name: "Cabinet-Design"},
+                     {name: "Interior-Design"},{name: "PM(1)"},{name: "PM(2)"},{name:"Shop"}])
+phases = Phase.create([{name: "Framing"},{name: "Demo"},{name: "Foundation"},
+                     {name: "Interior-Finishing"},{name: "Arch-Design"},{name: "Cabinet-Design"},
+                     {name: "Interior-Design"},{name: "Punch-List"},{name: "Project Management"}])
+divisions = Division.create([{name: "New Construction"},{name: "Remodel-Repair"},{name: "Design"},
+                       {name: "PHM"},{name: "Admin"},{name: "Shop"}])
+100.times do |index|
+  Job.create!(name: "Title #{index}",
+              start_date: DateTime.new(2022,1,1,17),
+              end_date: DateTime.new(2022,9,9,19),
+              crew: crew_array.sample,
+              man_hours: index + 2 * 2 * index,
+              phase: phase_array.sample,
+              division: division_array.sample,
+              total_cost: index + 2 * 5 * index,
+              sub_cost: index + 2 * 2 * index,
+              hours_per_week: index,
+              weeks: index,
+              week_remaining: index,
+              hours_remaining: index,
+              three_month_hours: index,
+              six_month_hours: index,
+              nine_month_hours: index,
+              twelve_month_hours: index
+  )
+
+
+end
+15.times do |index|
+  Employee.create!(name: name_array.sample,
+                   crew: crew_array.sample,
+                   division: division_array.sample,
+                   man_hours_per_week: 40,
+                   man_hours_per_month: 0,
+                   man_hours_three_months: 0,
+                   man_hours_six_months: 0,
+                   man_hours_nine_months: 0,
+                   man_hours_twelve_months: 0,
+                   contr_hours_per_week:0,
+                   contr_hour_per_month: 0,
+                   contr_hours_three_months: 0,
+
+                   contr_hours_nine_months: 0,
+                   contr_hours_twelve_months: 0,
+                   true_man_hours_per_week: 0
+
+  )
+end

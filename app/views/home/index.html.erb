@@ -10,7 +10,7 @@
   </div>
   <div class="col-4">
     <div class="card" style="width: 18rem; ">
-      <h4 class="text-center"> <%= Employee.all.sum(:man_hours_three_months).round(1) %></h4>
+      <h4 class="text-center"> <%= Employee.all.sum(:man_hours_three_months).round(2) %></h4>
       <div class="card-body">
         <p class="card-text">Three Month Work Force Hours</p>
       </div>
@@ -48,6 +48,14 @@
       </div>
     </div>
   </div>
+    <div class="col">
+      <div class="card">
+      <h4 class="text-center"><%= (Job.all.sum(:twelve_month_hours) / Employee.all.sum(:man_hours_twelve_months)).round(2) %></h4>
+        <div class="card-body">
+<p class="text-center">Months Remaining</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

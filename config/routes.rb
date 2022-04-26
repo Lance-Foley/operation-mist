@@ -1,4 +1,8 @@
+
 Rails.application.routes.draw do
+  devise_for :users
+
+  # devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :phases
   resources :divisions
   resources :crews
@@ -9,4 +13,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
 end

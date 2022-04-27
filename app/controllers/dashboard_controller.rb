@@ -17,4 +17,9 @@ class DashboardController < ApplicationController
     render json: [{ name: "Contracted Hours", data: Job.group(:crew).where(crew: "Field 1").sum(:three_month_hours) },
                   { name: "Available Hours", data: Employee.group(:crew).where(crew: "Field 1").sum(:man_hours_three_months) },]
   end
+
+  def field_two_workload
+    render json: [{ name: "Contracted Hours", data: Job.group(:crew).where(crew: "Field 2").sum(:three_month_hours) },
+                  { name: "Available Hours", data: Employee.group(:crew).where(crew: "Field 2").sum(:man_hours_three_months) },]
+  end
 end

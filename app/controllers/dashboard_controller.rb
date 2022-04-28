@@ -42,12 +42,7 @@ class DashboardController < ApplicationController
   helper_method :crew_list
 
   def e_rating
-    e_rating = Job.all.where(completed: true).average(:E_rating)
-    if e_rating <= 0
-      e_rating = 0.0
-    else
-      e_rating
-    end
+    Job.all.where(completed: true).average(:E_rating)
   end
 
   helper_method :e_rating

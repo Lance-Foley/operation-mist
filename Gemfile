@@ -78,3 +78,4 @@ end
 
 gem "importmap-rails", "~> 1.0"
 gem 'devise'
+gem "simple_calendar", "~> 2.4"

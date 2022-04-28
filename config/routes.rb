@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard/three_month_workload'
   get 'dashboard/field_one_workload'
   get 'dashboard/field_two_workload'
+  get 'dashboard/week_workload'
   devise_for :users
 
   # devise_for :users, controllers: { sessions: 'users/sessions' }
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :employees
   resources :jobs
+  resources :schedule
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -1,6 +1,5 @@
 class Job < ApplicationRecord
-
-  def save(**)
+  private def create_or_update(touch: nil, **)
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     self.hours_per_week = (man_hours / weeks).to_f
@@ -12,6 +11,14 @@ class Job < ApplicationRecord
     end_date_minus_today = end_date.to_datetime - today
     start_date_minus_today = start_date.to_datetime - today
     @Field_Months_Remaining = Job.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:twelve_month_hours) / Employee.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:man_hours_twelve_months)
+
+    ####################################################################################
+    # Checks if Job is Complete then Calculates E_rating
+    if (completed == true)
+      self.E_rating = man_hours / actual_worked_hours * 100
+    else
+      self.E_rating = 0.0
+    end
     ###################################################################################
     # Calculate Weeks Remaining
     if today > start_date.to_datetime

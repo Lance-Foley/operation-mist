@@ -42,8 +42,15 @@ class DashboardController < ApplicationController
   helper_method :crew_list
 
   def e_rating
-    Job.all.where(E_rating: true).sum(:E_rating)
+    e_rating = Job.all.where(completed: true).average(:E_rating).round(2)
+    if e_rating <= 0
+      e_rating = 0.0
+    else
+      e_rating
+    end
   end
+
+  helper_method :e_rating
 
   # Returns First Foreman in Crew
   def crew_foreman(crew)

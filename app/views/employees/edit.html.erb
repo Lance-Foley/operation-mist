@@ -6,7 +6,10 @@
   <br>
 
   <div>
-    <%= link_to "Show this employee", @employee %> |
-    <%= link_to "Back to employees", employees_path %>
+    <%= link_to "Back", @employee, class: "btn btn-secondary" %> |
+    <%= link_to "All Employees", employees_path, class: "btn btn-secondary" %>
+    <hr>
+    <%= button_to "Destroy this employee", @employee, method: :delete, class: "btn btn-danger" %>
+
   </div>
 </div>

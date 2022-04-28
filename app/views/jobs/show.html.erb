@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col">
+        <div class="col-8 col-sm-8">
           <h2>Job: <%= @job.name %></h2>
           <h5>Crew: <%= @job.crew %></h5>
         </div>
@@ -18,7 +18,7 @@
         <div class="col">
           <h6>Division: <%= @job.division %> <p>Phase: <%= @job.phase %></p></h6>
           <p>Starting <%= @job.start_date.strftime('%m/%d/%Y') %></p>
-          <p>Ending<%= @job.end_date.strftime('%m/%d/%y') %></p>
+          <p>Ending <%= @job.end_date.strftime('%m/%d/%y') %></p>
 
         </div>
         <div class="col">

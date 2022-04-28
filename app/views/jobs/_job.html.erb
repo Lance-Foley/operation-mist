@@ -1,11 +1,9 @@
 <div id="<%= dom_id job %>">
 
   <tr>
-    <th><%= job.name %></th>
+    <td><%= link_to job.name, job %></td>
     <td><%= job.crew %></td>
     <td><%= job.phase %></td>
-    <td><%= job.division %></td>
-    <td><%= link_to "View", job %></td>
   </tr>
 
 </div>

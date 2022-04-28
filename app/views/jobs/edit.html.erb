@@ -1,13 +1,15 @@
 <div class="container">
 
-<h1>Editing job</h1>
+  <h1>Editing job</h1>
 
-<%= render "form", job: @job %>
+  <%= render "form", job: @job %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this job", @job %> |
-  <%= link_to "Back to jobs", jobs_path %>
-</div>
+  <div>
+    <%= link_to "Back", @job, class: "btn btn-secondary" %> |
+    <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
+    <hr>
+    <%= button_to "Destroy this job", @job, method: :delete, class: "btn btn-danger" %>
+  </div>
 </div>

@@ -1,20 +1,11 @@
 <div id="<%= dom_id job %>">
 
   <tr>
-    <th scope="row"><%= job.id %></th>
-    <td><%= job.name %></td>
-    <td><%= job.start_date.strftime('%m/%d/%Y') %></td>
-    <td><%= job.end_date.strftime('%m/%d/%Y') %></td>
+    <th><%= job.name %></th>
     <td><%= job.crew %></td>
-    <td><%= job.man_hours %></td>
     <td><%= job.phase %></td>
     <td><%= job.division %></td>
-    <td><%= number_to_currency(job.total_cost, :unit => "$") %></td>
-    <td><%= number_to_currency(job.sub_cost, :unit => "$" ) %></td>
-    <td><%= job.hours_per_week %></td>
-    <td><%= job.weeks %></td>
-    <td><%= job.week_remaining %></td>
-    <td><%= link_to "Show", job %></td>
+    <td><%= link_to "View", job %></td>
   </tr>
 
 </div>

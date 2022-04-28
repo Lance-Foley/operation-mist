@@ -1,71 +1,55 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
-
-  <table class="table table-striped table-hover table-bordered">
-    <thead>
-    <th scope="col">ID</th>
-    <th scope="col">Name</th>
-    <th scope="col">Start Date</th>
-    <th scope="col">End Date</th>
-    <th scope="col">Crew</th>
-    <th scope="col">Hours</th>
-    <th scope="col">Phase</th>
-    <th scope="col">Division</th>
-    <th scope="col">Total Cost</th>
-    <th scope="col">Sub Cost</th>
-    <th scope="col">Hours Per Week</th>
-    <th scope="col">Weeks</th>
-    <th scope="col">Weeks Remaining</th>
-    <th scope="col">View</th>
-
-    </thead>
-    <tbody>
-
-<%= render @job %>
-
-    </tbody>
-  </table>
-<div class="row">
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title">Hours Remaining</h5>
-        <h3><%= @job.hours_remaining %></h3>
-      </div>
-    </div>
-</div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title">Three Month Hours</h5>
-          <h3><%= @job.three_month_hours %></h3>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <h2>Job: <%= @job.name %></h2>
+          <h5>Crew: <%= @job.crew %></h5>
         </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title">Six Month Hours</h5>
-        <h3><%= @job.six_month_hours %></h3>
+        <div class="col">
+          <p class="">Contract: <%= number_to_currency(@job.total_cost, :unit => "$") %></p>
+          <p class="">Sub Cost: <%= number_to_currency(@job.sub_cost, :unit => "$") %></p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "coming_soon.jpg", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title">Nine Month Hours</h5>
-        <h3><%= @job.nine_month_hours %></h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h6>Division: <%= @job.division %> <p>Phase: <%= @job.phase %></p></h6>
+          <p>Starting <%= @job.start_date.strftime('%m/%d/%Y') %></p>
+          <p>Ending<%= @job.end_date.strftime('%m/%d/%y') %></p>
+
+        </div>
+        <div class="col">
+          <h6>Hours: <%= @job.man_hours %> <p>Remaining Hours <%= @job.hours_remaining %></p></h6>
+          <p>Hours Per Week <%= @job.hours_per_week %></p>
+          <p>Week(s) <%= @job.weeks %></p>
+          <p>Remaining Week(s): <%= @job.week_remaining %></p>
+
+
+        </div>
       </div>
     </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col">
+          <p>3 Month Hours: <%= @job.three_month_hours %></p>
+        </div>
+        <div class="col">
+          <p>6 Month Hours: <%= @job.six_month_hours %></p>
+        </div>
+        <div class="col">
+          <p>9 Month Hours: <%= @job.nine_month_hours %></p>
+        </div>
+        <div class="col">
+          <p>12 Month Hours: <%= @job.twelve_month_hours %></p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-<div>
-  <%= link_to "Edit this job", edit_job_path(@job) %> |
-  <%= link_to "Back to jobs", jobs_path %>
-  <%= button_to "Destroy this job", @job, method: :delete %>
-</div>
-</div>
+  <%= link_to "Back", jobs_path, class: "btn btn-secondary" %> |
+  <%= link_to "Edit", edit_job_path(@job), class: "btn btn-secondary" %>
 </div>

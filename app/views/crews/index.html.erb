@@ -1,20 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-3">
 
-<h1>Crews</h1>
 
-<div id="crews">
-  <div id="roles">
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-      <th scope="col">Name</th>
-      <th scope="col">View</th>
-      </thead>
-      <tbody>
-      <% @crews.each do |crew| %>
-        <%= render crew %>
-      <% end %>
-      </tbody>
-    </table>
+  <h1>Crews</h1>
+  <%= link_to "New crew", new_crew_path, class: "btn btn-secondary float-end" %>
+
+  <div id="crews">
+    <div id="roles">
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Size</th>
+        <th scope="col">Foreman</th>
+        <th scope="col">E_Rating</th>
+        </thead>
+        <tbody>
+        <% @crews.each do |crew| %>
+          <%= render crew %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
-
-<%= link_to "New crew", new_crew_path %>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Clients Show</h1>
+
+
+  <%= render "clients/client_info" %>
+
+  <div>
+    <%= link_to "Edit", edit_client_path(@client), class: "btn btn-warning" %> |
+    <%= link_to "Back", clients_path, class: "btn btn-secondary" %>
+    <hr>
+  </div>
+
+
+</div>
+<div class="container">
+  <%= render "clients/project" %>
+</div>

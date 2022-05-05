@@ -1,10 +1,16 @@
-<h1>Editing division</h1>
+<div class="container mt-3">
 
-<%= render "form", division: @division %>
+  <h1>Editing division</h1>
 
-<br>
+  <%= render "form", division: @division %>
 
-<div>
-  <%= link_to "Show this division", @division %> |
-  <%= link_to "Back to divisions", divisions_path %>
+  <br>
+
+  <div>
+    <%= link_to "Back", @division, class: "btn btn-secondary" %> |
+    <%= link_to "Divisions", divisions_path, class: "btn btn-secondary" %>
+    <hr>
+    <%= button_to "Delete", @division, method: :delete, class: "btn btn-danger" %>
+
+  </div>
 </div>

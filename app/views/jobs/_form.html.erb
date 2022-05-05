@@ -1,16 +1,20 @@
-<%= form_with(model: job) do |form| %>
-  <% if job.errors.any? %>
+<%= form_with(model: @job) do |form| %>
+  <% if @job.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-        <% job.errors.each do |error| %>
+        <% @job.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <div class="row">
+    <div class="col d-none">
+      <%= form.label :project_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:project_id, Project.where(id: @project_id), :id, :name) %>
+    </div>
     <div class="col">
       <%= form.label :name, style: "display: block", class: "form-label" %>
       <%= form.text_field :name, class: "form-control" %>
@@ -78,6 +82,5 @@
   </div>
 
   <%= form.submit class: "btn btn-warning" %>
-
 <% end %>
 

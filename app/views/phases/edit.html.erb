@@ -1,10 +1,16 @@
-<h1>Editing phase</h1>
+<div class="container">
 
-<%= render "form", phase: @phase %>
+  <h1>Editing phase</h1>
 
-<br>
+  <%= render "form", phase: @phase %>
 
-<div>
-  <%= link_to "Show this phase", @phase %> |
-  <%= link_to "Back to phases", phases_path %>
+  <br>
+
+  <div>
+    <%= link_to "Back", @phase, class: "btn btn-secondary" %> |
+    <%= link_to "Phases", phases_path, class: "btn btn-secondary" %>
+    <hr>
+    <%= button_to "Destroy this phase", @phase, method: :delete, class: "btn btn-danger" %>
+
+  </div>
 </div>

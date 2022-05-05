@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def prepare_job_form
+    @job_form = Job.create
+  end
+
 end

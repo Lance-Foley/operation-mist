@@ -41,8 +41,29 @@ class DashboardController < ApplicationController
 
   helper_method :crew_list
 
+  def division_e_rating(name)
+    @e_rating = Job.all.where(completed: true, division: name)
+    if @e_rating.count <= 0
+      0
+    else
+      @e_rating.average(:e_rating)
+    end
+  end
+
+  def crew_e_rating(name)
+    @e_rating = Job.all.where(completed: true, crew: name)
+    if @e_rating.count <= 0
+      0
+    else
+      @e_rating.average(:e_rating)
+    end
+  end
+
+  helper_method :division_e_rating
+  helper_method :crew_e_rating
+
   def e_rating
-    Job.all.where(completed: true).average(:E_rating)
+    Job.all.where(completed: true).average(:e_rating)
   end
 
   helper_method :e_rating

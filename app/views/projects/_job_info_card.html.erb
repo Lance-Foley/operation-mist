@@ -1,0 +1,66 @@
+<div class="container mt-3">
+  <h4>Phases</h4>
+  <hr>
+  <div class="row">
+    <% @jobs.each do |p| %>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-8 col-sm-8">
+                <h3>Phase: <%= p.phase %></h3>
+                <p>Crew: <%= p.crew %></p>
+              </div>
+              <div class="col ">
+                <h6 class="">Contract: <%= number_to_currency(p.total_cost, :unit => "$") %></h6>
+                <h6 class="">Sub Cost: <%= number_to_currency(p.sub_cost, :unit => "$") %></h6>
+                <h6>Paid Hours: <%= p.actual_worked_hours %></h6>
+                <%= link_to "edit", p, class: "float-end" %>
+              </div>
+            </div>
+          </div>
+         
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h6>Division: <%= p.division %></h6>
+                <p>Starting <%= p.start_date.strftime('%m/%d/%Y') %></p>
+                <p>Ending <%= p.end_date.strftime('%m/%d/%y') %></p>
+              </div>
+              <div class="col">
+                <h5>E-Rating: <%= p.E_rating.round(2) %>%</h5>
+                <h6>Bid Hours: <%= p.man_hours %> <p>Estimated Remaining <%= p.hours_remaining %></p></h6>
+                <p>Hours Per Week <%= p.hours_per_week %></p>
+                <p>Week(s) <%= p.weeks %></p>
+                <p>Remaining Week(s): <%= p.week_remaining %></p>
+              </div>
+              <div class="col">
+                <p>
+                  <span>Accusamus amet architecto, dolorem dolores illum ipsa iusto nisi, numquam obcaecati porro possimus quibusdam quod reiciendis sequi suscipit ullam voluptates. Amet aspernatur delectus mollitia neque officia optio quas, sit veritatis?</span><span>Ad distinctio ducimus eum fugit ipsa, itaque iusto maxime nesciunt nisi, obcaecati quam repellendus sunt veritatis, voluptatibus voluptatum! A adipisci dignissimos eveniet fugit iste optio possimus quos reiciendis saepe temporibus.</span><span>Ab aliquam animi commodi consequatur eligendi error ex facilis fuga fugit hic illum in iure laborum laudantium maiores, neque nulla officiis praesentium provident quasi quis rem sit veniam voluptate voluptatibus?</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col">
+                <p>3 Month Hours: <%= p.three_month_hours %></p>
+              </div>
+              <div class="col">
+                <p>6 Month Hours: <%= p.six_month_hours %></p>
+              </div>
+              <div class="col">
+                <p>9 Month Hours: <%= p.nine_month_hours %></p>
+              </div>
+              <div class="col">
+                <p>12 Month Hours: <%= p.twelve_month_hours %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>

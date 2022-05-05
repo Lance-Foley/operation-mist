@@ -10,36 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_28_184536) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_04_124705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "crews", force: :cascade do |t|
     t.string "name"
-    t.float "contracted_hours_per_week"
-    t.float "available_hours_per_week"
-    t.float "contracted_hours_per_month"
-    t.float "available_hours_per_month"
-    t.float "contracted_hours_three_months"
-    t.float "available_hours_three_months"
-    t.float "contracted_hours_six_months"
-    t.float "available_hours_six_months"
-    t.float "contracted_hours_nine_months"
-    t.float "available_hours_nine_months"
-    t.float "contracted_hours_twelve_months"
-    t.float "available_hours_twelve_months"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "divisions", force: :cascade do |t|
     t.string "name"
-    t.float "hours_per_week"
-    t.float "hours_per_month"
-    t.float "three_month_hours"
-    t.float "six_month_hours"
-    t.float "nine_month_hours"
-    t.float "twelve_month_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,20 +39,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_184536) do
     t.string "crew"
     t.string "division"
     t.float "man_hours_per_week", default: 40.0
-    t.float "man_hours_per_month"
-    t.float "man_hours_three_months"
-    t.float "man_hours_six_months"
-    t.float "man_hours_nine_months"
-    t.float "man_hours_twelve_months"
-    t.float "contr_hours_per_week"
-    t.float "contr_hour_per_month"
-    t.float "contr_hours_three_months"
-    t.float "contr_hours_nine_months"
-    t.float "contr_hours_twelve_months"
+    t.decimal "man_hours_per_month", default: "0.0"
+    t.decimal "man_hours_three_months", default: "0.0"
+    t.decimal "man_hours_six_months", default: "0.0"
+    t.decimal "man_hours_nine_months", default: "0.0"
+    t.decimal "man_hours_twelve_months", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "true_man_hours_per_week"
     t.string "role"
+    t.string "email"
+    t.string "phone_number"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -87,20 +74,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_184536) do
     t.datetime "updated_at", null: false
     t.string "project_manager"
     t.decimal "actual_worked_hours", default: "0.0"
-    t.decimal "E_rating", default: "0.0"
+    t.decimal "e_rating", default: "0.0"
     t.boolean "completed", default: false
+    t.bigint "project_id"
   end
 
   create_table "phases", force: :cascade do |t|
     t.string "name"
-    t.float "hours_per_week"
-    t.float "hours_per_month"
-    t.float "three_month_hours"
-    t.float "six_month_hours"
-    t.float "nine_month_hours"
-    t.float "twelve_month_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "project_manager"
+    t.string "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "info"
   end
 
   create_table "roles", force: :cascade do |t|

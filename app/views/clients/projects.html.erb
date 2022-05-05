@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <h1>Projects</h1>
+  <div class="row">
+
+
+    <% @projects.each do |p| %>
+
+
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <%= link_to "Info", project_path(p.id), class: " float-end" %>
+            <h2 class="card-title"><%= p.name %></h2>
+            <p>Project Manager <%= p.project_manager %></p>
+          </div>
+          <div class="card-body">
+            <p><%= p.info %></p>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "Back to Client", client_path(@client), class: "btn btn-secondary" %>
+
+    <div class="container">
+
+      <%= render "projects/form", :object => @project %>
+    </div>
+
+  </div>
+</div>

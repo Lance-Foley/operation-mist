@@ -1,8 +1,14 @@
 # Pin npm packages by running ./bin/importmap
 
 pin "application", preload: true
-pin "chartkick", to: "chartkick.js"
 
+pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
+pin_all_from "app/javascript/controllers", under: "controllers"
+pin "chartkick", to: "chartkick.js"
 pin "highcharts", to: "https://ga.jspm.io/npm:highcharts@10.0.0/highcharts.js"
-pin "popper", to: 'popper.js', preload: true
-pin "bootstrap", to: 'bootstrap.min.js', preload: true
+pin "popper", to: 'popper.js'
+pin "bootstrap", to: 'bootstrap.min.js'
+
+# pin "highcharts" # @10.1.0
+pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true

@@ -58,13 +58,14 @@ class PhasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_phase
-      @phase = Phase.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def phase_params
-      params.require(:phase).permit(:name, :hours_per_week, :hours_per_month, :three_month_hours, :six_month_hours, :nine_month_hours, :twelve_month_hours)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_phase
+    @phase = Phase.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def phase_params
+    params.require(:phase).permit(:name)
+  end
 end

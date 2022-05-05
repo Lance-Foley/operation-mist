@@ -1,4 +1,5 @@
 class Job < ApplicationRecord
+  has_one :project, autosave: true
   private def create_or_update(touch: nil, **)
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
@@ -15,9 +16,9 @@ class Job < ApplicationRecord
     ####################################################################################
     # Checks if Job is Complete then Calculates E_rating
     if (completed == true)
-      self.E_rating = man_hours / actual_worked_hours * 100
+      self.e_rating = man_hours / actual_worked_hours * 100
     else
-      self.E_rating = 0.0
+      self.e_rating = 0.0
     end
     ###################################################################################
     # Calculate Weeks Remaining

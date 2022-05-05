@@ -5,6 +5,7 @@ ruby "3.0.0"
 gem 'chartkick', '~> 4.1', '>= 4.1.3'
 gem 'highcharts-rails'
 gem "groupdate"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
@@ -21,7 +22,7 @@ gem "puma", "~> 5.0"
 # gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", '~> 1.0.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -33,7 +34,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -78,4 +79,5 @@ end
 
 gem "importmap-rails", "~> 1.0"
 gem 'devise'
-gem "simple_calendar", "~> 2.4"
+
+gem 'active_model_serializers', '~> 0.10.13'

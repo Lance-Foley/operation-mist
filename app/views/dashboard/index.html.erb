@@ -1,243 +1,240 @@
-<div class="sticky-lg-top bg-info">
-  <div class="container">
-    <div class="row ">
-      <div class="col">
-        <h6 class="nav-link">Global E-Rating <%= e_rating %>%</h6>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<div class="container mt-3 bg-opacity-100">
+  <div class="row">
+
+    <div class="col ">
+      <p class="text-center">Three Month Workload</p>
+      <p class="text-center text-muted fs-6 fw-light "> Amount Of Worked Assigned Based On The Work Force Available</p>
+      <hr>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 1</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Field 1").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Field 1").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 2</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Field 2").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Field 2").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 3</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Field 3").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Field 3").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 4</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Field 4").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Field 4").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Shop</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Shop").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Shop").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Arch-Design</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Arch-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Arch-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Cabinet-Design</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Cabinet-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Cabinet-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Selections</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= three_month_workload("Interior-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= three_month_workload("Interior-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col ">
+      <p class="text-center">Week Workload</p>
+      <p class="text-center text-muted fs-6 fw-light "> Amount Of Worked Assigned Based On The Work Force Available</p>
+      <hr>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 1</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Field 1").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Field 1").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 2</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Field 2").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Field 2").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 3</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Field 3").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Field 3").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Field 4</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Field 4").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Field 4").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Shop</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Shop").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Shop").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Arch-Design</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Arch-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Arch-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Cabinet-Design</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Cabinet-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Cabinet-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <p class="float-start  pe-3">Selections</p>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: <%= crew_week_workload("Interior-Design").round(1) %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= crew_week_workload("Interior-Design").round(1) %>
+              %
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
-</div>
-<div class="container ">
-  <div class="row mt-3">
+  <div class="row">
+    <div class="col ">
+    </div>
+
+  </div>
+  <div class="row">
     <div class="col">
       <div class="row">
-        <!--        Field 1 DashBoard Card-->
-        <div class="col-12 col-sm-12 col-md-6 mb-3 mt-3">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="text-center">Field 1
-                Foreman:
-                <%= crew_foreman("Field 1") %></h5>
-            </div>
-            <div class="container mt-3">
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-center">3 Month Workload</h6>
-                  <%= column_chart dashboard_field_one_workload_path %>
-                </div>
-                <div class="col">
-                  <h6 class="text-center">Week Workload</h6>
-                  <%= column_chart dashboard_week_workload_path %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <p class="text-center">Scheduled</p>
-                        <h4 class="text-center">M/<%= crew_months_remaining("Field 1").round(2) %></h4>
-                      </div>
-                      <div class="col">
-                        <p class="text-center">E-Rating</p>
-                        <h4 class="text-center">98%</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container">
-                    <hr class="dropdown-divider">
-                    <h6 class="text-center">Crew</h6>
-                    <li class="text-center">
-                      <%= crew_list("Carpenter", "Field 1") %>
-                    </li>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-8">
+          <%= render "dashboard/crew_workload_chart" %>
         </div>
-        <!--        Field 2 Dashboard Card-->
-        <div class="col-12 col-sm-12 col-md-6 mt-3 mb-3">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="text-center">Field 2
-                Foreman:
-                <%= crew_foreman("Field 2") %></h5>
-            </div>
-            <div class="container mt-3">
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-center">3 Month Workload</h6>
-                  <%= column_chart dashboard_field_two_workload_path %>
-                </div>
-                <div class="col">
-                  <h6 class="text-center">Week Workload</h6>
-                  <%= column_chart dashboard_week_workload_path %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <p class="text-center">Scheduled</p>
-                        <h4 class="text-center">M/<%= crew_months_remaining("Field 2").round(2) %></h4>
-                      </div>
-                      <div class="col">
-                        <p class="text-center">E-Rating</p>
-                        <h4 class="text-center">107%</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container">
-                    <hr class="dropdown-divider">
-                    <h6 class="text-center">Crew</h6>
-                    <li class="text-center">
-                      <%= crew_list("Carpenter", "Field 2") %>
-                    </li>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="row">
-        <!--Field 3 Dashboard Card-->
-        <div class="col-12 col-sm-12 col-md-6 mt-3 mb-3">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="text-center">Field 3
-                Foreman:
-                <%= crew_foreman("Field 3") %></h5>
-            </div>
-            <div class="container mt-3">
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-center">3 Month Workload</h6>
-                  <%= column_chart dashboard_field_two_workload_path %>
-                </div>
-                <div class="col">
-                  <h6 class="text-center">Week Workload</h6>
-                  <%= column_chart dashboard_week_workload_path %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <p class="text-center">Scheduled</p>
-                        <h4 class="text-center">M/<%= crew_months_remaining("Field 3").round(2) %></h4>
-                      </div>
-                      <div class="col">
-                        <p class="text-center">E-Rating</p>
-                        <h4 class="text-center">101%</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container">
-                    <hr class="dropdown-divider">
-                    <h6 class="text-center">Crew</h6>
-                    <li class="text-center">
-                      <%= crew_list("Carpenter", "Field 3") %>
-                    </li>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Field 4 Dashboard Card-->
-        <div class="col-12 col-sm-12 col-md-6 mt-3 mb-3">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="text-center">Field 4
-                Foreman:
-                <%= crew_foreman("Field 4") %></h5>
-            </div>
-            <div class="container mt-3">
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-center">3 Month Workload</h6>
-                  <%= column_chart dashboard_field_two_workload_path %>
-                </div>
-                <div class="col">
-                  <h6 class="text-center">Week Workload</h6>
-                  <%= column_chart dashboard_week_workload_path %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <p class="text-center">Scheduled</p>
-                        <h4 class="text-center">M/<%= crew_months_remaining("Field 4").round(2) %></h4>
-                      </div>
-                      <div class="col">
-                        <p class="text-center">E-Rating</p>
-                        <h4 class="text-center">133%</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container">
-                    <hr class="dropdown-divider">
-                    <h6 class="text-center">Crew</h6>
-                    <li class="text-center">
-                      <%= crew_list("Carpenter", "Field 4") %>
-                    </li>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="row">
         <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title text-center">Field</h5>
-              <p class="text-center">Three Month Workload Per Crew</p>
-            </div>
-            <h6 class="text-center">Remaining Time In Months Will All Crews Working
-              (<%= @Field_Months_Remaining.round(2) %>)</h6>
-            <div class="card-body">
-              <%= bar_chart dashboard_three_month_workload_path %>
-            </div>
+          <div class="card justify-content-evenly bg-info">
+            <p class="fw-bold  text-center d-inline"><span class="text-muted">Field 1 E-Rating:</span><br>
+              <span class="fw-bold d-inline display-6"> <%= crew_e_rating("Field 1").round(1) %>%</span>
+            </p>
           </div>
-        </div>
-      </div>
-
-      <div class="row mt-3">
-        <div class="col">
-          <div class="card">
-            <h5 class="card-title text-center">Division Three Month Workload</h5>
-            <div class="card-body">
-              <%= bar_chart [
-                              { name: "Contracted Hours", data: Job
-                                .group(:division)
-                                .where(division: ["Field", "Shop", "Project Management", "Design"]).
-                                sum(:three_month_hours) },
-                              { name: "Available Hours", data: Employee
-                                .group(:division)
-                                .where(division: ["Field", "Shop", "Project Management", "Design"])
-                                .sum(:man_hours_three_months) }]
-              %>
-            </div>
+          <div class="card justify-content-evenly bg-info mt-1">
+            <p class="fw-bold  text-center d-inline"><span class="text-muted">Field 2 E-Rating:</span><br>
+              <span class="fw-bold d-inline display-6"> <%= crew_e_rating("Field 2").round(1) %>%</span>
+            </p>
+          </div>
+          <div class="card justify-content-evenly bg-info mt-1">
+            <p class="fw-bold  text-center d-inline"><span class="text-muted">Field 3 E-Rating:</span><br>
+              <span class="fw-bold d-inline display-6"> <%= crew_e_rating("Field 3").round(1) %>%</span>
+            </p>
+          </div>
+          <div class="card justify-content-evenly bg-info mt-1">
+            <p class="fw-bold  text-center d-inline"><span class="text-muted">Field 4 E-Rating:</span><br>
+              <span class="fw-bold d-inline display-6"> <%= crew_e_rating("Field 4").round(1) %>%</span>
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <%= render "dashboard/division_workload_card" %>
+    </div>
+    <div class="col">
+      <div class="card justify-content-evenly bg-info mt-3">
+        <p class="fw-bold  text-center d-inline"><span class="text-muted">Field E-Rating:</span><br>
+          <span class="fw-bold d-inline display-3"> <%= division_e_rating("New Construction").round(1) %>%</span>
+        </p>
+      </div>
+      <div class="card justify-content-evenly bg-info mt-3">
+        <p class="fw-bold  text-center d-inline"><span class="text-muted">Shop E-Rating:</span><br>
+          <span class="fw-bold d-inline display-3"> <%= division_e_rating("Shop").round(1) %>%</span>
+        </p>
+      </div>
+      <div class="card justify-content-evenly bg-info mt-3">
+        <p class="fw-bold  text-center d-inline"><span class="text-muted">Design E-Rating:</span><br>
+          <span class="fw-bold d-inline display-3"> <%= division_e_rating("Design").round(1) %>%</span>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

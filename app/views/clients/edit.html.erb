@@ -1,0 +1,16 @@
+<div class="container mt-3">
+
+  <h1>Editing client</h1>
+
+  <%= render "form", client: @client %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back", @client, class: "btn btn-secondary" %> |
+    <%= link_to "Clients", clients_path, class: "btn btn-secondary" %>
+    <hr>
+    <%= button_to "Delete Client", @client, method: :delete, class: "btn btn-danger" %>
+
+  </div>
+</div>

@@ -19,6 +19,14 @@
       <%= form.text_field :name, class: "form-control" %>
     </div>
     <div class="col">
+      <%= form.label :email, style: "display: block", class: "form-label" %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :phone_number, style: "display: block", class: "form-label" %>
+      <%= form.text_field :phone_number, class: "form-control" %>
+    </div>
+    <div class="col">
       <%= form.label :crew, style: "display: block", class: "form-label" %>
       <%= form.select :crew, Crew.all.collect { |p| [p.name] }, include_blank: false %>
     </div>
@@ -42,7 +50,7 @@
   <div>
 
 
-    <%= form.submit class: "btn btn-warning" %>
+    <%= form.submit class: "btn btn-primary" %>
 
 
   </div>

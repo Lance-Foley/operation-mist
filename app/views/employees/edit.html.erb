@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <h1>Editing employee</h1>
 
   <%= render "form", employee: @employee %>
@@ -7,9 +7,9 @@
 
   <div>
     <%= link_to "Back", @employee, class: "btn btn-secondary" %> |
-    <%= link_to "All Employees", employees_path, class: "btn btn-secondary" %>
+    <%= link_to "Employees", employees_path, class: "btn btn-secondary" %>
     <hr>
-    <%= button_to "Destroy this employee", @employee, method: :delete, class: "btn btn-danger" %>
+    <%= button_to "Delete", @employee, method: :delete, class: "btn btn-danger" %>
 
   </div>
 </div>

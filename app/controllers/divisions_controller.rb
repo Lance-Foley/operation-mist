@@ -58,13 +58,20 @@ class DivisionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_division
-      @division = Division.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def division_params
-      params.require(:division).permit(:name, :hours_per_week, :hours_per_month, :three_month_hours, :six_month_hours, :nine_month_hours, :twelve_month_hours)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_division
+    @division = Division.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def division_params
+    params.require(:division).permit!
+  end
+
+  def hours_per_week
+    @hours_per_week = Job.where(division: "New Construction").sum(:hours_per_week)
+  end
+
+  helper_method :hours_per_week
 end

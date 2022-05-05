@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <div class="card">
     <div class="card-header">
       <div class="row">
@@ -23,7 +23,7 @@
 
         </div>
         <div class="col">
-          <h5>E-Rating: <%= @job.E_rating.round(2) %>%</h5>
+          <h5>E-Rating: <%= @job.e_rating.round(2) %>%</h5>
           <h6>Bid Hours: <%= @job.man_hours %> <p>Estimated Remaining <%= @job.hours_remaining %></p></h6>
           <p>Hours Per Week <%= @job.hours_per_week %></p>
           <p>Week(s) <%= @job.weeks %></p>
@@ -52,6 +52,6 @@
 
 
   </div>
-  <%= link_to "Back", jobs_path, class: "btn btn-secondary" %> |
+  <%= link_to "Back", project_path(@job.project_id), class: "btn btn-secondary" %> |
   <%= link_to "Edit", edit_job_path(@job), class: "btn btn-secondary" %>
 </div>

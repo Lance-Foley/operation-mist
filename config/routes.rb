@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :projects
+  resources :clients
   resources :roles
 
   get 'dashboard/index'
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   get 'dashboard/field_two_workload'
   get 'dashboard/week_workload'
   devise_for :users
+  get 'client/:id/projects' => 'clients#projects', :as => :client_projects
+  get 'projects/:id/phase' => 'projects#phase', :as => :project_phase
 
   # devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :phases

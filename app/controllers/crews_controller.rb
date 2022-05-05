@@ -58,13 +58,14 @@ class CrewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_crew
-      @crew = Crew.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def crew_params
-      params.require(:crew).permit(:name, :contracted_hours_per_week, :available_hours_per_week, :contracted_hours_per_month, :available_hours_per_month, :contracted_hours_three_months, :available_hours_three_months, :contracted_hours_six_months, :available_hours_six_months, :contracted_hours_nine_months, :available_hours_nine_months, :contracted_hours_twelve_months, :available_hours_twelve_months)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_crew
+    @crew = Crew.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def crew_params
+    params.require(:crew).permit(:name)
+  end
 end

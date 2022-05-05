@@ -49,7 +49,7 @@
     </div>
     <div class="col">
       <%= form.label :project_manager, style: "display: block", class: "form-label mt-3" %>
-      <%= form.text_field :project_manager, class: "form-control" %>
+      <%= form.select :project_manager, Employee.all.collect { |p| p.name }, class: "form-control" %>
     </div>
   </div>
 

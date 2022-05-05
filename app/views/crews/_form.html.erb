@@ -10,12 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <div class="col">
+      <%= form.label :name, style: "display: block", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+
   </div>
-
 
   <div>
     <%= form.submit %>

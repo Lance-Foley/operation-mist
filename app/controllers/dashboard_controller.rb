@@ -99,13 +99,12 @@ class DashboardController < ApplicationController
 
   # Chart for 3 Month Workload for all Field Crews
   def three_month_workload
-    render json: [{ name: "Assigned", data: Job.group(:crew).where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:three_month_hours) },
-                  { name: "Available", data: Employee.group(:crew).where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:man_hours_three_months) },]
+
+    @crews = Crew.all.pluck(:name)
+
+    render json: [{ name: "Assigned", data: Job.group(:crew).where(crew: @crews).sum(:three_month_hours) },
+                  { name: "Available", data: Employee.group(:crew).where(crew: @crews).sum(:man_hours_three_months) },]
+
   end
 
-  # Chart for Field 2 Workload in 3 Months
-  def field_two_workload
-    render json: [{ name: "Assigned", data: Job.group(:crew).where(crew: "Field 2").sum(:three_month_hours) },
-                  { name: "Available", data: Employee.group(:crew).where(crew: "Field 2").sum(:man_hours_three_months) },]
-  end
 end

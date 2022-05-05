@@ -2,25 +2,27 @@
 
   <h1>Clients</h1>
   <%= link_to "New client", new_client_path, class: "float-end btn btn-secondary" %>
-  <table class="table table-striped table-hover table-secondary table-bordered">
-    <thead>
-    <tr>
-      <th scope="col">name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Future Address</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Cell Number</th>
-      <th scope="col">Email</th>
-    </tr>
-    </thead>
-    <tbody>
-    <div id="clients">
-      <% @clients.each do |client| %>
-        <%= render client %>
-      <% end %>
-    </div>
-    </tbody>
-  </table>
+  <div class="overflow-auto table-responsive">
+    <table class="table table-striped table-hover table-secondary table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Future Address</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Cell Number</th>
+        <th scope="col">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <div id="clients">
+        <% @clients.each do |client| %>
+          <%= render client %>
+        <% end %>
+      </div>
+      </tbody>
+    </table>
+  </div>
 
 
 </div>

@@ -10,25 +10,27 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :project_manager, style: "display: block" %>
-    <%= form.text_field :project_manager %>
-  </div>
-  <div>
-    <%= form.label :info, style: "display: block" %>
-    <%= form.text_area :info %>
-  </div>
-  <div class="d-none">
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.collection_select(:client_id, Client.where(id: @client_id), :id, :name) %>
-  </div>
+    <div class="col">
+      <%= form.label :name, style: "display: block", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :project_manager, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:project_manager, Employee.where(crew: "Project Manager"), :id, :name, class: "form-control") %>
+    </div>
+    <div class="col">
+      <%= form.label :info, style: "display: block", class: "form-label" %>
+      <%= form.text_area :info, class: "form-control" %>
+    </div>
+    <div class="d-none">
+      <%= form.label :client_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:client_id, Client.where(id: @client_id), :id, :name, class: "form-control") %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit class: "btn btn-primary float-end mt-3" %>
+    </div>
 <% end %>
+</div>

@@ -1,10 +1,14 @@
 <div id="<%= dom_id crew %>">
   <tr>
     <th scope="col">  <%= link_to crew.name, crew %></th>
-    <th scope="col">Size</th>
-    <th scope="col">Foreman</th>
-    <th scope="col">E_Rating</th>
-  </tr>
+    <th scope="col"><%= Employee.where(crew: crew.name).count %></th>
+    <th scope="col">
+      <% if Employee.where(role: "Foreman", crew: crew.name).count > 0 %>
+        <%= Employee.where(role: "Foreman", crew: crew.name).first.name %>
+      <% else %></th>
+      <% end %>
+      <th scope="col"><%= Job.where(crew: crew.name).average(:e_rating).to_i.round(2) %>%</th>
+      </tr>
 
 
 </div>

@@ -1,7 +1,7 @@
 <div id="<%= dom_id role %>">
   <tr>
     <td><%= link_to role.name, role %></td>
-    <td> Amount</td>
+    <td> <%= Employee.where(role: role.name).count %></td>
   </tr>
 
 </div>

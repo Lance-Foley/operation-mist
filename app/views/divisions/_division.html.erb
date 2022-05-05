@@ -1,13 +1,17 @@
 <div id="<%= dom_id division %>">
   <tr>
     <td><%= link_to division.name, division %></td>
-    <td><%= hours_per_week %></td>
-    <!--    <td><%#= division.three_month_hours %></td>-->
-    <!--    <td><%#= division.six_month_hours %></td>-->
-    <!--    <td><%#= division.nine_month_hours %></td>-->
-    <!--    <td><%#= division.three_month_hours %></td>-->
-    <!--    <td> <%#= division.e_rating %></td>-->
-    <!--    <td> <%#= division.work_load %></td>-->
+    <td><%= Job.where(division: division.name).sum(:hours_per_week) %></td>
+    <td><%= Job.where(division: division.name).sum(:three_month_hours) %></td>
+    <td><%= Job.where(division: division.name).sum(:six_month_hours) %></td>
+    <td><%= Job.where(division: division.name).sum(:nine_month_hours) %></td>
+    <td><%= Job.where(division: division.name).sum(:twelve_month_hours) %></td>
+    <td><%= Job.where(division: division.name, completed: true).average(:e_rating).to_i.round(1) %>%</td>
+    <td><%= Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division: division.name).sum(:three_month_hours) * 100 %>
+      %
+    </td>
+
+
   </tr>
 
 

@@ -1,11 +1,11 @@
 <div id="<%= dom_id phase %>">
   <tr>
     <td><%= link_to phase.name, phase %></td>
-    <td>hours per week</td>
-    <td>three_month_hours</td>
-    <td>six_month_hours</td>
-    <td>nine_month_hours</td>
-    <td>tweleve_month_hours</td>
+    <td><%= Job.where(phase: phase.name).sum(:hours_per_week) %></td>
+    <td><%= Job.where(phase: phase.name).sum(:three_month_hours) %></td>
+    <td><%= Job.where(phase: phase.name).sum(:six_month_hours) %></td>
+    <td><%= Job.where(phase: phase.name).sum(:nine_month_hours) %></td>
+    <td><%= Job.where(phase: phase.name).sum(:twelve_month_hours) %></td>
 
 
   </tr>

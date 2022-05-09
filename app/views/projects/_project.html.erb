@@ -1,13 +1,21 @@
 <div id="<%= dom_id project %>">
+  <p class="card-title display-6">Project: <%= project.name %></p>
   <div class="card mt-3">
     <div class="card-header">
       <div class="container-fluid">
         <a href="">        <%= link_to "Back", client_path(@project.client_id), class: "float-end" %></a>
-        <p class="card-title display-6">Project: <%= project.name %></p>
-        <p>Project Manager: <%= project.project_manager %> </p>
-        <p>Phone #:</p>
+        <div class="row">
+          <div class="col">
+
+            <p>Project Manager: <%= project.project_manager %> </p>
+            <p>Phone #: <%= get_project_manger_phone_number %></p>
+            <p>Email: <%= get_project_manger_email %> </p>
+          </div>
+          <div class="col">
+            <p>E-Rating: <%= number_to_percentage(e_rating) %></p>
+          </div>
+        </div>
         <%= link_to "Edit Project", edit_project_path, class: "btn-sm btn-primary text-warning float-end" %>
-        <p>Email: </p>
 
       </div>
     </div>
@@ -16,11 +24,13 @@
 
         <div class="col">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total Contract Amount:
-              <span class="fw-bold"><%= number_to_currency(total_contract_amount) %></span>
+            <li class="list-group-item">Cost:
+              <span class="fw-bold"><%= number_to_currency(project.cost) %></span>
             </li>
-            <li class="list-group-item">E_Rating: <span class="fw-bold"><%= number_to_percentage(e_rating) %></span>
+            <li class="list-group-item">Sub Cost:
+              <span class="fw-bold"><%= number_to_currency(project.sub_cost) %></span>
             </li>
+
             <li class="list-group-item">Total Bid Hours: <span class="fw-bold"><%= total_bid_hours %></span></li>
             <li class="list-group-item">Weeks Remaining: <span class="fw-bold"><%= total_weeks_remaining %></span></li>
           </ul>

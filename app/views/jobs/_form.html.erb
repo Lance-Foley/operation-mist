@@ -15,10 +15,7 @@
       <%= form.label :project_id, style: "display: block", class: "form-label" %>
       <%= form.collection_select(:project_id, Project.where(id: @project_id), :id, :name) %>
     </div>
-    <div class="col">
-      <%= form.label :name, style: "display: block", class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
+    
     <div class="col">
       <%= form.label :start_date, style: "display: block", class: "form-label" %>
       <%= form.datetime_field :start_date, class: "form-control" %>
@@ -27,33 +24,24 @@
       <%= form.label :end_date, style: "display: block", class: "form-label" %>
       <%= form.datetime_field :end_date, class: "form-control" %>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col">
       <%= form.label :man_hours, style: "display: block", class: "form-label" %>
       <%= form.text_field :man_hours, class: "form-control" %>
     </div>
+    <div class="col">
+      <%= form.label :actual_worked_hours, style: "display: block", class: "form-label" %>
+      <%= form.text_field :actual_worked_hours, class: "form-control" %>
+    </div>
   </div>
 
   <div class="row">
-
-    <div class="col">
-      <%= form.label :total_cost, style: "display: block", class: "form-label mt-3" %>
-      <%= form.text_field :total_cost, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= form.label :sub_cost, style: "display: block", class: "form-label mt-3" %>
-      <%= form.text_field :sub_cost, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= form.label :actual_worked_hours, style: "display: block", class: "form-label mt-3" %>
-      <%= form.text_field :actual_worked_hours, class: "form-control" %>
-    </div>
     <div class="col">
       <%= form.label :project_manager, style: "display: block", class: "form-label mt-3" %>
       <%= form.select :project_manager, Employee.all.collect { |p| p.name }, class: "form-control" %>
     </div>
-  </div>
-
-  <div class="row">
 
     <div class="col">
       <%= form.label :crew, style: "display: block", class: "form-label mt-3" %>
@@ -67,18 +55,18 @@
       <%= form.label :division, style: "display: block", class: "form-label mt-3" %>
       <%= form.select :division, Division.all.collect { |p| [p.name] }, class: "form-select" %>
     </div>
-    <div class="col">
-      <p class="mt-3">Mark Once Job Is Complete</p>
-      <div class="form-check">
-        <% if @job.new_record? %>
-        <% else %>
+    <% if @job.new_record? %>
+    <% else %>
+      <div class="col">
+        <p class="mt-3">Mark Once Job Is Complete</p>
+        <div class="form-check">
           <%= form.check_box :completed, class: "form-check-input" %>
           <%= form.label :completed, style: "display: block", class: "form-check-label" %>
 
 
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <%= form.submit class: "btn btn-warning" %>

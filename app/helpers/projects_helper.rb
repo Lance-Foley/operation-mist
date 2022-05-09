@@ -1,7 +1,21 @@
 module ProjectsHelper
 
-  def total_contract_amount
-    Job.where(project_id: @project.id).sum(:total_cost)
+  def get_project_manger_phone_number
+    @phone_number = Employee.where(name: @project.project_manager)
+    if @phone_number.count <= 0
+      "No Number"
+    else
+      @phone_number.first.phone_number
+    end
+  end
+
+  def get_project_manger_email
+    @phone_number = Employee.where(name: @project.project_manager)
+    if @phone_number.count <= 0
+      "No Number"
+    else
+      @phone_number.first.email
+    end
   end
 
   def total_hours_per_week

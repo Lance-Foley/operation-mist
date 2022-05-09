@@ -10,8 +10,6 @@
     <tr>
       <th scope="col">Phase</th>
       <th scope="col">Crew</th>
-      <th scope="col">Contract</th>
-      <th scope="col">Sub Contract</th>
       <th scope="col">Division</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
@@ -25,8 +23,6 @@
       <tr>
         <th> <%= link_to p.phase, p %> </th>
         <th> <%= p.crew %> </th>
-        <th> <%= number_to_currency(p.total_cost, :unit => "$") %> </th>
-        <th> <%= number_to_currency(p.sub_cost, :unit => "$") %> </th>
         <th> <%= p.division %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>
         <th> <%= p.end_date.strftime('%m/%d/%y') %> </th>

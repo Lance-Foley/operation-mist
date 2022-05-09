@@ -17,8 +17,29 @@
       <%= form.text_field :name, class: "form-control" %>
     </div>
     <div class="col">
+      <%= form.label :start_date, style: "display: block", class: "form-label" %>
+      <%= form.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :end_date, style: "display: block", class: "form-label" %>
+      <%= form.date_field :end_date, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col">
+      <%= form.label :cost, style: "display: block", class: "form-label mt-3" %>
+      <%= form.text_field :cost, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :sub_cost, style: "display: block", class: "form-label mt-3" %>
+      <%= form.text_field :sub_cost, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <%= form.label :project_manager, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:project_manager, Employee.where(crew: "Project Lead"), :id, :name, class: "form-control") %>
+      <%= form.collection_select(:project_manager, Employee.where(tier: %w[Tier_1 Tier_2]), :name, :name, class: "form-control") %>
     </div>
     <div class="col">
       <%= form.label :info, style: "display: block", class: "form-label" %>

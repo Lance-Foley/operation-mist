@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "3.1.2"
 gem 'chartkick', '~> 4.1', '>= 4.1.3'
 gem 'highcharts-rails'
 gem "groupdate"

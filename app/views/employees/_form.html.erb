@@ -26,6 +26,9 @@
       <%= form.label :phone_number, style: "display: block", class: "form-label" %>
       <%= form.text_field :phone_number, class: "form-control" %>
     </div>
+  </div>
+  <div class="row">
+
     <div class="col">
       <%= form.label :crew, style: "display: block", class: "form-label" %>
       <%= form.select :crew, Crew.all.collect { |p| [p.name] }, include_blank: false %>
@@ -34,6 +37,11 @@
     <div class="col">
       <%= form.label :role, style: "display: block", class: "form-label" %>
       <%= form.select :role, Role.all.collect { |p| [p.name] }, class: "form-select" %>
+
+    </div>
+    <div class="col">
+      <%= form.label :tier, style: "display: block", class: "form-label" %>
+      <%= form.select :tier, Employee.tiers.keys.to_a, class: "form-select" %>
 
     </div>
     <div class="col">

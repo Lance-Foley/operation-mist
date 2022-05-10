@@ -13,7 +13,7 @@ class Project < ApplicationRecord
   end
 
   def changes_to_save
-    self.e_rating = Job.where(project_id: id, completed: true).average(:E_rating)
+    self.e_rating = Job.where(project_id: id, completed: true).average(:e_rating)
     super
   end
 end

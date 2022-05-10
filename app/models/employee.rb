@@ -1,11 +1,11 @@
 class Employee < ApplicationRecord
-  # has_one :crew
+  belongs_to :crew
 
   enum tier: [:Tier_1, :Tier_2, :Tier_3, :Tier_4]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.tier ||= :tier_4
+    self.tier ||= :Tier_4
   end
 
   private def create_or_update(touch: nil, **)

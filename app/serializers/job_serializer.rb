@@ -1,3 +1,3 @@
 class JobSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :crew_id, :three_month_hours
 end

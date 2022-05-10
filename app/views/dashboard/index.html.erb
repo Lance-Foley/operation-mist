@@ -187,7 +187,9 @@
     <div class="col">
       <div class="row">
         <div class="col-8">
-          <%= render "/dashboard/crew_workload_chart" %>
+          <%#= render "/dashboard/crew_workload_chart" %>
+          <%= bar_chart [{ name: "Assigned", data: Job.group(:crew).where(crew: @crews).sum(:three_month_hours) },
+                         { name: "Available", data: Employee.group(:crew).where(crew: @crews).sum(:man_hours_three_months) },].chart_json %>
         </div>
         <div class="col">
           <div class="card justify-content-evenly bg-info">

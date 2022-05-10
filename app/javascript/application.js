@@ -4,4 +4,5 @@ import "chartkick"
 import Highcharts from "highcharts"
 import "./controllers"
 
+
 window.Highcharts = Highcharts

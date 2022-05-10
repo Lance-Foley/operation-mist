@@ -15,7 +15,7 @@
       <%= form.label :project_id, style: "display: block", class: "form-label" %>
       <%= form.collection_select(:project_id, Project.where(id: @project_id), :id, :name) %>
     </div>
-    
+
     <div class="col">
       <%= form.label :start_date, style: "display: block", class: "form-label" %>
       <%= form.datetime_field :start_date, class: "form-control" %>
@@ -44,9 +44,12 @@
     </div>
 
     <div class="col">
-      <%= form.label :crew, style: "display: block", class: "form-label mt-3" %>
-      <%= form.select :crew, Crew.all.collect { |p| [p.name] }, class: "form-select" %>
+      <%= form.label :crew_id, style: "display: block", class: "form-label mt-3" %>
+      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
+
+      <%#= form.select :crew_id, Crew.all.collect, :id, class: "form-select" %>
     </div>
+
     <div class="col">
       <%= form.label :phase, style: "display: block", class: "form-label mt-3" %>
       <%= form.select :phase, Phase.all.collect { |p| [p.name] }, class: "form-select" %>

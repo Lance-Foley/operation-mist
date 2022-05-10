@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'crew_three_month_workload/index'
+      get 'crew_three_month_workload/show'
+      get 'crew_work_load/index'
+      get 'crew_work_load/show'
+      get 'charts/index'
+      get 'charts/show'
+
+    end
+  end
   resources :projects
   resources :clients
   resources :roles
@@ -19,6 +30,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :employees
   resources :jobs
+
   resources :schedule
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

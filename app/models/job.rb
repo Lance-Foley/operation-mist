@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   has_one :project, autosave: true
+  belongs_to :crew
   private def create_or_update(touch: nil, **)
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
@@ -11,7 +12,7 @@ class Job < ApplicationRecord
     twelve_months_from_now = today + 365
     end_date_minus_today = end_date.to_datetime - today
     start_date_minus_today = start_date.to_datetime - today
-    @Field_Months_Remaining = Job.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:twelve_month_hours) / Employee.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:man_hours_twelve_months)
+    @Field_Months_Remaining = Job.where(crew_id: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:twelve_month_hours) / Employee.where(crew: ["Field 1", "Field 2", "Field 3", "Field 4"]).sum(:man_hours_twelve_months)
 
     ####################################################################################
     # Checks if Job is Complete then Calculates E_rating

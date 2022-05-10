@@ -2,6 +2,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   # todo add associations to projects create form and view for jobs inside of project id
   # GET /jobs or /jobs.json
+  #
+
   def index
     @jobs = Job.all
   end

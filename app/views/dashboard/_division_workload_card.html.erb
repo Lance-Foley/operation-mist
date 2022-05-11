@@ -9,7 +9,7 @@
                           .group(:division)
                           .where(division: Division.all.where(utilization: 0).pluck(:name)).
                           sum(:three_month_hours) },
-                        { name: "Available Hours", data: Employee
+                        { name: "Workforce Hours", data: Employee
                           .group(:division)
                           .where(division: Division.all.where(utilization: 0).pluck(:name))
                           .sum(:man_hours_three_months) }]

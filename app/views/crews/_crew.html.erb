@@ -1,13 +1,13 @@
 <div id="<%= dom_id crew %>">
   <tr>
     <th scope="col">  <%= link_to crew.name, crew %></th>
-    <th scope="col"><%= Employee.where(crew: crew.name).count %></th>
+    <th scope="col"><%= Employee.where(crew_id: crew.id).count %></th>
     <th scope="col">
-      <% if Employee.where(role: "Foreman", crew: crew.name).count > 0 %>
-        <%= Employee.where(role: "Foreman", crew: crew.name).first.name %>
+      <% if Employee.where(role: "Foreman", crew_id: crew.id).count > 0 %>
+        <%= Employee.where(role: "Foreman", crew_id: crew.id).first.name %>
       <% else %></th>
       <% end %>
-      <th scope="col"><%= Job.where(crew: crew.name).average(:e_rating).to_i.round(2) %>%</th>
+      <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i.round(2) %>%</th>
       </tr>
 
 

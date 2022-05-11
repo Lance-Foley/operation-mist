@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <h5>Crew: <%= @job.crew %></h5>
+          <h5>Crew: <%= Crew.where(id: @job.crew_id).first.name %></h5>
           <h6>Division: <%= @job.division %></h6>
           <p>Starting <%= @job.start_date.strftime('%m/%d/%Y') %></p>
           <p>Ending <%= @job.end_date.strftime('%m/%d/%y') %></p>

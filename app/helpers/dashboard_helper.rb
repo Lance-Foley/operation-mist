@@ -30,8 +30,13 @@ module DashboardHelper
     while i < @division_count do
       #todo fix and make dynamic rendering of divisions and division names
       @division = Division.all[i]
+      @employee = Employee.all[i]
       value = Job.where(division: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months)
-      if @division.utilization == 1 or value <= 0 or value == Float::INFINITY or value == Float::NAN
+      if @division.utilization === 1
+        i += 1
+      elsif value <= 0 or value == Float::INFINITY or value == Float::NAN
+        value = 0.0
+        @division_array.push([name: @division.name, sum: value])
         i += 1
       else
         @division_array.push([name: @division.name, sum: value])

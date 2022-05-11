@@ -12,8 +12,12 @@
         </th>
       <% else %>
       <% end %>
-      <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i %>%</th>
-      </tr>
+      <% begin %>
+        <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i %>%</th>
+        </tr>
+      <% rescue %>
+        <th>0</th>
+      <% end %>
 
 
-</div>
+      </div>

@@ -69,9 +69,4 @@ class DivisionsController < ApplicationController
     params.require(:division).permit!
   end
 
-  def hours_per_week
-    @hours_per_week = Job.where(division: "New Construction").sum(:hours_per_week)
-  end
-
-  helper_method :hours_per_week
 end

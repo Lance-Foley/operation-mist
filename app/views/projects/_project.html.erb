@@ -13,8 +13,8 @@
           </div>
           <div class="col">
             <p>E-Rating: <%= number_to_percentage(e_rating) %></p>
-            <p>Start Date: <%= project.start_date.strftime("%m/%d/%Y") %></p>
-            <p>Start Date: <%= project.end_date.strftime("%m/%d/%Y") %></p>
+            <p>Start Date: <%= project.start_date %></p>
+            <p>Start Date: <%= project.end_date %></p>
           </div>
         </div>
         <%= link_to "Edit Project", edit_project_path, class: "btn-sm btn-primary text-warning float-end" %>

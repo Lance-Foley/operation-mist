@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-crew_array = ["Field 1", "Field 2", "Field 3", "Field 4", "Arch-Design", "Cabinet-Design",
-              "Interior-Design", "PM(1)", "PM(2)", "Shop"]
+crew_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 phase_array = ["Framing", "Demo", "Foundation", "Interior-Finishing", "Arch-Design", "Cabinet-Design",
                "Interior-Design", "Punch-List", "Project Management"]
 division_array = ["New Construction", "Remodel-Repair", "Design", "PHM", "Admin", "Shop"]
@@ -29,8 +28,8 @@ role = Role.create([{ name: "Foreman" }, { name: "Carpenter" }, { name: "Design 
   Job.create!(name: "Title #{index}",
               start_date: DateTime.new(2022, 1, 1, 17),
               end_date: DateTime.new(2022, 9, 9, 19),
-              crew: crew_array.sample,
-              man_hours: index + 2 * 2 * index,
+              crew_id: crew_array.sample,
+              man_hours: index + 2 * 2 * index + 100.to_i,
               phase: phase_array.sample,
               division: division_array.sample,
               total_cost: index + 2 * 5 * index,
@@ -48,7 +47,7 @@ role = Role.create([{ name: "Foreman" }, { name: "Carpenter" }, { name: "Design 
 end
 15.times do |index|
   Employee.create!(name: name_array.sample,
-                   crew: crew_array.sample,
+                   crew_id: crew_array.sample,
                    division: division_array.sample,
                    role: role_array.sample,
                    man_hours_per_week: 40,
@@ -57,12 +56,6 @@ end
                    man_hours_six_months: 0,
                    man_hours_nine_months: 0,
                    man_hours_twelve_months: 0,
-                   contr_hours_per_week: 0,
-                   contr_hour_per_month: 0,
-                   contr_hours_three_months: 0,
-
-                   contr_hours_nine_months: 0,
-                   contr_hours_twelve_months: 0,
                    true_man_hours_per_week: 0
 
   )

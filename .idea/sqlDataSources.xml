@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="738e43ca-316d-4af7-8cf3-355d0812bd1f" name="postgres@localhost Mapping">
+      <data-sources db="dced27dc-6900-4fdf-9943-56020f815573" ddl="2aa6922c-88ff-433a-9020-49d57023e205" />
+      <scope>
+        <node kind="database" qname="mylocaldb">
+          <node kind="schema" qname="@" />
+        </node>
+      </scope>
+    </mapping>
+    <mapping uuid="07f2d3b5-16b8-4f10-a887-1a0a1d7477d9" name="mylocaldb@localhost (DDL) Mapping">
+      <data-sources ddl="52113781-84e5-445d-846c-b9e2fcfdceb1" />
+    </mapping>
+  </component>
+</project>

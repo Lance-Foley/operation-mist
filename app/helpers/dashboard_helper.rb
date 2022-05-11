@@ -1,7 +1,7 @@
 module DashboardHelper
 
-  @crew_list = Employee.where(role: "Carpenter").where(crew_id: 1).map { |employee|
-    employee.name }
+  # @crew_list = Employee.where(role: "Carpenter").where(crew_id: 1).map { |employee|
+  #   employee.name }
 
   def crew_week_workload(crew)
     @crew_workload = Job.where(crew_id: crew).where("start_date < ?", Date.today).sum(:hours_per_week) /
@@ -22,4 +22,29 @@ module DashboardHelper
     end
 
   end
+
+  def division_workload
+    @division_count = Division.all.count
+    @division_array = []
+
+    i = 0
+    while i < @division_count do
+      #todo fix and make dynamic rendering of divisions and division names
+      @division = Division.all[i]
+      value = Job.where(division: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months)
+      if value <= 0 or value == Float::INFINITY or value == Float::NAN
+        value = 0.0
+      else
+        value
+      end
+      @division_array.push([name: @division.name, sum: value])
+      i += 1
+    end
+    return @division_array
+  end
+
+  def division_names
+
+  end
+
 end

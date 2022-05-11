@@ -30,7 +30,7 @@
   <div class="row">
 
     <div class="col">
-      <%= form.label :crew_id, style: "display: block", class: "form-label mt-3" %>
+      <%= form.label :crew_id, style: "display: block", class: "form-label" %>
       <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
     </div>
 

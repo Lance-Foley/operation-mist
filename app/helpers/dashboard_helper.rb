@@ -32,7 +32,7 @@ module DashboardHelper
       @division = Division.all[i]
       @employee = Employee.all[i]
       value = Job.where(division: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months)
-      if @division.utilization === 1
+      if @division.utilization == 1 or @division.utilization == "nonbillable"
         i += 1
       elsif value <= 0 or value == Float::INFINITY or value == Float::NAN
         value = 0.0
@@ -44,10 +44,6 @@ module DashboardHelper
       end
     end
     return @division_array
-  end
-
-  def division_names
-
   end
 
 end

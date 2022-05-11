@@ -5,6 +5,7 @@ class Job < ApplicationRecord
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
+    # Checks if Weeks is less then one. Gets Hours Per week
     if weeks < 1
       self.hours_per_week = man_hours
     else

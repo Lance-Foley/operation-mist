@@ -46,4 +46,27 @@ module DashboardHelper
     return @division_array
   end
 
+  def division_e_rating
+    @division_count = Division.all.count
+    @division_array = []
+    i = 0
+    while i < @division_count do
+      #todo fix and make dynamic rendering of divisions and division names
+      @division = Division.all[i]
+      @employee = Employee.all[i]
+      value = Job.where(division: @division.name, completed: true).average(:e_rating).to_f.round(2)
+      if @division.utilization == 1 or @division.utilization == "nonbillable"
+        i += 1
+      elsif value == 0 or value == Float::INFINITY or value == Float::NAN
+        value = 0
+        @division_array.push([name: @division.name, average: value])
+        i += 1
+      else
+        @division_array.push([name: @division.name, average: value])
+        i += 1
+      end
+    end
+    return @division_array
+  end
+
 end

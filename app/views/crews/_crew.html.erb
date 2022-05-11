@@ -1,6 +1,10 @@
 <div id="<%= dom_id crew %>">
   <tr>
     <th scope="col">  <%= link_to crew.name, crew %></th>
+    <% if Division.where(id: crew.division_id).count > 0 %>
+      <th scope="col">  <%= Division.where(id: crew.division_id).first.name %></th>
+    <% else %>
+    <% end %>
     <th scope="col"><%= Employee.where(crew_id: crew.id).count %></th>
     <th scope="col">
       <% if Employee.where(role: "Foreman", crew_id: crew.id).count > 0 %>

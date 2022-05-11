@@ -5,7 +5,7 @@ module DashboardHelper
 
   def crew_week_workload(crew)
     @crew_workload = Job.where(crew_id: crew).where("start_date < ?", Date.today).sum(:hours_per_week) /
-      Employee.where(crew_id: crew).sum(:true_man_hours_per_week) * 100
+      Employee.where(crew_id: crew).sum(:true_man_hours_per_week)
     if @crew_workload <= 0
       0.0
     else

@@ -1,5 +1,5 @@
 class Division < ApplicationRecord
-
+  has_many :crews
   enum utilization: [:billable, :nonbillable]
   after_initialize :set_default_utilization, :if => :new_record?
 

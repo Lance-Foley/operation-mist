@@ -16,7 +16,12 @@
       <%= form.label :name, style: "display: block", class: "form-label" %>
       <%= form.text_field :name, class: "form-control" %>
     </div>
+    <div class="col">
+      <%= form.label :division_id, style: "display: block", class: "form-label mt-3" %>
+      <%= form.collection_select(:division_id, Division.all.collect, :id, :name) %>
 
+      <%#= form.select :crew_id, Crew.all.collect, :id, class: "form-select" %>
+    </div>
 
   </div>
 

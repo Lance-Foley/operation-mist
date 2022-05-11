@@ -4,7 +4,12 @@ class Job < ApplicationRecord
   private def create_or_update(touch: nil, **)
 
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
-    self.hours_per_week = (man_hours / weeks).to_f
+    # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
+    if weeks < 1
+      self.hours_per_week = man_hours
+    else
+      self.hours_per_week = (man_hours / weeks).to_f
+    end
     today = (Time.now.midnight.to_datetime)
     three_months_from_now = today + 91.205
     six_months_from_now = today + 182.5

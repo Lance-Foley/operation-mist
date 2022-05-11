@@ -66,6 +66,6 @@ class CrewsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def crew_params
-    params.require(:crew).permit(:name)
+    params.require(:crew).permit(:name, :division_id)
   end
 end

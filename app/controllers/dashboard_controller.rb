@@ -94,7 +94,7 @@ class DashboardController < ApplicationController
     @crews = Crew.all.pluck(:id)
 
     render json: [{ name: "Assigned", data: Job.group(:crew_id).where(crew_id: @crews).sum(:three_month_hours) },
-                  { name: "Available", data: Employee.group(:crew_id).where(crew_id: @crews).sum(:man_hours_three_months) },].chart_json
+                  { name: "Workforce", data: Employee.group(:crew_id).where(crew_id: @crews).sum(:man_hours_three_months) },].chart_json
 
   end
 

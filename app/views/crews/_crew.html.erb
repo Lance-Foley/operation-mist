@@ -9,7 +9,8 @@
     <th scope="col">
       <% if Employee.where(role: "Foreman", crew_id: crew.id).count > 0 %>
         <%= Employee.where(role: "Foreman", crew_id: crew.id).first.name %>
-      <% else %></th>
+        </th>
+      <% else %>
       <% end %>
       <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i.round(2) %>%</th>
       </tr>

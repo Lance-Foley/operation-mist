@@ -1,6 +1,7 @@
 <div id="<%= dom_id division %>">
   <tr>
     <td><%= link_to division.name, division %></td>
+    <td><%= division.utilization %></td>
     <td><%= Job.where(division: division.name).sum(:hours_per_week) %></td>
     <td><%= Job.where(division: division.name).sum(:three_month_hours) %></td>
     <td><%= Job.where(division: division.name).sum(:six_month_hours) %></td>

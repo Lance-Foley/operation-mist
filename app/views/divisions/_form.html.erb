@@ -15,10 +15,14 @@
 
   <div class="row">
     <div class="col">
-      <%= form.label :name, style: "display: block",class:"form-label" %>
+      <%= form.label :name, style: "display: block", class: "form-label" %>
       <%= form.text_field :name, class: "form-control" %>
     </div>
+    <div class="col">
+      <%= form.label :utilization, style: "display: block", class: "form-label" %>
+      <%= form.select :utilization, Division.utilizations.keys.to_a, class: "form-select" %>
 
+    </div>
   </div>
 
 

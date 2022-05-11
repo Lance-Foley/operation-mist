@@ -1,5 +1,12 @@
 class Division < ApplicationRecord
 
+  enum utilization: [:billable, :nonbillable]
+  after_initialize :set_default_utilization, :if => :new_record?
+
+  def set_default_utilization
+    self.utilization ||= :billable
+  end
+
   private def create_or_update(touch: nil, **)
 
     super

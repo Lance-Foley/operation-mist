@@ -2,7 +2,7 @@
 //
 import "chartkick"
 import Highcharts from "highcharts"
-import "./controllers"
+// import "./controllers"
 
 
 window.Highcharts = Highcharts

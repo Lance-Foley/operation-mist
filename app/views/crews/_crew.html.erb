@@ -12,7 +12,7 @@
         </th>
       <% else %>
       <% end %>
-      <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i.round(2) %>%</th>
+      <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i %>%</th>
       </tr>
 
 

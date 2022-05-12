@@ -1,7 +1,51 @@
 <div class="card">
 
-  <p class="text-center fw-bold">Three Month Workload Per Crew</p>
+  <%= column_chart [
+                     { name: "Contracted Hours", data: Job
+                       .group(:crew_id)
+                       .where(crew_id: Crew.first.id).sum(:three_month_hours) },
+                     { name: "Workforce Hours", data: Employee
+                       .group(:crew_id)
+                       .where(crew_id: Crew.first.id).sum(:man_hours_three_months) }],
+                   library: {
+                     label: {
+                       style: {
+                         color: '#ffffff'
+                       }
+                     },
+                     title: {
+                       text: Crew.first.name,
+                       style: {
+                         color: '#ffffff',
+                         fontWeight: 'bold'
+                       }
+                     },
+                     chart: {
+                       backgroundColor: 'transparent',
+                       type: 'line'
+                     },
+                     plotOptions: {
+                       series: {
+                         dataLabels: {
+                           enabled: true,
+                           color: 'white'
+                         }
+                       }
+                     },
 
-  <%= column_chart dashboard_three_month_workload_path %>
+                     xAxis: {
+
+                       labels: {
+                         enabled: false
+                       }
+                     },
+                     legend: {
+                       itemStyle: {
+                         color: 'white'
+                       }
+                     }
+                   }
+  %>
+
 
 </div>

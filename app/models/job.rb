@@ -84,7 +84,9 @@ class Job < ApplicationRecord
       end
     else
       if today < start_date.to_datetime
-        if end_date.to_datetime > three_months_from_now and
+        if weeks == 0 and start_date.to_datetime > today and end_date.to_datetime < three_months_from_now
+          self.three_month_hours = hours_remaining
+        elsif end_date.to_datetime > three_months_from_now and
           start_date.to_datetime < three_months_from_now and
           week_remaining != 0
           self.three_month_hours = ((three_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week)
@@ -112,7 +114,9 @@ class Job < ApplicationRecord
       end
     else
       if today < start_date.to_datetime
-        if end_date.to_datetime > six_months_from_now and
+        if weeks == 0 and start_date.to_datetime > today and end_date.to_datetime < six_months_from_now
+          self.six_month_hours = hours_remaining
+        elsif end_date.to_datetime > six_months_from_now and
           start_date.to_datetime < six_months_from_now and
           week_remaining != 0
           self.six_month_hours = ((six_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(1)
@@ -140,7 +144,9 @@ class Job < ApplicationRecord
       end
     else
       if today < start_date.to_datetime
-        if end_date.to_datetime > nine_months_from_now and
+        if weeks == 0 and start_date.to_datetime > today and end_date.to_datetime < nine_months_from_now
+          self.nine_month_hours = hours_remaining
+        elsif end_date.to_datetime > nine_months_from_now and
           start_date.to_datetime < nine_months_from_now and
           week_remaining != 0
           self.nine_month_hours = ((nine_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(2)
@@ -168,7 +174,9 @@ class Job < ApplicationRecord
       end
     else
       if today < start_date.to_datetime
-        if end_date.to_datetime > twelve_months_from_now and
+        if weeks == 0 and start_date.to_datetime > today and end_date.to_datetime < twelve_months_from_now
+          self.twelve_month_hours = hours_remaining
+        elsif end_date.to_datetime > twelve_months_from_now and
           start_date.to_datetime < twelve_months_from_now and
           week_remaining != 0
           self.twelve_month_hours = ((twelve_months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(2)

@@ -38,10 +38,6 @@
   </div>
 
   <div class="row">
-    <div class="col">
-      <%= form.label :project_manager, style: "display: block", class: "form-label mt-3" %>
-      <%= form.select :project_manager, Employee.all.collect { |p| p.name }, class: "form-control" %>
-    </div>
 
     <div class="col">
       <%= form.label :crew_id, style: "display: block", class: "form-label mt-3" %>

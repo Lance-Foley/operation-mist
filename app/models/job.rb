@@ -1,6 +1,14 @@
 class Job < ApplicationRecord
+  require 'date'
   has_one :project, autosave: true
   belongs_to :crew
+  # today = Time.now.midnight.to_datetime
+  # # three_months_from_now = today + 91.205
+  # # six_months_from_now = today + 182.5
+  # # nine_months_from_now = today + 273.75
+  # twelve_months_from_now = today + 365
+  #
+  # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
   private def create_or_update(touch: nil, **)
     #todo Fix Division 3 month workload and weeks break when job is same day
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
@@ -11,7 +19,7 @@ class Job < ApplicationRecord
     else
       self.hours_per_week = (man_hours / weeks).to_f
     end
-    today = (Time.now.midnight.to_datetime)
+    today = Time.now.midnight.to_datetime
     three_months_from_now = today + 91.205
     six_months_from_now = today + 182.5
     nine_months_from_now = today + 273.75
@@ -40,12 +48,19 @@ class Job < ApplicationRecord
     end
     ##################################################################################
     # Calculate Hours Remaining
-    if today > start_date.to_datetime
+    if start_date.beginning_of_day == end_date.beginning_of_day
+      if today > end_date
+        self.hours_remaining = 0
+      else
+        self.hours_remaining = man_hours
+      end
+    elsif today > start_date.to_datetime
       if (week_remaining * hours_per_week) < 0
         self.hours_remaining = 0
       else
         self.hours_remaining = (week_remaining * hours_per_week)
       end
+
     else
       self.hours_remaining = (weeks * hours_per_week)
     end
@@ -135,7 +150,7 @@ class Job < ApplicationRecord
     end
 
     ###########################################################################
-    # # Calculate Hours In Twelve Months
+    # Calculate Hours In Twelve Months
     if today > start_date.to_datetime and week_remaining > 0
       if end_date.to_datetime > twelve_months_from_now
         self.twelve_month_hours = ((twelve_months_from_now - today).to_f / 7 * hours_per_week).round(2)
@@ -166,5 +181,37 @@ class Job < ApplicationRecord
     super
 
   end
+
+  # def calculate_hours_in_set_month_period(months_from_now, num_months_hours)
+  #   today = Time.now.midnight.to_datetime
+  #
+  #   if today > start_date.to_datetime and week_remaining > 0
+  #     if end_date.to_datetime > months_from_now
+  #       self.twelve_month_hours = ((months_from_now - today).to_f / 7 * hours_per_week).round(2)
+  #     elsif end_date.to_datetime < months_from_now
+  #       `self.#{num_months_hours} = end_date_minus_today.to_f / 7 * hours_per_week`
+  #     else
+  #       `self.#{num_months_hours} = 0`
+  #     end
+  #   else
+  #     if today < start_date.to_datetime
+  #       if end_date.to_datetime > months_from_now and
+  #         start_date.to_datetime < months_from_now and
+  #         week_remaining != 0
+  #         self.twelve_month_hours = ((months_from_now - start_date.to_datetime).to_f / 7 * hours_per_week).round(2)
+  #       elsif end_date.to_datetime < months_from_now and
+  #         start_date.to_datetime < months_from_now and
+  #         week_remaining != 0
+  #         ` self.#{num_months_hours} = hours_remaining`
+  #       else
+  #         `self.#{num_months_hours} = 0`
+  #       end
+  #     else
+  #       `self.#{num_months_hours} = 0`
+  #     end
+  #   end
+  #
+  # end
 end
+
 

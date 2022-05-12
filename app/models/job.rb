@@ -58,11 +58,18 @@ class Job < ApplicationRecord
       if (week_remaining * hours_per_week) < 0
         self.hours_remaining = 0
       else
-        self.hours_remaining = (week_remaining * hours_per_week)
+        if weeks > 1
+          self.hours_remaining = (week_remaining * hours_per_week)
+        else
+          self.hours_remaining = man_hours
+        end
       end
-
     else
-      self.hours_remaining = (weeks * hours_per_week)
+      if weeks > 1
+        self.hours_remaining = (week_remaining * hours_per_week)
+      else
+        self.hours_remaining = man_hours
+      end
     end
 
     ###################################################################################

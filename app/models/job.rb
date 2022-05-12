@@ -2,7 +2,7 @@ class Job < ApplicationRecord
   has_one :project, autosave: true
   belongs_to :crew
   private def create_or_update(touch: nil, **)
-
+    #todo Fix Division 3 month workload and weeks break when job is same day
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
     # Checks if Weeks is less then one. Gets Hours Per week

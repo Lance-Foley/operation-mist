@@ -4,6 +4,7 @@
     <% if Division.where(id: crew.division_id).count > 0 %>
       <th scope="col">  <%= Division.where(id: crew.division_id).first.name %></th>
     <% else %>
+      <th>Error</th>
     <% end %>
     <th scope="col"><%= Employee.where(crew_id: crew.id).count %></th>
     <th scope="col">
@@ -16,7 +17,7 @@
         <th scope="col"><%= Job.where(crew_id: crew.id, completed: true).average(:e_rating).to_i %>%</th>
         </tr>
       <% rescue %>
-        <th>0</th>
+        
       <% end %>
 
 

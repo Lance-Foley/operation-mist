@@ -89,4 +89,15 @@ module DashboardHelper
     return @division_array.sort
   end
 
+  def render_crew_per_division
+    @crew_count = Crew.all.count
+    @crew_array = []
+    i = 0
+    while i < @crew_count do
+      @division = Division.where(crew_id: Crew.find_by_name(i).name)
+      @crew = Crew.all[i]
+
+    end
+  end
+
 end

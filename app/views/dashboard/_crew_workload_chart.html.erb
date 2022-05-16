@@ -1,222 +1,58 @@
 <div class="row">
-  <div class="col">
-    <div class="card mt-2">
+  <% render_billable_division.each do |n| %>
+    <div class="col-6">
+      <div class="card mt-2">
 
-      <%= column_chart [
-                         { name: "Contracted Hours", data: Job
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids).where(division: Division.first.name).sum(:three_month_hours) },
-                         { name: "Workforce Hours", data: Employee
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids, division: Division.first.name).sum(:man_hours_three_months) }],
-                       library: {
-                         label: {
-                           style: {
-                             color: '#ffffff'
-                           }
-                         },
-                         title: {
-                           text: Division.first.name,
-                           style: {
-                             color: '#ffffff',
-                             fontWeight: 'bold'
-                           }
-                         },
-                         chart: {
-                           backgroundColor: 'transparent',
-                           type: 'line'
-                         },
-                         plotOptions: {
-                           series: {
-                             dataLabels: {
-                               enabled: true,
-                               color: 'white',
-                               format: '{point.y:,.1f}'
+        <%= column_chart [
+                           { name: "Contracted Hours", data: Job
+                             .group(:crew_id)
+                             .where(crew_id: Crew.ids).where(division: n).sum(:three_month_hours) },
+                           { name: "Workforce Hours", data: Employee
+                             .group(:crew_id)
+                             .where(crew_id: Crew.ids, division: n).sum(:man_hours_three_months) }],
+                         library: {
+                           label: {
+                             style: {
+                               color: '#ffffff'
+                             }
+                           },
+                           title: {
+                             text: n,
+                             style: {
+                               color: '#ffffff',
+                               fontWeight: 'bold'
+                             }
+                           },
+                           chart: {
+                             backgroundColor: 'transparent',
+                             type: 'line'
+                           },
+                           plotOptions: {
+                             series: {
+                               dataLabels: {
+                                 enabled: true,
+                                 color: 'white',
+                                 format: '{point.y:,.1f}'
+                               }
+                             }
+                           },
+
+                           xAxis: {
+
+                             labels: {
+                               enabled: true
+                             }
+                           },
+                           legend: {
+                             itemStyle: {
+                               color: 'white'
                              }
                            }
-                         },
-
-                         xAxis: {
-
-                           labels: {
-                             enabled: false
-                           }
-                         },
-                         legend: {
-                           itemStyle: {
-                             color: 'white'
-                           }
                          }
-                       }
-      %>
+        %>
 
+      </div>
     </div>
-
-  </div>
-  <div class="col">
-    <div class="card mt-2">
-
-      <%= column_chart [
-                         { name: "Contracted Hours", data: Job
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids).where(division: Division.second.name).sum(:three_month_hours) },
-                         { name: "Workforce Hours", data: Employee
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids, division: Division.second.name).sum(:man_hours_three_months) }],
-                       library: {
-                         label: {
-                           style: {
-                             color: '#ffffff'
-                           }
-                         },
-                         title: {
-                           text: Division.second.name,
-                           style: {
-                             color: '#ffffff',
-                             fontWeight: 'bold'
-                           }
-                         },
-                         chart: {
-                           backgroundColor: 'transparent',
-                           type: 'line'
-                         },
-                         plotOptions: {
-                           series: {
-                             dataLabels: {
-                               enabled: true,
-                               color: 'white',
-                               format: '{point.y:,.1f}'
-                             }
-                           }
-                         },
-
-                         xAxis: {
-
-                           labels: {
-                             enabled: false
-                           }
-                         },
-                         legend: {
-                           itemStyle: {
-                             color: 'white'
-                           }
-                         }
-                       }
-      %>
-
-    </div>
-
-  </div>
+  <% end %>
 </div>
-<div class="row">
 
-  <div class="col">
-    <div class="card mt-2">
-
-      <%= column_chart [
-                         { name: "Contracted Hours", data: Job
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids).where(division: Division.third.name).sum(:three_month_hours) },
-                         { name: "Workforce Hours", data: Employee
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids, division: Division.third.name).sum(:man_hours_three_months) }],
-                       library: {
-                         label: {
-                           style: {
-                             color: '#ffffff'
-                           }
-                         },
-                         title: {
-                           text: Division.third.name,
-                           style: {
-                             color: '#ffffff',
-                             fontWeight: 'bold'
-                           }
-                         },
-                         chart: {
-                           backgroundColor: 'transparent',
-                           type: 'line'
-                         },
-                         plotOptions: {
-                           series: {
-                             dataLabels: {
-                               enabled: true,
-                               color: 'white',
-                               format: '{point.y:,.1f}'
-                             }
-                           }
-                         },
-
-                         xAxis: {
-
-                           labels: {
-                             enabled: false
-                           }
-                         },
-                         legend: {
-                           itemStyle: {
-                             color: 'white'
-                           }
-                         }
-                       }
-      %>
-
-    </div>
-
-  </div>
-  <div class="col">
-    <div class="card mt-2">
-
-      <%= column_chart [
-                         { name: "Contracted Hours", data: Job
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids).where(division: Division.fourth.name).sum(:three_month_hours) },
-                         { name: "Workforce Hours", data: Employee
-                           .group(:crew_id)
-                           .where(crew_id: Crew.ids, division: Division.fourth.name).sum(:man_hours_three_months) }],
-                       library: {
-                         label: {
-                           style: {
-                             color: '#ffffff'
-                           }
-                         },
-                         title: {
-                           text: Division.fourth.name,
-                           style: {
-                             color: '#ffffff',
-                             fontWeight: 'bold'
-                           }
-                         },
-                         chart: {
-                           backgroundColor: 'transparent',
-                           type: 'line'
-                         },
-                         plotOptions: {
-                           series: {
-                             dataLabels: {
-                               enabled: true,
-                               color: 'white',
-                               format: '{point.y:,.1f}'
-                             }
-                           }
-                         },
-
-                         xAxis: {
-
-                           labels: {
-                             enabled: false
-                           }
-                         },
-                         legend: {
-                           itemStyle: {
-                             color: 'white'
-                           }
-                         }
-                       }
-      %>
-
-    </div>
-
-  </div>
-
-</div>

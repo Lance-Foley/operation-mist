@@ -28,7 +28,7 @@ module DashboardHelper
     @division_array = []
     i = 0
     while i < @division_count do
-      #todo fix and make dynamic rendering of divisions and division names
+
       @division = Division.all[i]
       @employee = Employee.all[i]
       value = Job.where(division: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months)
@@ -51,7 +51,7 @@ module DashboardHelper
     @division_array = []
     i = 0
     while i < @division_count do
-      #todo fix and make dynamic rendering of divisions and division names
+
       @division = Division.all[i]
       @employee = Employee.all[i]
       value = Job.where(division: @division.name, completed: true).average(:e_rating).to_f.round(2)
@@ -67,6 +67,23 @@ module DashboardHelper
       end
     end
     return @division_array
+  end
+
+  def render_billable_division
+    @division_count = Division.all.count
+    @division_array = []
+    i = 0
+    while i < @division_count do
+      @division = Division.all[i]
+
+      if @division.utilization == 1 or @division.utilization == "nonbillable"
+        i += 1
+      else
+        @division_array.push(@division.name)
+        i += 1
+      end
+    end
+    return @division_array.sort
   end
 
 end

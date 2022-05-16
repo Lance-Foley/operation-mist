@@ -75,8 +75,11 @@ module DashboardHelper
     i = 0
     while i < @division_count do
       @division = Division.all[i]
+      @crew = Crew.all[i]
 
       if @division.utilization == 1 or @division.utilization == "nonbillable"
+        i += 1
+      elsif @crew.name == @division.name
         i += 1
       else
         @division_array.push(@division.name)

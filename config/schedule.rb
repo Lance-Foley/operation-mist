@@ -18,6 +18,15 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.day, at: '11:40 pm' do
-  runner "job.create_or_update"
+
+set :environment, 'development'
+
+every 1.day, :at => '01:33 pm' do
+  rake 'job:updated_all_hours'
+end
+
+set :output, "path/log/cron_log.log"
+
+every 1.minutes do
+  command 'bin/echo "hello"'
 end

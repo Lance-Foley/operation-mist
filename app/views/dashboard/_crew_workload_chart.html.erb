@@ -4,12 +4,12 @@
       <div class="card mt-2">
 
         <%= column_chart [
-                           { name: "Contracted Hours", data: Job
-                             .group(:crew_id)
-                             .where(crew_id: Crew.ids).where(division: n).sum(:three_month_hours) },
-                           { name: "Workforce Hours", data: Employee
-                             .group(:crew_id)
-                             .where(crew_id: Crew.ids, division: n).sum(:man_hours_three_months) }],
+                           { name: "Contracted Hours", data: Crew
+                             .group(:name)
+                             .where(division_id: Division.find_by_name(n).id,).joins(:division).where(@division.billable?).sum(Job.where(division: n).sum(:three_month_hours).to_i) },
+                           { name: "Workforce Hours", data: Crew
+                             .group(:name)
+                             .where(division_id: Division.find_by_name(n).id).joins(:division).where(@division.billable?).sum(Employee.where(division: n).sum(:man_hours_three_months).to_i) }],
                          library: {
                            label: {
                              style: {
@@ -52,6 +52,7 @@
                            }
                          }
         %>
+       
 
       </div>
     </div>

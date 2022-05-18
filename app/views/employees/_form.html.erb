@@ -31,7 +31,7 @@
 
     <div class="col">
       <%= form.label :crew, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew, Crew.all.collect, :name, :id) %>
+      <%= form.collection_select(:crew, Crew.all.collect, :name, :name) %>
 
     </div>
 

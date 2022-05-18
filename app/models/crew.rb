@@ -1,7 +1,6 @@
 class Crew < ApplicationRecord
   belongs_to :division
-  has_many :employees
-  has_many :jobs
+
 
   after_initialize :set_default_division_id, :if => :new_record?
 

@@ -1,7 +1,12 @@
 class Job < ApplicationRecord
   require 'date'
   has_one :project, autosave: true
-  belongs_to :crew
+
+  # enum crew: {"Field 3": 3, "Design": 16, "Planned Home Maintenance": 13, "Admin": 15, "Marketing": 14,
+  #             "Project Lead": 12, "Field 1": 1, "Field 2": 10, "Arch-Design": 9, "Field 4": 8,
+  #             "Interior-Design": 7, "Cabinet_Design": 6, "Shop": 5}
+
+
   # today = Time.now.midnight.to_datetime
   # # three_months_from_now = today + 91.205
   # # six_months_from_now = today + 182.5
@@ -10,6 +15,8 @@ class Job < ApplicationRecord
   #
   # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
   private def create_or_update(touch: nil, **)
+
+
     #todo Fix Division 3 month workload and weeks break when job is same day
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
@@ -26,7 +33,7 @@ class Job < ApplicationRecord
     twelve_months_from_now = today + 365
     end_date_minus_today = end_date.to_datetime - today
     start_date_minus_today = start_date.to_datetime - today
-    @Field_Months_Remaining = Job.where(crew_id: [1, 2, 3, 4]).sum(:twelve_month_hours) / Employee.where(crew_id: [1, 2, 3, 4]).sum(:man_hours_twelve_months)
+    # @Field_Months_Remaining = Job.where(crew_id: [1, 2, 3, 4]).sum(:twelve_month_hours) / Employee.where(crew_id: [1, 2, 3, 4]).sum(:man_hours_twelve_months)
 
     ####################################################################################
     # Checks if Job is Complete then Calculates E_rating

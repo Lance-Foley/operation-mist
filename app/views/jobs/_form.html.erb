@@ -40,8 +40,8 @@
   <div class="row">
 
     <div class="col">
-      <%= form.label :crew_id, style: "display: block", class: "form-label mt-3" %>
-      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
+      <%= form.label :crew, style: "display: block", class: "form-label mt-3" %>
+      <%= form.collection_select(:crew, Crew.all.collect, :name, :id) %>
 
       <%#= form.select :crew_id, Crew.all.collect, :id, class: "form-select" %>
     </div>

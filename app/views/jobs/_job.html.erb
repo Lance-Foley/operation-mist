@@ -2,7 +2,7 @@
 
   <tr>
     <td><%= link_to job.name, job %></td>
-    <td><%= Crew.where(id: job.crew_id).first.name %></td>
+    <td><%= job.crew %></td>
     <td><%= job.phase %></td>
   </tr>
 

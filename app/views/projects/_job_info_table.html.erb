@@ -22,7 +22,7 @@
     <% @jobs.each do |p| %>
       <tr>
         <th> <%= link_to p.phase, p %> </th>
-        <th> <%= Crew.where(id: p.crew_id).first.name %> </th>
+        <th> <%= p.crew %> </th>
         <th> <%= p.division %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>
         <th> <%= p.end_date.strftime('%m/%d/%y') %> </th>

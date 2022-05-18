@@ -1,16 +1,16 @@
 class DashboardController < ApplicationController
   def index
-    @Field_Months_Remaining = Job.where(crew_id: [1, 2, 3, 4,]).sum(:twelve_month_hours) /
-      Employee.where(crew: [1, 2, 3, 4,]).sum(:man_hours_twelve_months)
-
-    @Field_2_Months_Remaining = Job.where(crew_id: "2").sum(:three_month_hours) / Employee.where(crew_id: "2").sum(:man_hours_three_months)
-    @Field_3_Months_Remaining = Job.where(crew_id: "3").sum(:three_month_hours) / Employee.where(crew_id: "3").sum(:man_hours_three_months)
-    @Field_4_Months_Remaining = Job.where(crew_id: "4").sum(:three_month_hours) / Employee.where(crew_id: "4").sum(:man_hours_three_months)
-
-    @weekly_hours = Job.all.where("start_date < ?", Date.today)
-                       .where(crew_id: 1)
-                       .sum(:hours_per_week)
-    @available_hours = Employee.where(crew_id: 1).sum(:true_man_hours_per_week)
+    # @Field_Months_Remaining = Job.where(crew_id: [1, 2, 3, 4,]).sum(:twelve_month_hours) /
+    #   Employee.where(crew: [1, 2, 3, 4,]).sum(:man_hours_twelve_months)
+    #
+    # @Field_2_Months_Remaining = Job.where(crew_id: "2").sum(:three_month_hours) / Employee.where(crew_id: "2").sum(:man_hours_three_months)
+    # @Field_3_Months_Remaining = Job.where(crew_id: "3").sum(:three_month_hours) / Employee.where(crew_id: "3").sum(:man_hours_three_months)
+    # @Field_4_Months_Remaining = Job.where(crew_id: "4").sum(:three_month_hours) / Employee.where(crew_id: "4").sum(:man_hours_three_months)
+    #
+    # @weekly_hours = Job.all.where("start_date < ?", Date.today)
+    #                    .where(crew_id: 1)
+    #                    .sum(:hours_per_week)
+    # @available_hours = Employee.where(crew_id: 1).sum(:true_man_hours_per_week)
 
   end
 
@@ -42,7 +42,7 @@ class DashboardController < ApplicationController
   helper_method :crew_list
 
   def crew_e_rating(name)
-    @e_rating = Job.all.where(completed: true, crew_id: name)
+    @e_rating = Job.all.where(completed: true, crew: name)
     if @e_rating.count <= 0
       0
     else
@@ -60,7 +60,7 @@ class DashboardController < ApplicationController
 
   # Returns First Foreman in Crew
   def crew_foreman(crew)
-    foreman = Employee.where(role: "Foreman").where(crew_id: crew)
+    foreman = Employee.where(role: "Foreman").where(crew: crew)
     if foreman.count <= 0
       "No Foreman"
     else
@@ -71,10 +71,10 @@ class DashboardController < ApplicationController
   helper_method :crew_foreman
 
   def week_workload
-    render json: [{ name: "Assigned", data: Job.group(:crew_id).where(crew_id: 1)
+    render json: [{ name: "Assigned", data: Job.group(:crew).where(crew: 1)
                                                .where("start_date < ?", Date.today)
                                                .sum(:hours_per_week) },
-                  { name: "Available", data: Employee.group(:crew_id).where(crew_id: 1).sum(:true_man_hours_per_week) }]
+                  { name: "Available", data: Employee.group(:crew_id).where(crew: 1).sum(:true_man_hours_per_week) }]
   end
 
   helper_method :week_workload
@@ -91,10 +91,10 @@ class DashboardController < ApplicationController
   # Chart for 3 Month Workload for all Field Crews
   def three_month_workload
 
-    @crews = Crew.all.pluck(:id)
+    @crews = Crew.all.pluck(:name)
 
-    render json: [{ name: "Assigned", data: Job.group(:crew_id).where(crew_id: @crews).sum(:three_month_hours) },
-                  { name: "Workforce", data: Employee.group(:crew_id).where(crew_id: @crews).sum(:man_hours_three_months) },].chart_json
+    render json: [{ name: "Assigned", data: Job.group(:crew_id).where(crew: @crews).sum(:three_month_hours) },
+                  { name: "Workforce", data: Employee.group(:crew_id).where(crew: @crews).sum(:man_hours_three_months) },].chart_json
 
   end
 

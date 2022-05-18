@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_11_191313) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_18_133608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_191313) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.string "crew_id"
+    t.string "crew"
     t.string "division"
     t.float "man_hours_per_week", default: 40.0
     t.decimal "man_hours_per_month", default: "0.0"
@@ -62,10 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_191313) do
     t.string "name"
     t.date "start_date"
     t.date "end_date"
-    t.string "crew_id"
+    t.string "crew"
     t.decimal "man_hours", precision: 15, scale: 2, null: false
     t.string "phase"
-    t.string "division"
     t.decimal "total_cost", default: "0.0", null: false
     t.decimal "sub_cost", default: "0.0", null: false
     t.decimal "hours_per_week", precision: 15, scale: 2, null: false
@@ -83,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_191313) do
     t.decimal "e_rating", default: "0.0"
     t.boolean "completed", default: false
     t.bigint "project_id"
+    t.string "division"
   end
 
   create_table "phases", force: :cascade do |t|

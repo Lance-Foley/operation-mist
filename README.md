@@ -23,3 +23,5 @@ Things you may want to cover:
 
 * ...
 # Operation_MIST
+Test of branch switch
+I am on the active_admin_set_up_branch

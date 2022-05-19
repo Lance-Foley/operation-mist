@@ -23,3 +23,5 @@ Things you may want to cover:
 
 * ...
 # Operation_MIST
+active_admin checkout branch
+installing active_admin

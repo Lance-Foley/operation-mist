@@ -79,6 +79,5 @@ group :test do
 end
 
 gem "importmap-rails", "~> 1.0"
-gem 'devise'
 
 gem 'active_model_serializers', '~> 0.10.13'

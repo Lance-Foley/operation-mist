@@ -1,6 +1,6 @@
 <div id="<%= dom_id client %>">
   <tr>
-    <td><%= link_to client.name, client %></td>
+    <td ><%= link_to client.name, client, class:"text-info" %></td>
     <td><%= Project.where(client_id: client.id).count %></td>
     <td><%= client.address %></td>
     <td><%= client.future_address %></td>

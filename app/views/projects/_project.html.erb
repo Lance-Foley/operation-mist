@@ -1,9 +1,11 @@
 <div id="<%= dom_id project %>">
-  <p class="card-title display-6">Project: <%= project.name %></p>
-  <div class="card mt-3">
+  <div class="card mt-3"><div class="container-fluid">
+    <h4 class="card-title float-end ">Client: <%= Client.where(id: project.id).first.name %></h4>
+  <h4 class="card-title   ">Project: <%= project.name %></h4>
+  </div>
     <div class="card-header">
+        <a href="">        <%= link_to "Back", client_path(@project.client_id), class: "float-end btn btn-secondary" %></a>
       <div class="container-fluid">
-        <a href="">        <%= link_to "Back", client_path(@project.client_id), class: "float-end" %></a>
         <div class="row">
           <div class="col">
 
@@ -17,9 +19,9 @@
             <p>Start Date: <%= project.end_date %></p>
           </div>
         </div>
-        <%= link_to "Edit Project", edit_project_path, class: "btn-sm btn-primary text-warning float-end" %>
 
       </div>
+        <%= link_to "Edit Project", edit_project_path, class: "btn btn-primary text-warning float-end" %>
     </div>
     <div class="card-body">
       <div class="row">

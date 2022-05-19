@@ -1,6 +1,6 @@
 <div id="<%= dom_id project %>">
   <div class="card mt-3"><div class="container-fluid">
-    <h4 class="card-title float-end ">Client: <%= Client.where(id: @project.id).first.name %></h4>
+    <h4 class="card-title float-end ">Client: <%= Client.where(id: @project.client_id).first.name %></h4>
   <h4 class="card-title   ">Project: <%= project.name %></h4>
   </div>
     <div class="card-header">

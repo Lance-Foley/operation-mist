@@ -6,7 +6,12 @@ gem 'chartkick', '~> 4.1', '>= 4.1.3'
 gem 'highcharts-rails'
 gem "groupdate"
 gem 'whenever', require: false
-
+gem 'activeadmin'
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+gem 'sass-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 

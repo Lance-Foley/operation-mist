@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   namespace :api do
     namespace :v1 do
       get 'crew_three_month_workload/index'
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   get 'dashboard/field_one_workload'
   get 'dashboard/field_two_workload'
   get 'dashboard/week_workload'
-  devise_for :users
+
   get 'client/:id/projects' => 'clients#projects', :as => :client_projects
   get 'projects/:id/phase' => 'projects#phase', :as => :project_phase
 

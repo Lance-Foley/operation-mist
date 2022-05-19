@@ -21,7 +21,7 @@ class CrewsController < ApplicationController
 
   # POST /crews or /crews.json
   def create
-    @crew = Crew.new(crew_params)
+    @crew = Crew.new()
 
     respond_to do |format|
       if @crew.save

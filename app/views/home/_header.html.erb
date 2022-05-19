@@ -10,8 +10,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if current_user %>
-          <% if current_user.admin? %>
+        <%# if current_user %>
+          <%# if current_user.admin? %>
             <li class="nav-item"><%= link_to "Dashboard", dashboard_index_path, class: "nav-link" %></li>
             
             <li class="nav-item"><%= link_to "Schedule", schedule_index_path, class: "nav-link" %></li>
@@ -52,23 +52,23 @@
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item") %></li>
+                  </li>
 
               </ul>
             </li>
-          <% end %>
+          <%# end %>
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item"><%= link_to_unless_current current_user.name, edit_user_registration_path, class: "nav-link" %></li>
-              <li class="nav-item"><p class="nav-link">Role: <%= current_user.role %></p></li>
+              <li class="nav-item"></li>
+              <li class="nav-item"><p class="nav-link">Role: </p></li>
             </ul>
           </div>
-        <% else %>
+        <%# else %>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><%= link_to_unless_current "Log in", new_user_session_path, class: "nav-link" %></li>
-            <li> <%= link_to_unless_current "Register", new_user_registration_path, class: "nav-link" %></li>
-        <% end %>
+            <li> new_user_session_path, class: "nav-link" </li>
+            <li>  new_user_registration_path, class: "nav-link" </li>
+        <%# end %>
         </ul>
 
 

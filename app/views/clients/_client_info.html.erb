@@ -4,7 +4,7 @@
 
 
     <div class="card-title">
-      <h4>Client: <%= @client.name %></h4>
+      <h4>Client: <span class="text-light"><%= @client.name %></span></h4>
     </div>
   </div>
   <div class="card-body">
@@ -31,7 +31,7 @@
             <span class="badge bg-primary rounded-pill"><%= number_to_currency(Project.where(client_id: @client.id).sum(:sub_cost)) %></span>
           </li>
         </ul>
-      <%= link_to "Edit", edit_client_path(@client), class: "btn btn-primary text-warning float-end mt-3" %>
+      <%= link_to "Edit", edit_client_path(@client), class: "btn btn-warning  float-end mt-3" %>
       </div>
 
     </div>

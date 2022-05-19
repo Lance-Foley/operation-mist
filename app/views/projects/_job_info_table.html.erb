@@ -21,7 +21,7 @@
     <tbody>
     <% @jobs.each do |p| %>
       <tr>
-        <th> <%= link_to p.phase, p %> </th>
+        <th> <%= link_to p.phase, p ,class: "btn-sm btn-info" %> </th>
         <th> <%= p.crew %> </th>
         <th> <%= p.division %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>

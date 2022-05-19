@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="container">
         <h5 class="float-end">E-Rating: <%= @job.e_rating %>%</h5>
-        <h2>Phase: <%= @job.phase %></h2>
+        <h4>Phase: <span class="text-light"><%= @job.phase %></span></h4>
         <h6 class="float-end">Paid Hours: <%= @job.actual_worked_hours %></h6>
         <h5>Project Manager: <%= @job.project_manager %></h5>
 
@@ -47,6 +47,8 @@
 
 
   </div>
-  <%= link_to "Back", project_path(@job.project_id), class: "btn btn-secondary" %> |
-  <%= link_to "Edit", edit_job_path(@job), class: "btn btn-secondary" %>
+  <span class="float-end">
+  <%= link_to "Back", project_path(@job.project_id), class: " btn btn-secondary" %> |
+  <%= link_to "Edit", edit_job_path(@job), class: " btn btn-warning" %>
+    </span>
 </div>

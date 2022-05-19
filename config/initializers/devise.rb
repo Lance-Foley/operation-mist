@@ -6,20 +6,6 @@
 # breaking changes in upgrades (i.e., in the event that future versions of
 # Devise change the default values for those options).
 #
-class TurboFailureApp < Devise::FailureApp
-  def respond
-    if request_format == :turbo_stream
-      redirect
-    else
-      super
-    end
-  end
-
-  def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
-  end
-end
-
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -28,27 +14,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b54af4493a6cfaa5b94b0c4899aa469913390bd2642286f880049c837346505d2543973c94699e8e2e70f33a7dec4523f21463721ebfaf78e38574a6e3d7390f'
+  # config.secret_key = '4a785df0c52bd2f10f4342c19cacc2acb5a594a8e3616e4590b60dbf849512b05ae63388fefa5b44bc0a001970f406bb9edba16cad6815388fe76aede0f744fa'
 
-  # ==> Controller configuration
-  # Configure the parent class to the devise controllers.
-  config.parent_controller = 'TurboDeviseController'
-
-  # ...
-
-  # ==> Navigation configuration
-  # ...
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
-
-  # ...
-
-  # ==> Warden configuration
-  # ...
-  config.warden do |manager|
-    manager.failure_app = TurboFailureApp
-    #   manager.intercept_401 = false
-    #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -79,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:login]
+  # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -159,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'eaea3c8e0c970225039de00b2d0ccea9db07c8ab6c199b8ce1eacd0d34363ea305e98c074e162a4fae00eaf5be1dc6f12a3143ec8a1fe4a66a57f708bb5cf151'
+  # config.pepper = '62d41fbac1c8cac17866f8cbcd91ac5582f4f28c07281a549145a70f4d2380f8376d529536751202712ab5dcd24c36667674c7a85852b9aa19ec1abc5981464b'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -277,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  config.scoped_views = false
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

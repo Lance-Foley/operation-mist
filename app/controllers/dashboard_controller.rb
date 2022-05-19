@@ -81,7 +81,7 @@ class DashboardController < ApplicationController
 
   # Chart for Field 1 Workload in 3 Months
   def field_one_workload
-    var = crew_id
+    var = crew
     render json: [{ name: "Assigned", data: Job.group(:var).where(var: 1).sum(:three_month_hours) },
                   { name: "Available", data: Employee.group(:var).where(var: 1).sum(:man_hours_three_months) },]
   end

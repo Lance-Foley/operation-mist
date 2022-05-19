@@ -5,7 +5,7 @@ class Crew < ApplicationRecord
   after_initialize :set_default_division_id, :if => :new_record?
 
   def set_default_division_id
-    self.division_id = 0
+    self.division_id = Division.all.first.id
   end
 
   private def create_or_update(touch: nil, **)

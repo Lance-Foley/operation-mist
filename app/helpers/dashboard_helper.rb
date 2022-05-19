@@ -79,8 +79,6 @@ module DashboardHelper
 
       if @division.utilization == 1 or @division.utilization == "nonbillable"
         i += 1
-      elsif @crew.name == @division.name
-        i += 1
       else
         @division_array.push(@division.name)
         i += 1

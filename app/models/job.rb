@@ -38,7 +38,7 @@ class Job < ApplicationRecord
     ####################################################################################
     # Checks if Job is Complete then Calculates E_rating
     if (completed == true)
-      self.e_rating = man_hours / actual_worked_hours * 100
+      self.e_rating =  (man_hours / actual_worked_hours).to_f.round(2) * 100
     else
       self.e_rating = 0.0
     end

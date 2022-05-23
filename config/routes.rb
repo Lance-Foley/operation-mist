@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :projects
   resources :clients
+
   resources :roles
 
   get 'dashboard/index'

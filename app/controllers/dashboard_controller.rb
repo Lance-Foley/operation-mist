@@ -26,16 +26,17 @@ class DashboardController < ApplicationController
   helper_method :crew_months_remaining
 
   # Returns List of Employees Based on Role and Crew Selection
-  def crew_list(role, crew)
-    list_employees = Employee.where(role: role).where(crew: crew)
-    name = []
-    if list_employees.count <= 0
-      "Empty"
-    else
-      list_employees.map { |employee|
-
-        employee.name }
-
+  def crew_list( crew)
+    @employee_count = Employee.all.where(crew: crew).count
+    employees = Employee.where(crew: crew)
+    crew = []
+    i = 0
+    while i < @employee_count do
+      if list_employees.count <= 0
+        "Empty"
+      else
+        crew.push(employees[i])
+      end
     end
   end
 

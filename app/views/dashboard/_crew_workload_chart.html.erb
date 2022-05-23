@@ -54,7 +54,7 @@
                            }
                          }
         %>
-
+<%= Job.all.where(division: Division.find_by_name(n).name).count %>
       </div>
     </div>
   <% end %>

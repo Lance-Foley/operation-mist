@@ -8,6 +8,8 @@ class PhasesController < ApplicationController
 
   # GET /phases/1 or /phases/1.json
   def show
+    @phase = Phase.find(params[:id])
+
   end
 
   # GET /phases/new
@@ -17,6 +19,8 @@ class PhasesController < ApplicationController
 
   # GET /phases/1/edit
   def edit
+    @phase = Phase.find(params[:id])
+
   end
 
   # POST /phases or /phases.json
@@ -49,12 +53,12 @@ class PhasesController < ApplicationController
 
   # DELETE /phases/1 or /phases/1.json
   def destroy
+    @phase = Phase.find(params[:id])
+
     @phase.destroy
 
-    respond_to do |format|
-      format.html { redirect_to phases_url, notice: "Phase was successfully destroyed." }
-      format.json { head :no_content }
-    end
+  redirect_to phases_path, status: :see_other, notice: "Phase was successfully destroyed."
+
   end
 
   private

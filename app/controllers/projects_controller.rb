@@ -58,12 +58,10 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
 
-    respond_to do |format|
-      format.html { redirect_to client_projects_path(@project.client_id), notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to projects_path, status: :see_other, notice: "Project was successfully destroyed."
   end
 
   private

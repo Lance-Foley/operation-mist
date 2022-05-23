@@ -11,6 +11,9 @@
     <%= link_to "Back", @job, class: "btn btn-secondary" %> |
     <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
     <hr>
-    <%= button_to "Destroy this job", @job, method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Delete Job", @job, method: :delete, data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    }, class: "btn btn-danger" %>
   </div>
 </div>

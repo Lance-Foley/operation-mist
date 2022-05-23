@@ -16,12 +16,13 @@
       <th scope="col">Bid Hour</th>
       <th scope="col">Hours Per Week</th>
       <th scope="col">Weeks</th>
+      <th scope="col">E-Rating</th>
     </tr>
     </thead>
     <tbody>
     <% @jobs.each do |p| %>
       <tr>
-        <th> <%= link_to p.phase, p ,class: "text-info" %> </th>
+        <th> <%= link_to p.phase, edit_job_path(p) ,class: "text-info" %> </th>
         <th> <%= p.crew %> </th>
         <th> <%= p.division %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>
@@ -29,6 +30,7 @@
         <th> <%= p.man_hours %> </th>
         <th> <%= p.hours_per_week %> </th>
         <th> <%= p.weeks %> </th>
+        <th> <%= p.e_rating %>% </th>
       </tr>
 
     <% end %>

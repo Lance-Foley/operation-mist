@@ -49,12 +49,11 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
+    @employee = Employee.find(params[:id])
     @employee.destroy
 
-    respond_to do |format|
-      format.html { redirect_to employees_url, notice: "Employee was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to employees_path,status: :see_other, notice: "Employee was successfully deleted."
+
   end
 
   private

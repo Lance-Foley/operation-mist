@@ -49,14 +49,10 @@ class DivisionsController < ApplicationController
 
   # DELETE /divisions/1 or /divisions/1.json
   def destroy
+    @division = Division.find(params[:id])
     @division.destroy
-
-    respond_to do |format|
-      format.html { redirect_to divisions_url, notice: "Division was successfully destroyed." }
-      format.json { head :no_content }
+    redirect_to divisions_path,status: :see_other, notice: "Division was successfully deleted."
     end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -49,12 +49,9 @@ class RolesController < ApplicationController
 
   # DELETE /roles/1 or /roles/1.json
   def destroy
+    @role = Role.find(params[:id])
     @role.destroy
-
-    respond_to do |format|
-      format.html { redirect_to roles_url, notice: "Role was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to roles_path,status: :see_other, notice: "Role was successfully deleted."
   end
 
   private

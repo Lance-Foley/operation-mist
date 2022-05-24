@@ -10,7 +10,9 @@
     <%= link_to "Back", @role, class: "btn btn-secondary" %> |
     <%= link_to "Roles", roles_path, class: "btn btn-secondary" %>
     <hr>
-    <%= button_to "Delete", @role, method: :delete, class: "btn btn-danger" %>
-
+    <%= link_to "Delete Job", @role, method: :delete, data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    }, class: "btn btn-danger" %>
   </div>
 </div>

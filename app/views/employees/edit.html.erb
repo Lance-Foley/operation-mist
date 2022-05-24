@@ -9,7 +9,9 @@
     <%= link_to "Back", @employee, class: "btn btn-secondary" %> |
     <%= link_to "Employees", employees_path, class: "btn btn-secondary" %>
     <hr>
-    <%= button_to "Delete", @employee, method: :delete, class: "btn btn-danger" %>
-
+    <%= link_to "Delete ", @employee, method: :delete, data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    }, class: "btn btn-danger" %>
   </div>
 </div>

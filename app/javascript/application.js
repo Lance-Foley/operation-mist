@@ -3,7 +3,7 @@
 import "@hotwired/turbo-rails"
 import "chartkick"
 import Highcharts from "highcharts"
-// import "./controllers"
+import "./controllers"
 
 
 window.Highcharts = Highcharts

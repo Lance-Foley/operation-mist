@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   has_many :jobs, dependent: :delete_all, autosave: true
 
-  has_one :client
+  belongs_to :client
 
   private def create_or_update(touch: nil, **)
 

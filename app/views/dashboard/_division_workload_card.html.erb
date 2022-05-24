@@ -1,20 +1,236 @@
 <div class="card ">
   <div class="card-body">
     <div class="row">
+      <div data-controller="dashboard"></div>
+
+      <div class="btn-group " role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="three_month" checked="" autocomplete="off">
+        <label class="btn btn-primary" for="three_month">3 Month</label>
+        <input type="checkbox" class="btn-check" id="six_month" autocomplete="off">
+        <label class="btn btn-primary" for="six_month">6 Month</label>
+        <input type="checkbox" class="btn-check" id="nine_month" autocomplete="off">
+        <label class="btn btn-primary" for="nine_month">9 Month</label>
+        <input type="checkbox" class="btn-check" id="twelve_month" autocomplete="off">
+        <label class="btn btn-primary" for="twelve_month">12 Month</label>
+      </div>
       <div class="col-12">
-        <h5 class="card-title text-center">Division Three Month Workload</h5>
 
-        <%= bar_chart [
-                        { name: "Contracted Hours", data: Job
-                          .group(:division)
-                          .where(division: Division.all.where(utilization: 0).pluck(:name)).
-                          sum(:three_month_hours) },
-                        { name: "Workforce Hours", data: Employee
-                          .group(:division)
-                          .where(division: Division.all.where(utilization: 0).pluck(:name))
-                          .sum(:man_hours_three_months) }]
+        <div id="three_month_workload">
+          <%= bar_chart [
+                          { name: "Contracted Hours", data: Job
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            sum(:three_month_hours) },
+                          { name: "Workforce Hours", data: Employee
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name))
+                            .sum(:man_hours_three_months) }],
+                        library: {
+                          label: {
+                            style: {
+                              color: '#ffffff'
+                            }
+                          },
+                          title: {
+                            text: "Three Month Workload",
+                            style: {
+                              color: '#ffffff',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          chart: {
+                            backgroundColor: 'transparent',
+                            type: 'line'
+                          },
+                          plotOptions: {
+                            series: {
+                              dataLabels: {
+                                enabled: true,
+                                color: 'white',
+                                format: '{point.y:,.1f}'
+                              }
+                            }
+                          },
 
-        %>
+                          xAxis: {
+                            categories: {
+                            },
+                            labels: {
+                              enabled: true,
+
+                            }
+                          },
+                          legend: {
+                            itemStyle: {
+                              color: 'white'
+                            }
+                          }
+                        }
+
+          %>
+        </div>
+        <div id="six_month_workload" hidden>
+          <%= bar_chart [
+                          { name: "Contracted Hours", data: Job
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            sum(:six_month_hours) },
+                          { name: "Workforce Hours", data: Employee
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name))
+                            .sum(:man_hours_six_months) }],
+                        library: {
+                          label: {
+                            style: {
+                              color: '#ffffff'
+                            }
+                          },
+                          title: {
+                            text: "Six Month Workload",
+                            style: {
+                              color: '#ffffff',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          chart: {
+                            backgroundColor: 'transparent',
+                            type: 'line'
+                          },
+                          plotOptions: {
+                            series: {
+                              dataLabels: {
+                                enabled: true,
+                                color: 'white',
+                                format: '{point.y:,.1f}'
+                              }
+                            }
+                          },
+
+                          xAxis: {
+                            categories: {
+                            },
+                            labels: {
+                              enabled: true,
+
+                            }
+                          },
+                          legend: {
+                            itemStyle: {
+                              color: 'white'
+                            }
+                          }
+                        }
+
+          %>
+        </div>
+        <div id="nine_month_workload" hidden>
+          <%= bar_chart [
+                          { name: "Contracted Hours", data: Job
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            sum(:nine_month_hours) },
+                          { name: "Workforce Hours", data: Employee
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name))
+                            .sum(:man_hours_nine_months) }],
+                        library: {
+                          label: {
+                            style: {
+                              color: '#ffffff'
+                            }
+                          },
+                          title: {
+                            text: "Nine Month Workload",
+                            style: {
+                              color: '#ffffff',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          chart: {
+                            backgroundColor: 'transparent',
+                            type: 'line'
+                          },
+                          plotOptions: {
+                            series: {
+                              dataLabels: {
+                                enabled: true,
+                                color: 'white',
+                                format: '{point.y:,.1f}'
+                              }
+                            }
+                          },
+
+                          xAxis: {
+                            categories: {
+                            },
+                            labels: {
+                              enabled: true,
+
+                            }
+                          },
+                          legend: {
+                            itemStyle: {
+                              color: 'white'
+                            }
+                          }
+                        }
+
+          %>
+        </div>
+        <div id="twelve_month_workload" hidden>
+          <%= bar_chart [
+                          { name: "Contracted Hours", data: Job
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            sum(:twelve_month_hours) },
+                          { name: "Workforce Hours", data: Employee
+                            .group(:division)
+                            .where(division: Division.all.where(utilization: 0).pluck(:name))
+                            .sum(:man_hours_twelve_months) }],
+                        library: {
+                          label: {
+                            style: {
+                              color: '#ffffff'
+                            }
+                          },
+                          title: {
+                            text: "Twelve Month Workload",
+                            style: {
+                              color: '#ffffff',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          chart: {
+                            backgroundColor: 'transparent',
+                            type: 'line'
+                          },
+                          plotOptions: {
+                            series: {
+                              dataLabels: {
+                                enabled: true,
+                                color: 'white',
+                                format: '{point.y:,.1f}'
+                              }
+                            }
+                          },
+
+                          xAxis: {
+                            categories: {
+                            },
+                            labels: {
+                              enabled: true,
+
+                            }
+                          },
+                          legend: {
+                            itemStyle: {
+                              color: 'white'
+                            }
+                          }
+                        }
+
+          %>
+        </div>
       </div>
       <div class="col">
         <h5 class="card-title text-center">Months Out</h5>

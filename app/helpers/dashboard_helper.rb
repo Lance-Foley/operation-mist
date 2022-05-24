@@ -57,7 +57,7 @@ module DashboardHelper
         i += 1
       elsif value == 0 or value == Float::INFINITY or value == Float::NAN
         value = 0
-        @division_array.push([name: @division.name, average: value, crews:[name: @crew.name]])
+        @division_array.push([name: @division.name, average: value])
         i += 1
       else
         @division_array.push([name: @division.name, average: value])

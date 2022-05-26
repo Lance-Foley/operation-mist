@@ -3,13 +3,13 @@
     <td><%= link_to division.name, division %></td>
     <td><%= division.utilization %></td>
     <% begin %>
-      <td><%= Job.where(division: division.name).sum(:hours_per_week) %></td>
-      <td><%= Job.where(division: division.name).sum(:three_month_hours) %></td>
-      <td><%= Job.where(division: division.name).sum(:six_month_hours) %></td>
-      <td><%= Job.where(division: division.name).sum(:nine_month_hours) %></td>
-      <td><%= Job.where(division: division.name).sum(:twelve_month_hours) %></td>
-      <td><%= Job.where(division: division.name, completed: true).average(:e_rating).to_i %>%</td>
-      <td><%= Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division: division.name).sum(:three_month_hours) * 100 %>
+      <td><%= Job.where(division_name: division.name).sum(:hours_per_week) %></td>
+      <td><%= Job.where(division_name: division.name).sum(:three_month_hours) %></td>
+      <td><%= Job.where(division_name: division.name).sum(:six_month_hours) %></td>
+      <td><%= Job.where(division_name: division.name).sum(:nine_month_hours) %></td>
+      <td><%= Job.where(division_name: division.name).sum(:twelve_month_hours) %></td>
+      <td><%= Job.where(division_name: division.name, completed: true).average(:e_rating).to_i %>%</td>
+      <td><%= Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division_name: division.name).sum(:three_month_hours) * 100 %>
         %
       </td>
     <% rescue %>

@@ -6,18 +6,18 @@
     <% else %>
       <th>Error</th>
     <% end %>
-    <th scope="col"><%= Employee.where(crew: crew.name).count %></th>
+    <th scope="col"><%= Employee.where(crew_name: crew.name).count %></th>
     <th scope="col">
-      <% if Employee.where(role: "Foreman", crew: crew.name).count > 0 %>
-        <%= Employee.where(role: "Foreman", crew: crew.name).first.name %>
+      <% if Employee.where(role: "Foreman", crew_name: crew.name).count > 0 %>
+        <%= Employee.where(role: "Foreman", crew_name: crew.name).first.name %>
         </th>
       <% else %>
       <% end %>
       <% begin %>
-        <th scope="col"><%= Job.where(crew: crew.name, completed: true).average(:e_rating).to_i %>%</th>
+        <th scope="col"><%= Job.where(crew_name: crew.name, completed: true).average(:e_rating).to_i %>%</th>
         </tr>
       <% rescue %>
-        
+
       <% end %>
 
 

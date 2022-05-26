@@ -1,3 +1,6 @@
 class CrewSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :name
+
+  has_many :jobs
+
 end

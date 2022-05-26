@@ -15,6 +15,8 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
+    @job.build_crew
+    @job.build_division
   end
 
   # GET /jobs/1/edit
@@ -55,9 +57,9 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
 
-     redirect_to project_phase_path(@job.project_id),status: :see_other, notice: "Job was successfully destroyed."
+    redirect_to project_phase_path(@job.project_id), status: :see_other, notice: "Job was successfully destroyed."
 
-    end
+  end
 
   private
 

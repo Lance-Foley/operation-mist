@@ -1,11 +1,11 @@
 class Employee < ApplicationRecord
+  belongs_to :crew
   # enum crew: ["Field 3": 3, "Design": 16, "Planned Home Maintenance": 13, "Admin": 15, "Marketing": 14,
   #             "Project Lead": 12, "Field 1": 1, "Field 2": 10, "Arch-Design": 9, "Field 4": 8,
   #             "Interior-Design": 7, "Cabinet_Design": 6, "Shop": 5]
 
   enum tier: [:Tier_1, :Tier_2, :Tier_3, :Tier_4]
   after_initialize :set_default_role, :if => :new_record?
-
 
   def set_default_role
     self.tier ||= :Tier_4

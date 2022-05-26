@@ -51,8 +51,9 @@ class DivisionsController < ApplicationController
   def destroy
     @division = Division.find(params[:id])
     @division.destroy
-    redirect_to divisions_path,status: :see_other, notice: "Division was successfully deleted."
-    end
+    redirect_to divisions_path, status: :see_other, notice: "Division was successfully deleted."
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -62,7 +63,7 @@ class DivisionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def division_params
-    params.require(:division).permit!
+    params.require(:division).permit(:name)
   end
 
 end

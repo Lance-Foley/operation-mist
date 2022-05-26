@@ -1,11 +1,12 @@
 class Job < ApplicationRecord
   require 'date'
-  has_one :project, autosave: true
+  belongs_to :project, autosave: true
+  belongs_to :crew
+  belongs_to :division
 
   # enum crew: {"Field 3": 3, "Design": 16, "Planned Home Maintenance": 13, "Admin": 15, "Marketing": 14,
   #             "Project Lead": 12, "Field 1": 1, "Field 2": 10, "Arch-Design": 9, "Field 4": 8,
   #             "Interior-Design": 7, "Cabinet_Design": 6, "Shop": 5}
-
 
   # today = Time.now.midnight.to_datetime
   # # three_months_from_now = today + 91.205
@@ -16,8 +17,6 @@ class Job < ApplicationRecord
   # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
   private def create_or_update(touch: nil, **)
 
-
-    #todo Fix Division 3 month workload and weeks break when job is same day
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
     # Checks if Weeks is less then one. Gets Hours Per week
@@ -38,7 +37,7 @@ class Job < ApplicationRecord
     ####################################################################################
     # Checks if Job is Complete then Calculates E_rating
     if (completed == true)
-      self.e_rating =  (man_hours / actual_worked_hours).to_f.round(2) * 100
+      self.e_rating = (man_hours / actual_worked_hours).to_f.round(2) * 100
     else
       self.e_rating = 0.0
     end

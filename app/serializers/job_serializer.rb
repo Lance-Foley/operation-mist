@@ -1,3 +1,5 @@
 class JobSerializer < ActiveModel::Serializer
-  attributes :crew_id, :three_month_hours
+  attributes :phase, :start_date, :end_date
+
+  belongs_to :project
 end

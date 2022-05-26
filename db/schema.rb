@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_203849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,11 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "utilization", default: 0
+    t.bigint "crew_id"
+    t.bigint "job_id"
+    t.index ["crew_id"], name: "index_divisions_on_crew_id"
+    t.index ["job_id"], name: "index_divisions_on_job_id"
   end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.string "crew"
+    t.string "crew_name"
     t.string "division"
     t.float "man_hours_per_week", default: 40.0
     t.decimal "man_hours_per_month", default: "0.0"
@@ -56,17 +60,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
     t.string "email"
     t.string "phone_number"
     t.integer "tier"
+    t.bigint "crew_id"
+    t.index ["crew_id"], name: "index_employees_on_crew_id"
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string "name"
     t.date "start_date"
     t.date "end_date"
-    t.string "crew"
+    t.string "crew_name"
     t.decimal "man_hours", precision: 15, scale: 2, null: false
     t.string "phase"
-    t.decimal "total_cost", default: "0.0", null: false
-    t.decimal "sub_cost", default: "0.0", null: false
+    t.string "division_name"
     t.decimal "hours_per_week", precision: 15, scale: 2, null: false
     t.decimal "weeks", precision: 15, scale: 2, null: false
     t.decimal "week_remaining", precision: 15, scale: 2, null: false
@@ -77,12 +81,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
     t.decimal "twelve_month_hours", precision: 15, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "project_manager"
     t.decimal "actual_worked_hours", default: "0.0"
     t.decimal "e_rating", default: "0.0"
     t.boolean "completed", default: false
     t.bigint "project_id"
-    t.string "division"
+    t.bigint "crew_id"
+    t.bigint "division_id"
+    t.index ["crew_id"], name: "index_jobs_on_crew_id"
   end
 
   create_table "phases", force: :cascade do |t|
@@ -94,7 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "project_manager"
-    t.string "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "info"
@@ -102,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
     t.decimal "sub_cost"
     t.date "start_date"
     t.date "end_date"
+    t.bigint "client_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -111,8 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "role"
-    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -120,8 +123,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_183944) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "variances", force: :cascade do |t|
+    t.decimal "variance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -22,15 +22,15 @@
     <tbody>
     <% @jobs.each do |p| %>
       <tr>
-        <th> <%= link_to p.phase, edit_job_path(p) ,class: "text-info" %> </th>
-        <th> <%= p.crew %> </th>
-        <th> <%= p.division %> </th>
+        <th> <%= link_to p.phase, edit_job_path(p), class: "text-info" %> </th>
+        <th> <%= p.crew.name %> </th>
+        <th> <%= p.division.name %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>
         <th> <%= p.end_date.strftime('%m/%d/%y') %> </th>
         <th> <%= p.man_hours %> </th>
         <th> <%= p.hours_per_week %> </th>
         <th> <%= p.weeks %> </th>
-        <th> <%= p.e_rating %>% </th>
+        <th> <%= p.e_rating %>%</th>
       </tr>
 
     <% end %>

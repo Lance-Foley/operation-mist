@@ -30,9 +30,12 @@
   <div class="row">
 
     <div class="col">
-      <%= form.label :crew, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew, Crew.all.collect, :name, :name) %>
-
+      <%= form.label :crew_name, style: "display: block", class: "form-label" %>
+      <%= form.select :crew_name, Crew.all.collect { |p| [p.name] }, class: "form-select" %>
+    </div>
+    <div class="col">
+      <%= form.label :crew_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
     </div>
 
     <div class="col">

@@ -18,8 +18,8 @@
         <div id="three_month_workload">
           <%= bar_chart [
                           { name: "Contracted Hours", data: Job
-                            .group(:division)
-                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            .group(:division_name)
+                            .where(division_name: Division.all.where(utilization: 0).pluck(:name)).
                             sum(:three_month_hours) },
                           { name: "Workforce Hours", data: Employee
                             .group(:division)
@@ -72,8 +72,8 @@
         <div id="six_month_workload" hidden>
           <%= bar_chart [
                           { name: "Contracted Hours", data: Job
-                            .group(:division)
-                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            .group(:division_name)
+                            .where(division_name: Division.all.where(utilization: 0).pluck(:name)).
                             sum(:six_month_hours) },
                           { name: "Workforce Hours", data: Employee
                             .group(:division)
@@ -126,8 +126,8 @@
         <div id="nine_month_workload" hidden>
           <%= bar_chart [
                           { name: "Contracted Hours", data: Job
-                            .group(:division)
-                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            .group(:division_name)
+                            .where(division_name: Division.all.where(utilization: 0).pluck(:name)).
                             sum(:nine_month_hours) },
                           { name: "Workforce Hours", data: Employee
                             .group(:division)
@@ -180,8 +180,8 @@
         <div id="twelve_month_workload" hidden>
           <%= bar_chart [
                           { name: "Contracted Hours", data: Job
-                            .group(:division)
-                            .where(division: Division.all.where(utilization: 0).pluck(:name)).
+                            .group(:division_name)
+                            .where(division_name: Division.all.where(utilization: 0).pluck(:name)).
                             sum(:twelve_month_hours) },
                           { name: "Workforce Hours", data: Employee
                             .group(:division)

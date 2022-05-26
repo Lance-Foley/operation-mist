@@ -39,20 +39,28 @@
 
   <div class="row">
 
-    <div class="col">
-      <%= form.label :crew, style: "display: block", class: "form-label mt-3" %>
-      <%= form.collection_select(:crew, Crew.all.collect, :name, :name) %>
 
-      <%#= form.select :crew_id, Crew.all.collect, :id, class: "form-select" %>
+    <div class="col">
+      <%= form.label :crew_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
     </div>
+    <div class="col">
+      <%= form.label :crew_name, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:crew_name, Crew.all.collect, :id, :name) %>
+    </div>
+
 
     <div class="col">
       <%= form.label :phase, style: "display: block", class: "form-label mt-3" %>
       <%= form.select :phase, Phase.all.collect { |p| [p.name] }, class: "form-select" %>
     </div>
     <div class="col">
-      <%= form.label :division, style: "display: block", class: "form-label mt-3" %>
-      <%= form.select :division, Division.all.collect { |p| [p.name] }, class: "form-select" %>
+      <%= form.label :division_name, style: "display: block", class: "form-label mt-3" %>
+      <%= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
+    </div>
+    <div class="col">
+      <%= form.label :division_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:division_id, Division.all.collect, :id, :name) %>
     </div>
     <% if @job.new_record? %>
     <% else %>

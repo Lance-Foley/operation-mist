@@ -1,11 +1,7 @@
 class Crew < ApplicationRecord
   belongs_to :division
-
-  after_initialize :set_default_division_id, :if => :new_record?
-
-  def set_default_division_id
-    self.division_id = Division.all.first.id
-  end
+  has_many :jobs
+  has_many :employees
 
   private def create_or_update(touch: nil, **)
 

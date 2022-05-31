@@ -1,59 +1,68 @@
 <div id="<%= dom_id project %>">
-  <div class="card mt-3"><div class="container-fluid">
-    <h4 class="card-title float-end ">Client: <span class="text-light"><%= Client.where(id: @project.client_id).first.name %></span></h4>
-    <h4 class="card-title   ">Project:  <span class="text-light"><%= project.name %></span></h4>
-  </div>
-    <div class="card-header">
-        <a href="">        <%= link_to "Back", client_path(@project.client_id), class: "float-end btn btn-secondary" %></a>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-
-            <p>Project Manager: <%= project.project_manager %> </p>
-            <p>Phone #: <%= get_project_manger_phone_number %></p>
-            <p>Email: <%= get_project_manger_email %> </p>
+  <div class="card mt-3">
+    <div class="container-fluid">
+      <h4 class="card-title float-end ">Client:
+        <% begin %>
+          <span class="text-light"><%= Client.where(id: project.client_id).first.name %></span></h4>
+          <h4 class="card-title   ">Project: <span class="text-light"><%= project.name %></span></h4>
           </div>
-          <div class="col">
-            <p>E-Rating: <%= number_to_percentage(e_rating) %></p>
-            <p>Start Date: <%= project.start_date %></p>
-            <p>Start Date: <%= project.end_date %></p>
+          <div class="card-header">
+            <a href="">        <%= link_to "Back", client_path(project.client_id), class: "float-end btn btn-secondary" %></a>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+
+                  <p>Project Manager: <%= project.project_manager %> </p>
+                  <p>Phone #: <%= get_project_manger_phone_number %></p>
+                  <p>Email: <%= get_project_manger_email %> </p>
+                </div>
+                <div class="col">
+                  <p>E-Rating: <%= number_to_percentage(e_rating) %></p>
+                  <p>Start Date: <%= project.start_date %></p>
+                  <p>Start Date: <%= project.end_date %></p>
+                </div>
+              </div>
+
+            </div>
+            <%= link_to "Edit Project", edit_project_path, class: "btn btn-warning  float-end" %>
           </div>
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Cost:
+                    <span class="fw-bold"><%= number_to_currency(project.cost) %></span>
+                  </li>
+                  <li class="list-group-item">Sub Cost:
+                    <span class="fw-bold"><%= number_to_currency(project.sub_cost) %></span>
+                  </li>
+
+                  <li class="list-group-item">Total Bid Hours: <span class="fw-bold"><%= total_bid_hours %></span></li>
+                  <li class="list-group-item">Weeks Remaining: <span class="fw-bold"><%= total_weeks_remaining %></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col">
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Total Hours Per
+                    Week: <span class="fw-bold"><%= total_hours_per_week %></span></li>
+                  <li class="list-group-item">Three Month Hours: <span class="fw-bold"><%= three_month_hours %></span>
+                  </li>
+                  <li class="list-group-item">Total Hours Worked: <span class="fw-bold"><%= total_hours_worked %></span>
+                  </li>
+                  <li class="list-group-item">Total Hours Remaining:
+                    <span class="fw-bold"><%= total_hours_remaining %></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+          <p>
+          </p>
+        <% rescue %>
+          "Error"
+        <% end %>
         </div>
-
-      </div>
-        <%= link_to "Edit Project", edit_project_path, class: "btn btn-warning  float-end" %>
-    </div>
-    <div class="card-body">
-      <div class="row">
-
-        <div class="col">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cost:
-              <span class="fw-bold"><%= number_to_currency(project.cost) %></span>
-            </li>
-            <li class="list-group-item">Sub Cost:
-              <span class="fw-bold"><%= number_to_currency(project.sub_cost) %></span>
-            </li>
-
-            <li class="list-group-item">Total Bid Hours: <span class="fw-bold"><%= total_bid_hours %></span></li>
-            <li class="list-group-item">Weeks Remaining: <span class="fw-bold"><%= total_weeks_remaining %></span></li>
-          </ul>
-        </div>
-        <div class="col">
-
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total Hours Per
-              Week: <span class="fw-bold"><%= total_hours_per_week %></span></li>
-            <li class="list-group-item">Three Month Hours: <span class="fw-bold"><%= three_month_hours %></span></li>
-            <li class="list-group-item">Total Hours Worked: <span class="fw-bold"><%= total_hours_worked %></span></li>
-            <li class="list-group-item">Total Hours Remaining: <span class="fw-bold"><%= total_hours_remaining %></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>
-  </p>
-
-</div>

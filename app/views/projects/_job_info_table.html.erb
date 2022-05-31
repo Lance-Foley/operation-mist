@@ -23,7 +23,7 @@
     <% @jobs.each do |p| %>
       <tr>
         <th> <%= link_to p.phase, edit_job_path(p), class: "text-info" %> </th>
-        <th> <%= p.crew_name %> </th>
+        <th> <%= p.crew.name %> </th>
         <th> <%= p.division_name %> </th>
         <th> <%= p.start_date.strftime('%m/%d/%Y') %> </th>
         <th> <%= p.end_date.strftime('%m/%d/%y') %> </th>

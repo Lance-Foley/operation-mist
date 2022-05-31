@@ -23,11 +23,47 @@
 </style>
 
 <script type="text/javascript" charset="utf-8">
-    Highcharts.ganttChart("container", {
-        title: {
-            text: "Crews Schedule"
+    var today = new Date(),
+        day = 1000 * 60 * 60 * 24;
+
+    // Set to 00:00:00:000 today
+    today.setUTCHours(0);
+    today.setUTCMinutes(0);
+    today.setUTCSeconds(0);
+    today.setUTCMilliseconds(0);
+    today = today.getTime();
+
+    /**
+     * Request data from the server, add it to the graph and set a timeout to request again
+     */
+    async function requestData() {
+        const result = await fetch('http://localhost:3000/api/v1/charts/index');
+        if (result.ok) {
+            const data = await result.json();
+            const [date, value] = data[0];
+            const point = [new Date(date).getTime(), value * 10];
+            const series = chart.series[0],
+                shift = series.data.length > 20; // shift if the series is longer than 20
+            // add the point
+            chart.series[0].addPoint(point, true, shift);
+            // call it again after one second
+            setTimeout(requestData, 1000);
         }
-    })
+    }
+
+    // THE CHART
+    Highcharts.ganttChart('container', {
+        title: {
+            text: 'Grouping tasks vertically'
+        },
+        yAxis: {
+            categories: ['<%= Crew.first.name %>', '<%= Crew.second.name %>', '<%= Crew.third.name %>']
+        },
+        series: [{
+            name: '<%= Crew.first.name %>',
+            data: []
+        }]
+    });
 
 </script>
 

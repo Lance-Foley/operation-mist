@@ -46,7 +46,7 @@
     </div>
     <div class="col">
       <%= form.label :crew_name, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew_name, Crew.all.collect, :id, :name) %>
+      <%= form.collection_select(:crew_name, Crew.all.collect, :name, :name) %>
     </div>
 
 

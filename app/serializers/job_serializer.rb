@@ -1,5 +1,4 @@
 class JobSerializer < ActiveModel::Serializer
-  attributes :phase, :start_date, :end_date
+  attributes :phase, :start_date, :end_date, :man_hours
 
-  belongs_to :project
 end

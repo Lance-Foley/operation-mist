@@ -8,47 +8,47 @@ end
 task :update_jobs => :environment do
   puts "Updating Phase to have crew_id"
 
-  update_field_1 = Employee.all.where(crew_name: "Field 1 ")
-  update_field_1.update_all(crew_id: 1)
+  update_field_1 = Employee.all.where(crew_name: 1)
+  update_field_1.update_all(crew_name: "Field 1 ")
 
-  update_field_2 = Employee.all.where(crew_name: "Field 2 ")
-  update_field_2.update_all(crew_id: 10)
+  update_field_2 = Employee.all.where(crew_name: 10)
+  update_field_2.update_all(crew_name: "Field 2 ")
 
-  update_field_3 = Employee.all.where(crew_name: "Field 3 ")
-  update_field_3.update_all(crew_id: 3)
+  update_field_3 = Employee.all.where(crew_name: 3)
+  update_field_3.update_all(crew_name: "Field 3 ")
 
-  update_field_4 = Employee.all.where(crew_name: "Field 4 ")
-  update_field_4.update_all(crew_id: 8)
+  update_field_4 = Employee.all.where(crew_name: 8)
+  update_field_4.update_all(crew_name: "Field 4 ")
 
-  update_field_5 = Employee.all.where(crew_name: "Field 5 ")
-  update_field_5.update_all(crew_id: 18)
+  update_field_5 = Employee.all.where(crew_name: 18)
+  update_field_5.update_all(crew_name: "Field 5 ")
 
-  update_PM1 = Employee.all.where(crew_name: "PM1 (Ken)")
-  update_PM1.update_all(crew_id: 17)
+  update_PM1 = Employee.all.where(crew_name: 17)
+  update_PM1.update_all(crew_name: "PM1 (Ken)")
 
-  update_PM2 = Employee.all.where(crew_name: "PM2 (Eric)")
-  update_PM2.update_all(crew_id: 12)
+  update_PM2 = Employee.all.where(crew_name: 12)
+  update_PM2.update_all(crew_name: "PM2 (Eric)")
 
-  shop = Employee.all.where(crew_name: "Shop")
-  shop.update_all(crew_id: 5)
+  shop = Employee.all.where(crew_name: 5)
+  shop.update_all(crew_name: "Shop")
 
-  cabinet_design = Employee.all.where(crew_name: "Cabinet-Design")
-  cabinet_design.update_all(crew_id: 6)
+  cabinet_design = Employee.all.where(crew_name: 6)
+  cabinet_design.update_all(crew_name: "Cabinet-Design")
 
-  interior_design = Employee.all.where(crew_name: "Interior-Design")
-  interior_design.update_all(crew_id: 7)
+  interior_design = Employee.all.where(crew_name: 7)
+  interior_design.update_all(crew_name: "Interior-Design")
 
-  arch_design = Employee.all.where(crew_name: "Arch-Design")
-  arch_design.update_all(crew_id: 9)
+  arch_design = Employee.all.where(crew_name: 9)
+  arch_design.update_all(crew_name: "Arch-Design")
 
-  marking = Employee.all.where(crew_name: "Marking")
-  marking.update_all(crew_id: 14)
+  marking = Employee.all.where(crew_name: 14)
+  marking.update_all(crew_name: "Marking")
 
-  admin = Employee.all.where(crew_name: "Admin")
-  admin.update_all(crew_id: 14)
+  admin = Employee.all.where(crew_name: 14)
+  admin.update_all(crew_name: "Admin")
 
-  phm = Employee.all.where(crew_name: "Planned Home Maintenance")
-  phm.update_all(crew_id: 13)
+  phm = Employee.all.where(crew_name: 13)
+  phm.update_all(crew_name: "Planned Home Maintenance")
 
   puts "Done"
 

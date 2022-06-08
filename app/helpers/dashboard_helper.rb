@@ -31,7 +31,7 @@ module DashboardHelper
 
       @division = Division.all[i]
       @employee = Employee.all[i]
-      value = Job.where(division_name: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months)
+      value = Job.where(division_name: @division.name).sum(:three_month_hours) / Employee.where(division: @division.name).sum(:man_hours_three_months) * 3
       if @division.utilization == 1 or @division.utilization == "nonbillable"
         i += 1
       elsif value <= 0 or value == Float::INFINITY or value == Float::NAN

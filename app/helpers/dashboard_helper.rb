@@ -52,7 +52,7 @@ module DashboardHelper
     i = 0
     while i < @division_count do
       @division = Division.all[i]
-      value = Job.where(division: @division.name, completed: true).average(:e_rating).to_f.round(2)
+      value = Job.where(division_name: @division.name, completed: true).average(:e_rating).to_f.round(2)
       if @division.utilization == 1 or @division.utilization == "nonbillable"
         i += 1
       elsif value == 0 or value == Float::INFINITY or value == Float::NAN

@@ -6,6 +6,9 @@
 <div class="scrolling-container">
   <div id="container"></div>
 </div>
+<div class="scrolling-container">
+  <div id="chart"></div>
+</div>
 <button onclick="">fetch_Data</button>
 
 <style>
@@ -29,14 +32,12 @@
         dateFormat = Highcharts.dateFormat,
         series,
         crews;
-
     // Set to 00:00:00:000 today
     today.setUTCHours(0);
     today.setUTCMinutes(0);
     today.setUTCSeconds(0);
     today.setUTCMilliseconds(0);
     today = today.getTime();
-
 
     async function fetchData() {
         const url = 'http://localhost:3000/api/v1/charts/index.json';
@@ -47,12 +48,6 @@
         return crews
 
     }
-
-    // async function getData(url) {
-    //     const response = await fetch(url);
-    //
-    //     return response.json();
-    // }
 
     crews = fetchData();
     crews = Array.prototype.slice.call(crews)
@@ -79,6 +74,7 @@
 
 
     // series = 'http://localhost:3000/api/v1/charts/index.json';
+    Highcharts.chart('chart', series)
     Highcharts.ganttChart('container', {
         series: series,
         title: {

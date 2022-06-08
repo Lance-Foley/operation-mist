@@ -9,7 +9,7 @@
       <td><%= Job.where(division_name: division.name).sum(:nine_month_hours) %></td>
       <td><%= Job.where(division_name: division.name).sum(:twelve_month_hours) %></td>
       <td><%= Job.where(division_name: division.name, completed: true).average(:e_rating).to_i %>%</td>
-      <td><%= Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division_name: division.name).sum(:three_month_hours) * 100 %>
+      <td><%= Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division_name: division.name).sum(:three_month_hours) * 100.to_i.round(2) %>
         %
       </td>
     <% rescue %>

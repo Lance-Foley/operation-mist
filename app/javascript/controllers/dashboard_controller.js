@@ -39,5 +39,49 @@ export default class extends Controller {
         });
 
 
+        const overview = document.getElementById("overview");
+        const schedule = document.getElementById("schedule");
+        const workload = document.getElementById("workload");
+        const all_jobs = document.getElementById("all_jobs");
+        const finance = document.getElementById("finance");
+
+        btnOverview.addEventListener("click", function () {
+            overview.removeAttribute("hidden")
+            schedule.setAttribute("hidden", "hidden")
+            workload.setAttribute("hidden", "hidden")
+            all_jobs.setAttribute("hidden", "hidden")
+            finance.setAttribute("hidden", "hidden")
+
+        });
+        btnSchedule.addEventListener("click", function () {
+            schedule.removeAttribute("hidden")
+            overview.setAttribute("hidden", "hidden")
+            workload.setAttribute("hidden", "hidden")
+            all_jobs.setAttribute("hidden", "hidden")
+            finance.setAttribute("hidden", "hidden")
+        });
+        btnAllJobs.addEventListener("click", function () {
+            all_jobs.removeAttribute("hidden")
+            schedule.setAttribute("hidden", "hidden")
+            overview.setAttribute("hidden", "hidden")
+            workload.setAttribute("hidden", "hidden")
+            finance.setAttribute("hidden", "hidden")
+        });
+        btnFiance.addEventListener("click", function () {
+            finance.removeAttribute("hidden")
+            all_jobs.setAttribute("hidden", "hidden")
+            schedule.setAttribute("hidden", "hidden")
+            overview.setAttribute("hidden", "hidden")
+            workload.setAttribute("hidden", "hidden")
+        });
+        btnWorkload.addEventListener("click", function () {
+            workload.removeAttribute("hidden")
+            finance.setAttribute("hidden", "hidden")
+            all_jobs.setAttribute("hidden", "hidden")
+            schedule.setAttribute("hidden", "hidden")
+            overview.setAttribute("hidden", "hidden")
+        });
+
     }
+
 }

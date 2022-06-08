@@ -1,9 +1,14 @@
 <div id="<%= dom_id job %>">
 
   <tr>
-    <td><%= link_to job.name, job %></td>
-    <td><%= job.crew %></td>
+    <td><%= link_to job.id, job %></td>
+    <td><%= job.crew_name %></td>
     <td><%= job.phase %></td>
+    <td><%= job.start_date %></td>
+    <td><%= job.end_date %></td>
+    <td><%= job.man_hours %></td>
+    <td><%= Project.where(id: job.project_id).first.name %></td>
+    <td><%= Client.joins(:projects).where(:projects => { :id => job.project_id }).first.name %></td>
   </tr>
 
 </div>

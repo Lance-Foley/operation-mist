@@ -1,69 +1,54 @@
+<div data-controller="dashboard" hidden></div>
 <div class="container-fluid">
-  <div data-controller="dashboard"></div>
   <div class="row flex-nowrap">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2  bg-dark">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item">
-            <a href="#" class="nav-link align-middle ">
-              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Overview</span>
-            </a>
+            <button id="btnWorkload" href="#" class="nav-link align-middle ">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Workload</span>
+            </button>
           </li>
           <li>
-            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link  align-middle">
-              <i class="fs-4 bi-columns"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-
-            </ul>
+            <button id="btnOverview" class="nav-link  align-middle"><i class="fs-4 bi-columns"></i>
+              <span class="ms-1 d-none d-sm-inline">Overview</span></button>
           </li>
           <li>
-            <a href="#" class="nav-link  align-middle">
-              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Schedule</span></a>
+            <button id="btnSchedule" href="#" class="nav-link  align-middle">
+              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Schedule</span></button>
           </li>
           <li>
-            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link  align-middle ">
-              <i class="fs-4 bi-list-ul"></i> <span class="ms-1 d-none d-sm-inline">Crews</span></a>
-            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-              <li class="w-100">
-                <a href="#" class="nav-link "> <span class="d-none d-sm-inline">Item</span> 1</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link "> <span class="d-none d-sm-inline">Item</span> 2</a>
-              </li>
-            </ul>
+            <button id="btnAllJobs" href="#submenu2" data-bs-toggle="collapse" class="nav-link  align-middle ">
+              <i class="fs-4 bi-list-ul"></i> <span class="ms-1 d-none d-sm-inline">All Jobs</span></button>
           </li>
           <li>
-            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link  align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-              <li class="w-100">
-                <a href="#" class="nav-link "> <span class="d-none d-sm-inline">Product</span> 1</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link "> <span class="d-none d-sm-inline">Product</span> 2</a>
-              </li>
-
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="nav-link  align-middle">
-              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Clients</span> </a>
+            <button id="btnFiance" href="#" class="nav-link  align-middle">
+              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Finance</span></button>
           </li>
         </ul>
         <hr>
 
       </div>
     </div>
-    <div class="col py-3 ">
-      <div class="container-fluid">
-        <%= render 'division_workload_card' %>
+    <div class="col py-3">
+      <div id="overview">
+        <%= render 'overview_dashboard' %>
       </div>
-      <div class="container">
-        <%= render 'crew_workload_chart' %>
+
+      <div id="schedule" hidden>
+        <p>Schedule</p>
       </div>
-      <div class="container">
+      <div id="workload" hidden>
+        <p>Workload</p>
       </div>
+      <div id="all_jobs" hidden>
+        <%= render 'all_jobs' %>
+      </div>
+      <div id="finance" hidden>
+        <p>Finance</p>
+      </div>
+
     </div>
   </div>
 </div>

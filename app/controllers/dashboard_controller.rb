@@ -1,16 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    # @Field_Months_Remaining = Job.where(crew_id: [1, 2, 3, 4,]).sum(:twelve_month_hours) /
-    #   Employee.where(crew: [1, 2, 3, 4,]).sum(:man_hours_twelve_months)
-    #
-    # @Field_2_Months_Remaining = Job.where(crew_id: "2").sum(:three_month_hours) / Employee.where(crew_id: "2").sum(:man_hours_three_months)
-    # @Field_3_Months_Remaining = Job.where(crew_id: "3").sum(:three_month_hours) / Employee.where(crew_id: "3").sum(:man_hours_three_months)
-    # @Field_4_Months_Remaining = Job.where(crew_id: "4").sum(:three_month_hours) / Employee.where(crew_id: "4").sum(:man_hours_three_months)
-    #
-    # @weekly_hours = Job.all.where("start_date < ?", Date.today)
-    #                    .where(crew_id: 1)
-    #                    .sum(:hours_per_week)
-    # @available_hours = Employee.where(crew_id: 1).sum(:true_man_hours_per_week)
+    @jobs = Job.all
 
   end
 
@@ -26,7 +16,7 @@ class DashboardController < ApplicationController
   helper_method :crew_months_remaining
 
   # Returns List of Employees Based on Role and Crew Selection
-  def crew_list( crew)
+  def crew_list(crew)
     @employee_count = Employee.all.where(crew: crew).count
     employees = Employee.where(crew: crew)
     crew = []

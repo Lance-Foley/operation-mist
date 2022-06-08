@@ -7,13 +7,15 @@
   <br>
 
   <div>
-    
+<span class="float-end">
+
     <%= link_to "Back", @job, class: "btn btn-secondary" %> |
-    <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
-    <hr>
-    <%= link_to "Delete Job", @job, method: :delete, data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    }, class: "btn btn-danger" %>
+  <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
+  <hr>
+  <%= link_to "Delete Job", @job, method: :delete, data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  }, class: "btn btn-danger float-end" %>
+</span>
   </div>
 </div>

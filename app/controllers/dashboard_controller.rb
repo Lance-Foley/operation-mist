@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
   def index
-    @jobs = Job.all
-
+    # @jobs = Job.all
+    @q = Job.ransack(params[:q])
+    @jobs = @q.result(distinct: true)
   end
 
   def crew_months_remaining(crew)

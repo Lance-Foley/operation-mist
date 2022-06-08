@@ -3,7 +3,7 @@
   <tr>
     <!--    TODO Add search form and sorting and filter to all jobs Table-->
     <td><%= link_to job.id, job %></td>
-    <td><%= job.crew_name %></td>
+    <td><%= link_to job.crew_name, job %></td>
     <td><%= job.phase %></td>
     <td><%= job.start_date %></td>
     <td><%= job.end_date %></td>

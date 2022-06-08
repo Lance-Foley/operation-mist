@@ -49,7 +49,6 @@ export default class extends Controller {
             overview.removeAttribute("hidden")
             schedule.setAttribute("hidden", "hidden")
             workload.setAttribute("hidden", "hidden")
-            all_jobs.setAttribute("hidden", "hidden")
             finance.setAttribute("hidden", "hidden")
 
         });
@@ -57,19 +56,11 @@ export default class extends Controller {
             schedule.removeAttribute("hidden")
             overview.setAttribute("hidden", "hidden")
             workload.setAttribute("hidden", "hidden")
-            all_jobs.setAttribute("hidden", "hidden")
             finance.setAttribute("hidden", "hidden")
         });
-        btnAllJobs.addEventListener("click", function () {
-            all_jobs.removeAttribute("hidden")
-            schedule.setAttribute("hidden", "hidden")
-            overview.setAttribute("hidden", "hidden")
-            workload.setAttribute("hidden", "hidden")
-            finance.setAttribute("hidden", "hidden")
-        });
+
         btnFiance.addEventListener("click", function () {
             finance.removeAttribute("hidden")
-            all_jobs.setAttribute("hidden", "hidden")
             schedule.setAttribute("hidden", "hidden")
             overview.setAttribute("hidden", "hidden")
             workload.setAttribute("hidden", "hidden")
@@ -77,7 +68,6 @@ export default class extends Controller {
         btnWorkload.addEventListener("click", function () {
             workload.removeAttribute("hidden")
             finance.setAttribute("hidden", "hidden")
-            all_jobs.setAttribute("hidden", "hidden")
             schedule.setAttribute("hidden", "hidden")
             overview.setAttribute("hidden", "hidden")
         });

@@ -13,3 +13,5 @@ require 'faker'
     name: Faker::Team.name
   )
 end
+
+Variance.create(variance: 0.71)

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Variances</h1>
+
+<div id="variances">
+  <% @variances.each do |variance| %>
+    <%= render variance %>
+    <p>
+      <%= link_to "Show this variance", variance %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New variance", new_variance_path %>

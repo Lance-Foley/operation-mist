@@ -1,0 +1,41 @@
+<%= form_with(model: budget) do |form| %>
+  <% if budget.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+        <% budget.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :account_name, style: "display: block", class: "form-label" %>
+      <%= form.text_field :account_name, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :description, style: "display: block", class: "form-label" %>
+      <%= form.text_field :description, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :balance, style: "display: block", class: "form-label" %>
+      <%= form.text_field :balance, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form.label :start_date, style: "display: block", class: "form-label" %>
+      <%= form.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :end_date, style: "display: block", class: "form-label" %>
+      <%= form.date_field :end_date, class: "form-control" %>
+    </div>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

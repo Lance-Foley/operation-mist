@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :variances
+  resources :budgets
   namespace :api do
     namespace :v1 do
       get 'crew_three_month_workload/index'

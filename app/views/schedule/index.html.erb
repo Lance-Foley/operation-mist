@@ -51,7 +51,14 @@
 
     crews = fetchData();
     crews = Array.prototype.slice.call(crews)
-    console.log(crews);
+    // crews = crews.map(function (crew) {
+    //     let data = crew.jobs.map(function (job) {
+    //         return {
+    //             start_date: job.start_date.getTime() / 1000
+    //             end_date: job.end_date.getTime() / 1000
+    //         }
+    //     })
+    // })
 
     series = crews.map(function (crew, i) {
         let data = crew.jobs.map(function (job) {
@@ -71,7 +78,6 @@
 
     });
     console.log(series)
-
 
     // series = 'http://localhost:3000/api/v1/charts/index.json';
     Highcharts.chart('chart', series)

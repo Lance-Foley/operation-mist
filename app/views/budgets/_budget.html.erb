@@ -1,0 +1,12 @@
+<div id="<%= dom_id budget %>">
+
+  <tr>
+    <td><%= budget.account_name %></td>
+    <td><%= budget.description %></td>
+    <td><%= budget.balance %></td>
+    <td><%= budget.expenses %></td>
+    <td><%= budget.income %></td>
+    <td><%= budget.start_date.strftime('%m/%d/%Y') %></td>
+    <td><%= budget.end_date.strftime('%m/%d/%Y') %></td>
+  </tr>
+</div>

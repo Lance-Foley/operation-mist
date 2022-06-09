@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_203849) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_192921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budgets", force: :cascade do |t|
+    t.string "account_name"
+    t.string "description"
+    t.decimal "income"
+    t.decimal "balance"
+    t.decimal "expenses"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -102,11 +114,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_203849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "info"
-    t.decimal "cost"
-    t.decimal "sub_cost"
+    t.decimal "cost", default: "0.0"
+    t.decimal "sub_cost", default: "0.0"
     t.date "start_date"
     t.date "end_date"
     t.bigint "client_id"
+    t.float "number_of_days", default: 0.0, null: false
+    t.decimal "sub_cost_per_day", default: "0.0", null: false
+    t.decimal "project_cost_per_day", default: "0.0", null: false
+    t.decimal "total_cost_per_day", default: "0.0", null: false
   end
 
   create_table "roles", force: :cascade do |t|

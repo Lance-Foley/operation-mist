@@ -1,0 +1,3 @@
+class Variance < ApplicationRecord
+
+end

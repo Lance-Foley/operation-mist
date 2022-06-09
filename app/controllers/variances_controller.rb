@@ -38,7 +38,7 @@ class VariancesController < ApplicationController
   def update
     respond_to do |format|
       if @variance.update(variance_params)
-        format.html { redirect_to edit_variance_path(1), notice: "Variance was successfully updated." }
+        format.html { redirect_to dashboard_index_path, notice: "Variance was successfully updated." }
         format.json { render :show, status: :ok, location: @variance }
       else
         format.html { render :edit, status: :unprocessable_entity }

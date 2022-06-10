@@ -18,11 +18,11 @@
     </div>
     <div class="col">
       <%= form.label :start_date, style: "display: block", class: "form-label" %>
-      <%= form.date_field :start_date, class: "form-control", :input_html => { :value => Date.today} %>
+      <%= form.date_field :start_date, class: "form-control", :input_html => { :value => Date.today } %>
     </div>
     <div class="col">
       <%= form.label :end_date, style: "display: block", class: "form-label" %>
-      <%= form.date_field :end_date, class: "form-control", :input_html => { :value => :start_date} %>
+      <%= form.date_field :end_date, class: "form-control", :input_html => { :value => :start_date } %>
     </div>
   </div>
   <div class="row">
@@ -39,7 +39,7 @@
   <div class="row">
     <div class="col">
       <%= form.label :project_manager, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:project_manager, Employee.where(tier: %w[Tier_1 Tier_2]), :name, :name, class: "form-control") %>
+      <%= form.collection_select(:project_manager, Employee.where(tier: %w[Tier_1 Tier_2]), :name, :name, {}, class: "form-select") %>
     </div>
     <div class="col">
       <%= form.label :info, style: "display: block", class: "form-label" %>

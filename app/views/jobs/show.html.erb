@@ -48,7 +48,7 @@
   </div>
   <span class="float-end">
   <%= link_to "All Jobs", jobs_path, class: " btn btn-secondary" %> |
-    <%= link_to Project.where(id: @job.project_id).first.name + " Jobs", project_phase_path(@job.project_id), class: " btn btn-secondary" %>
+    <%= link_to "Project Jobs", project_phase_path(@job.project_id), class: " btn btn-secondary" %>
     |
     <%= link_to "Edit", edit_job_path(@job), class: " btn btn-warning" %>
     </span>

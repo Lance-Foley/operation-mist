@@ -42,25 +42,25 @@
 
     <div class="col">
       <%= form.label :crew_id, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
+      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name, {}, { class: "form-select" }) %>
     </div>
-    <div class="col">
-      <%= form.label :crew_name, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew_name, Crew.all.collect, :name, :name) %>
-    </div>
+    <!--    <div class="col">-->
+    <%#= form.label :crew_name, style: "display: block", class: "form-label" %>
+    <%#= form.collection_select(:crew_name, Crew.all.collect, :name, :name) %>
+    <!--    </div>-->
 
 
     <div class="col">
-      <%= form.label :phase, style: "display: block", class: "form-label mt-3" %>
-      <%= form.select :phase, Phase.all.collect { |p| [p.name] }, class: "form-select" %>
+      <%= form.label :phase, style: "display: block", class: "form-label" %>
+      <%= form.select :phase, Phase.all.collect { |p| [p.name] }, {}, { class: "form-select" } %>
     </div>
-    <div class="col">
-      <%= form.label :division_name, style: "display: block", class: "form-label mt-3" %>
-      <%= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
-    </div>
+    <!--    <div class="col">-->
+    <%#= form.label :division_name, style: "display: block", class: "form-label mt-3" %>
+    <%#= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
+    <!--    </div>-->
     <div class="col">
       <%= form.label :division_id, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:division_id, Division.all.collect, :id, :name) %>
+      <%= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %>
     </div>
     <% if @job.new_record? %>
     <% else %>
@@ -75,8 +75,8 @@
       </div>
     <% end %>
     <span>
-
-  <%= form.submit class: "btn btn-warning float-end" %>
+<hr>
+      <%= form.submit class: "btn btn-warning float-end" %>
     </span>
   </div>
 <% end %>

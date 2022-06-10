@@ -26,43 +26,43 @@
       <%= form.label :phone_number, style: "display: block", class: "form-label" %>
       <%= form.text_field :phone_number, class: "form-control" %>
     </div>
-  </div>
-  <div class="row">
-
-    <div class="col">
-      <%= form.label :crew_name, style: "display: block", class: "form-label" %>
-      <%= form.select :crew_name, Crew.all.collect { |p| [p.name] }, class: "form-select" %>
-    </div>
-    <div class="col">
-      <%= form.label :crew_id, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name) %>
-    </div>
-
-    <div class="col">
-      <%= form.label :role, style: "display: block", class: "form-label" %>
-      <%= form.select :role, Role.all.collect { |p| [p.name] }, class: "form-select" %>
-
-    </div>
-    <div class="col">
-      <%= form.label :tier, style: "display: block", class: "form-label" %>
-      <%= form.select :tier, Employee.tiers.keys.to_a, class: "form-select" %>
-
-    </div>
-    <div class="col">
-      <%= form.label :division, style: "display: block", class: "form-label" %>
-      <%= form.select :division, Division.all.collect { |p| [p.name] }, class: "form-select" %>
-    </div>
     <div class="col">
       <%= form.label :man_hours_per_week, style: "display: block", class: "form-label" %>
       <%= form.text_field :man_hours_per_week, class: "form-control" %>
     </div>
   </div>
+  <div class="row">
+
+    <!--    <div class="col">-->
+    <%#= form.label :crew_name, style: "display: block", class: "form-label" %>
+    <%#= form.select :crew_name, Crew.all.collect { |p| [p.name] }, {}, class: "form-select" %>
+    <!--    </div>-->
+    <div class="col">
+      <%= form.label :crew_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name, {}, class: "form-select") %>
+    </div>
+
+    <div class="col">
+      <%= form.label :role, style: "display: block", class: "form-label" %>
+      <%= form.select :role, Role.all.collect { |p| [p.name] }, {}, class: "form-select" %>
+
+    </div>
+    <div class="col">
+      <%= form.label :tier, style: "display: block", class: "form-label" %>
+      <%= form.select :tier, Employee.tiers.keys.to_a, {}, class: "form-select" %>
+
+    </div>
+    <div class="col">
+      <%= form.label :division, style: "display: block", class: "form-label" %>
+      <%= form.select :division, Division.all.collect { |p| [p.name] }, {}, class: "form-select" %>
+    </div>
 
 
-  <div>
+    <span class="">
+    <hr>
 
-
-    <%= form.submit class: "btn btn-primary" %>
+      <%= form.submit class: "btn btn-primary float-end" %>
+</span>
 
 
   </div>

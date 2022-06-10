@@ -23,8 +23,11 @@
   </table>
 
   <div>
-    <%= link_to "Edit", edit_division_path(@division), class: "btn btn-warning" %> |
-    <%= link_to "Back", divisions_path, class: "btn btn-secondary" %>
+    <span class="float-end">
+
+      <%= link_to "Back", divisions_path, class: "btn btn-secondary" %> |
+      <%= link_to "Edit", edit_division_path(@division), class: "btn btn-warning" %>
+    </span>
 
   </div>
 </div>

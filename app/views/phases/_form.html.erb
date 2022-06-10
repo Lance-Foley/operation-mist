@@ -10,16 +10,19 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="col">
-    <%= form.label :name, style: "display: block", class:"form-label" %>
-    <%= form.text_field :name, class:"form-control" %>
-  </div>
-</div>
+  <div class="row">
+    <div class="col">
+      <%= form.label :name, style: "display: block", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
 
 
+    <div>
+    <span>
+      <hr>
+      <%= form.submit class: "btn btn-warning float-end" %>
 
-  <div>
-    <%= form.submit %>
+    </span>
+    </div>
   </div>
 <% end %>

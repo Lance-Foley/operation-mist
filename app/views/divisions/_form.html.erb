@@ -20,12 +20,15 @@
     </div>
     <div class="col">
       <%= form.label :utilization, style: "display: block", class: "form-label" %>
-      <%= form.select :utilization, Division.utilizations.keys.to_a, class: "form-select" %>
+      <%= form.select :utilization, Division.utilizations.keys.to_a, {}, class: "form-select" %>
     </div>
-  </div>
 
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <span>
+        <hr>
+        <%= form.submit class: "btn btn-primary float-end" %>
+      </span>
+    </div>
   </div>
 <% end %>

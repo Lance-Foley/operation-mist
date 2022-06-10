@@ -4,14 +4,17 @@
   <%= render "form", employee: @employee %>
 
   <br>
-
   <div>
+
+  <span class="float-end">
     <%= link_to "Back", @employee, class: "btn btn-secondary" %> |
     <%= link_to "Employees", employees_path, class: "btn btn-secondary" %>
     <hr>
     <%= link_to "Delete ", @employee, method: :delete, data: {
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
-    }, class: "btn btn-danger" %>
+    }, class: "btn btn-danger float-end" %>
+  </span>
   </div>
+
 </div>

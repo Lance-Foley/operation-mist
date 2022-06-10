@@ -3,10 +3,12 @@ class JobsController < ApplicationController
   # todo add associations to projects create form and view for jobs inside of project id
   # GET /jobs or /jobs.json
   #
+  @today = Date.current
 
   def index
     @q = Job.ransack(params[:q])
     @jobs = @q.result(distinct: true)
+    
   end
 
   # GET /jobs/1 or /jobs/1.json

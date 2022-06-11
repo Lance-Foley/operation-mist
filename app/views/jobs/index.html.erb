@@ -15,10 +15,10 @@
       <th scope="col">Phase</th>
       <th scope="col"><%= sort_link(@q, :start_date, 'Start Date', default_order: :desc) %></th>
       <th scope="col"><%= sort_link(@q, :end_date, 'End Date', default_order: :desc) %></th>
-      <th scope="col">Bid Hours</th>
-      <th scope="col">Project Name</th>
-      <th scope="col">Client Name</th>
-      <th scope="col">Completion Status</th>
+      <th scope="col">Hours <br><small>(Actual/Bid)</small></th>
+      <th scope="col">Project</th>
+      <th scope="col">Client</th>
+      <th scope="col">Completed</th>
       </thead>
       <tbody>
       <% @jobs.each do |job| %>

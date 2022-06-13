@@ -14,3 +14,4 @@ pin "bootstrap", to: 'bootstrap.min.js'
 
 # pin "highcharts" # @10.1.0
 pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
+pin "fusioncharts", to: "https://ga.jspm.io/npm:fusioncharts@3.18.0/fusioncharts.js"

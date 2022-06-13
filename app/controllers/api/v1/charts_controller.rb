@@ -1,6 +1,6 @@
 class Api::V1::ChartsController < ApplicationController
   def index
-    @crews = Crew.all
+    @crews = Job.all
     render json: @crews
   end
 

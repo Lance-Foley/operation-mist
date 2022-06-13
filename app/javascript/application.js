@@ -5,6 +5,6 @@ import "controllers"
 import "chartkick"
 import "highcharts-gantt"
 import Highcharts from "highcharts"
-
+import 'fusioncharts'
 
 window.Highcharts = Highcharts

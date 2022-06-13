@@ -110,6 +110,7 @@ GEM
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     foreman (0.87.2)
+    fusioncharts-rails (0.0.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     groupdate (6.1.0)
@@ -267,6 +268,7 @@ DEPENDENCIES
   devise
   faker (~> 2.21)
   foreman
+  fusioncharts-rails
   groupdate
   highcharts-rails
   importmap-rails (~> 1.0)

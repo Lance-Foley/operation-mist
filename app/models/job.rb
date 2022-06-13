@@ -17,8 +17,8 @@ class Job < ApplicationRecord
   # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
   private def create_or_update(touch: nil, **)
 
-    self.crew_name = Crew.where(id: :crew_id).name
-    self.division_name = Division.where(id: :division_id).name
+    self.crew_name = Crew.where(id: crew_id).pluck(:name).first
+    self.division_name = Division.where(id: division_id).pluck(:name).first
     self.weeks = (end_date.to_datetime - start_date.to_datetime).to_f / 7
     # @hourPerWeek = self.hours_per_week = (man_hours / weeks).to_f
     # Checks if Weeks is less then one. Gets Hours Per week

@@ -112,7 +112,7 @@ class Job < ApplicationRecord
 
     ###################################################################################
     # Calculate Hours In Six Months
-    if today > start_date.to_datetime and week_remaining > 0
+    if today >= start_date.to_datetime and week_remaining > 0
       if end_date.to_datetime > six_months_from_now
         self.six_month_hours = ((six_months_from_now - today).to_f / 7 * hours_per_week).round(1)
       elsif end_date.to_datetime < six_months_from_now
@@ -142,7 +142,7 @@ class Job < ApplicationRecord
 
     ##################################################################################
     # Calculate Hours In Nine Months
-    if today > start_date.to_datetime and week_remaining > 0
+    if today >= start_date.to_datetime and week_remaining > 0
       if end_date.to_datetime > nine_months_from_now
         self.nine_month_hours = ((nine_months_from_now - today).to_f / 7 * hours_per_week).round(2)
       elsif end_date.to_datetime < nine_months_from_now
@@ -172,7 +172,7 @@ class Job < ApplicationRecord
 
     ###########################################################################
     # Calculate Hours In Twelve Months
-    if today > start_date.to_datetime and week_remaining > 0
+    if today >= start_date.to_datetime and week_remaining > 0
       if end_date.to_datetime > twelve_months_from_now
         self.twelve_month_hours = ((twelve_months_from_now - today).to_f / 7 * hours_per_week).round(2)
       elsif end_date.to_datetime < twelve_months_from_now

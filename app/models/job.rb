@@ -82,7 +82,7 @@ class Job < ApplicationRecord
 
     ###################################################################################
     # Calculate Hours In Three Months
-    if today > start_date.to_datetime and week_remaining > 0
+    if today >= start_date.to_datetime and week_remaining > 0
       if end_date.to_datetime > three_months_from_now
         self.three_month_hours = ((three_months_from_now - today).to_f / 7 * hours_per_week)
       elsif end_date.to_datetime < three_months_from_now

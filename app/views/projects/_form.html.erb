@@ -18,11 +18,11 @@
     </div>
     <div class="col">
       <%= form.label :start_date, style: "display: block", class: "form-label" %>
-      <%= form.date_field :start_date, class: "form-control" %>
+      <%= form.date_field :start_date, class: "form-control", :input_html => { :value => Date.today } %>
     </div>
     <div class="col">
       <%= form.label :end_date, style: "display: block", class: "form-label" %>
-      <%= form.date_field :end_date, class: "form-control" %>
+      <%= form.date_field :end_date, class: "form-control", :input_html => { :value => :start_date } %>
     </div>
   </div>
   <div class="row">
@@ -33,7 +33,7 @@
     </div>
     <div class="col">
       <%= form.label :sub_cost, style: "display: block", class: "form-label mt-3" %>
-      <%= form.text_field :sub_cost, class: "form-control" %>
+      <%= form.text_field :sub_cost, class: "form-control", value: 0.0 %>
     </div>
   </div>
   <div class="row">

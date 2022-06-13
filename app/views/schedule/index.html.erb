@@ -1,27 +1,155 @@
 <!--<div data-controller="schedule"></div>-->
-<div data-controller="schedule" hidden></div>
 <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
 <script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/gantt/modules/accessibility.js"></script>
-<!-- Include fusioncharts core library -->
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-<!-- Include fusion theme -->
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
 
-
+<div class="scrolling-container">
+  <div id="container"></div>
+</div>
+<div class="scrolling-container">
+  <div id="chart"></div>
+</div>
+<button onclick="">fetch_Data</button>
 
 <style>
-    .chart-container {
-        width: 40%;
-        height: 100vh;
-        float: left;
-        padding: 20px;
-        border: 2px solid lightblue;
+    #container {
+        max-width: 1200px;
+        min-width: 800px;
+        height: 400px;
+        margin: 1em auto;
     }
+
+    .scrolling-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
 </style>
 
+<script type="text/javascript" charset="utf-8">
+    let today = new Date(),
+        day = 1000 * 60 * 60 * 24,
+        dateFormat = Highcharts.dateFormat,
+        series,
+        crews;
+    // Set to 00:00:00:000 today
+    today.setUTCHours(0);
+    today.setUTCMinutes(0);
+    today.setUTCSeconds(0);
+    today.setUTCMilliseconds(0);
+    today = today.getTime();
 
-<div id="chart-container"></div>
+    async function fetchData() {
+        const url = 'http://localhost:3000/api/v1/charts/index.json';
+        const response = await fetch(url);
+        // wait until the request has been completed
+        crews = await response.json();
+        console.log(crews)
+        return crews
 
+    }
 
+    crews = fetchData();
+    crews = Array.prototype.slice.call(crews)
+    // crews = crews.map(function (crew) {
+    //     let data = crew.jobs.map(function (job) {
+    //         return {
+    //             start_date: job.start_date.getTime() / 1000
+    //             end_date: job.end_date.getTime() / 1000
+    //         }
+    //     })
+    // })
+
+    series = crews.map(function (crew, i) {
+        let data = crew.jobs.map(function (job) {
+            return {
+                id: 'job-' + i,
+                phase: job.phase,
+                start_date: job.start_date,
+                end_date: job.end_date,
+                y: i
+            };
+        });
+        return {
+            name: crew.name,
+            data: data,
+            current: crew.jobs[crew.current]
+        };
+
+    });
+    console.log(series)
+
+    // series = 'http://localhost:3000/api/v1/charts/index.json';
+    Highcharts.chart('chart', series)
+    Highcharts.ganttChart('container', {
+        series: series,
+        title: {
+            text: 'Crew Schedule'
+        },
+        tooltip: {
+            pointFormat: '<span>Rented To: {point.phase}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+        },
+        lang: {
+            accessibility: {
+                axis: {
+                    xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.',
+                    yAxisDescriptionSingular: 'The chart has a tabular Y axis showing a data table row for each point.'
+                }
+            }
+        },
+        accessibility: {
+            keyboardNavigation: {
+                seriesNavigation: {
+                    mode: 'serialize'
+                }
+            },
+            point: {
+                valueDescriptionFormat: 'Rented to {point.rentedTo} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+            },
+            series: {
+                descriptionFormatter: function (series) {
+                    return series.name + ', car ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+                }
+            }
+        },
+        xAxis: {
+            currentDateIndicator: true
+        },
+        yAxis: {
+            type: 'category',
+            grid: {
+                columns: [{
+                    title: {
+                        text: 'Model'
+                    },
+                    categories: series.map(function (s) {
+                        return s.name;
+                    })
+                }, {
+                    title: {
+                        text: 'Rented To'
+                    },
+                    categories: series.map(function (s) {
+                        return s.current.phase;
+                    })
+                }, {
+                    title: {
+                        text: 'From'
+                    },
+                    categories: series.map(function (s) {
+                        return dateFormat('%e. %b', s.current.start_date);
+                    })
+                }, {
+                    title: {
+                        text: 'To'
+                    },
+                    categories: series.map(function (s) {
+                        return dateFormat('%e. %b', s.current.end_date);
+                    })
+                }]
+            }
+        }
+    });
+
+</script>
 

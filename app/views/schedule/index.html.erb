@@ -34,7 +34,7 @@
     let series
 
     async function loadJobs() {
-        const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+        const response = await fetch('http://localhost:3000/api/v1/charts/index');
         const jobs = await response.json();
 
         series = jobs.map(function (job, i) {

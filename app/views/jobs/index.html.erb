@@ -22,9 +22,15 @@
       <th scope="col">Completed</th>
       </thead>
       <tbody>
+
+      
       <% @jobs.each do |job| %>
-        <%= render job %>
+        <% if job.completed == true %>
+        <% else %>
+          <%= render job %>
+        <% end %>
       <% end %>
+
       </tbody>
     </table>
   </div>

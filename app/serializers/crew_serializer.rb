@@ -1,11 +1,11 @@
 class CrewSerializer < ActiveModel::Serializer
-  attributes :crew_jobs
+  attributes :name, :current, :deals
 
   def current
     0
   end
 
-  def crew_jobs
-    object.jobs.map { |job| { project: job.project_id.to_s, from: job.start_date.to_datetime, to: job.end_date.to_datetime } }
+  def deals
+    object.jobs.map { |job| { project: job.project_id.to_s, from: job.start_date, to: job.end_date } }
   end
 end

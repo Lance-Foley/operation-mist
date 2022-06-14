@@ -2,20 +2,14 @@
 <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
 <script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/gantt/modules/accessibility.js"></script>
-
 <div class="scrolling-container">
   <div id="container"></div>
 </div>
-<div class="scrolling-container">
-  <div id="chart"></div>
-</div>
-<button onclick="">fetch_Data</button>
-
 <style>
     #container {
-        max-width: 1200px;
-        min-width: 800px;
-        height: 400px;
+        max-width: 85%;
+        min-width: 100vh;
+        height: 85vh;
         margin: 1em auto;
     }
 
@@ -23,133 +17,145 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-
 </style>
+
 
 <script type="text/javascript" charset="utf-8">
     let today = new Date(),
-        day = 1000 * 60 * 60 * 24,
-        dateFormat = Highcharts.dateFormat,
-        series,
-        crews;
-    // Set to 00:00:00:000 today
+        day = 1000 * 60 * 60 * 24;
+
     today.setUTCHours(0);
     today.setUTCMinutes(0);
     today.setUTCSeconds(0);
     today.setUTCMilliseconds(0);
     today = today.getTime();
 
-    async function fetchData() {
-        const url = 'http://localhost:3000/api/v1/charts/index.json';
-        const response = await fetch(url);
-        // wait until the request has been completed
-        crews = await response.json();
-        console.log(crews)
-        return crews
+    let dateFormat = Highcharts.dateFormat;
+    let series
 
-    }
+    async function loadJobs() {
+        const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+        const jobs = await response.json();
 
-    crews = fetchData();
-    crews = Array.prototype.slice.call(crews)
-    // crews = crews.map(function (crew) {
-    //     let data = crew.jobs.map(function (job) {
-    //         return {
-    //             start_date: job.start_date.getTime() / 1000
-    //             end_date: job.end_date.getTime() / 1000
-    //         }
-    //     })
-    // })
-
-    series = crews.map(function (crew, i) {
-        let data = crew.jobs.map(function (job) {
+        series = jobs.map(function (job, i) {
+            let data = job.deals.map(function (phase) {
+                return {
+                    id: 'deal-' + i,
+                    project: phase.project,
+                    start: new Date(phase.from).getTime(),
+                    end: new Date(phase.to).getTime(),
+                    y: i
+                };
+            });
             return {
-                id: 'job-' + i,
-                phase: job.phase,
-                start_date: job.start_date,
-                end_date: job.end_date,
-                y: i
+                name: job.name,
+                data: data,
+                current: job.deals[job.current]
             };
         });
-        return {
-            name: crew.name,
-            data: data,
-            current: crew.jobs[crew.current]
-        };
+        console.log(series);
+        await Highcharts.ganttChart('container', {
+            series: series,
+            title: {
+                text: 'Crew Schedule'
+            },
+            tooltip: {
+                pointFormat: '<span>Rented To: {point.project}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+            },
+            lang: {
+                accessibility: {
+                    axis: {
+                        xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.',
+                        yAxisDescriptionSingular: 'The chart has a tabular Y axis showing a data table row for each point.'
+                    }
+                }
+            },
 
-    });
-    console.log(series)
+            scrollbar: {
+                enabled: true
+            },
 
-    // series = 'http://localhost:3000/api/v1/charts/index.json';
-    Highcharts.chart('chart', series)
-    Highcharts.ganttChart('container', {
-        series: series,
-        title: {
-            text: 'Crew Schedule'
-        },
-        tooltip: {
-            pointFormat: '<span>Rented To: {point.phase}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
-        },
-        lang: {
+            rangeSelector: {
+                enabled: true,
+                selected: 0
+            },
             accessibility: {
-                axis: {
-                    xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.',
-                    yAxisDescriptionSingular: 'The chart has a tabular Y axis showing a data table row for each point.'
-                }
-            }
-        },
-        accessibility: {
-            keyboardNavigation: {
-                seriesNavigation: {
-                    mode: 'serialize'
+                keyboardNavigation: {
+                    seriesNavigation: {
+                        mode: 'serialize'
+                    }
+                },
+                point: {
+                    valueDescriptionFormat: 'Assigned to {point.project} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+                },
+                series: {
+                    descriptionFormatter: function (series) {
+                        return series.name + ', job ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+                    }
                 }
             },
-            point: {
-                valueDescriptionFormat: 'Rented to {point.rentedTo} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+            xAxis: {
+                currentDateIndicator: true
             },
-            series: {
-                descriptionFormatter: function (series) {
-                    return series.name + ', car ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
-                }
-            }
-        },
-        xAxis: {
-            currentDateIndicator: true
-        },
-        yAxis: {
-            type: 'category',
-            grid: {
-                columns: [{
-                    title: {
-                        text: 'Model'
-                    },
-                    categories: series.map(function (s) {
-                        return s.name;
-                    })
-                }, {
-                    title: {
-                        text: 'Rented To'
-                    },
-                    categories: series.map(function (s) {
-                        return s.current.phase;
-                    })
-                }, {
-                    title: {
-                        text: 'From'
-                    },
-                    categories: series.map(function (s) {
-                        return dateFormat('%e. %b', s.current.start_date);
-                    })
-                }, {
-                    title: {
-                        text: 'To'
-                    },
-                    categories: series.map(function (s) {
-                        return dateFormat('%e. %b', s.current.end_date);
-                    })
-                }]
-            }
-        }
-    });
 
+
+            navigator: {
+                enabled: true,
+                liveRedraw: true,
+                series: {
+                    type: 'gantt',
+                    pointPlacement: 0.5,
+                    pointPadding: 0.25,
+                    accessibility: {
+                        enabled: false
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    max: 3,
+                    reversed: true,
+                    categories: []
+                }
+            },
+
+
+            yAxis: {
+                type: 'category',
+                grid: {
+                    columns: [{
+                        title: {
+                            text: 'Crew'
+                        },
+                        categories: series.map(function (s) {
+                            return s.name;
+                        })
+                    }, {
+                        title: {
+                            text: 'Assigned To'
+                        },
+                        categories: series.map(function (s) {
+                            return s.current.project;
+                        })
+                    }, {
+                        title: {
+                            text: 'From'
+                        },
+                        categories: series.map(function (s) {
+                            return s.current.from;
+                        })
+                    }, {
+                        title: {
+                            text: 'To'
+                        },
+                        categories: series.map(function (s) {
+                            return s.current.to;
+                        },)
+                    }]
+                }
+            },
+
+        });
+    }
+
+    loadJobs();
 </script>
-

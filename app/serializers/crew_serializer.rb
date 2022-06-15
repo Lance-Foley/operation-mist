@@ -6,6 +6,6 @@ class CrewSerializer < ActiveModel::Serializer
   end
 
   def deals
-    object.jobs.map { |job| { project: job.project_id.to_s, from: job.start_date, to: job.end_date } }
+    object.jobs.map { |job| { project: Project.where(id: job.project_id).first.name, client: Client.joins(:projects).where(:projects => { :id => job.project_id }).first.name, phase: job.phase, from: job.start_date, to: job.end_date } }
   end
 end

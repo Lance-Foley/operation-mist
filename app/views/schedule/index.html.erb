@@ -34,7 +34,8 @@
     let series
 
     async function loadJobs() {
-        const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+        // const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+        const response = await fetch('http://localhost:3000/api/v1/charts/index');
         const jobs = await response.json();
 
         series = jobs.map(function (job, i) {
@@ -42,6 +43,8 @@
                 return {
                     id: 'deal-' + i,
                     project: phase.project,
+                    client: phase.client,
+                    phase: phase.phase,
                     start: new Date(phase.from).getTime(),
                     end: new Date(phase.to).getTime(),
                     y: i
@@ -60,7 +63,10 @@
                 text: 'Crew Schedule'
             },
             tooltip: {
-                pointFormat: '<span>Rented To: {point.project}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+                pointFormat: '<span>Client {point.client}</span><br/>' +
+                    '<span>Project: {point.project}</span><br/>' +
+                    '<span>Phase: {point.phase}</span><br/>' +
+                    '<span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
             },
             lang: {
                 accessibility: {
@@ -129,27 +135,6 @@
                         categories: series.map(function (s) {
                             return s.name;
                         })
-                    }, {
-                        title: {
-                            text: 'Assigned To'
-                        },
-                        categories: series.map(function (s) {
-                            return s.current.project;
-                        })
-                    }, {
-                        title: {
-                            text: 'From'
-                        },
-                        categories: series.map(function (s) {
-                            return s.current.from;
-                        })
-                    }, {
-                        title: {
-                            text: 'To'
-                        },
-                        categories: series.map(function (s) {
-                            return s.current.to;
-                        },)
                     }]
                 }
             },

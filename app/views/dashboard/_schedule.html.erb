@@ -20,7 +20,7 @@
 
 <script type="text/javascript" charset="utf-8">
     let today = new Date(),
-      day = 1000 * 60 * 60 * 24;
+        day = 1000 * 60 * 60 * 24;
 
     today.setUTCHours(0);
     today.setUTCMinutes(0);
@@ -33,8 +33,8 @@
 
 
     async function loadJobs() {
-        // const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
-        const response = await fetch('http://localhost:3000/api/v1/charts/index');
+        const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+        // const response = await fetch('http://localhost:3000/api/v1/charts/index');
         const jobs = await response.json();
 
         series = jobs.map(function (job, i) {
@@ -63,9 +63,9 @@
             },
             tooltip: {
                 pointFormat: '<span>Client {point.client}</span><br/>' +
-                  '<span>Project: {point.project}</span><br/>' +
-                  '<span>Phase: {point.phase}</span><br/>' +
-                  '<span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+                    '<span>Project: {point.project}</span><br/>' +
+                    '<span>Phase: {point.phase}</span><br/>' +
+                    '<span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
             },
             lang: {
                 accessibility: {

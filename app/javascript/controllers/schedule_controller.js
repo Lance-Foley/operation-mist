@@ -3,7 +3,6 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
 
     connect() {
-        // '<span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
         let today = new Date(),
             day = 1000 * 60 * 60 * 24;
 
@@ -55,7 +54,9 @@ export default class extends Controller {
                     tooltip: {
                         pointFormat: '<span>Client {point.client}</span><br/>' +
                             '<span>Project: {point.project}</span><br/>' +
-                            '<span>Phase: {point.phase}</span><br/>'
+                            '<span>Phase: {point.phase}</span><br/>' +
+                            '<span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+
                     },
                     lang: {
                         accessibility: {

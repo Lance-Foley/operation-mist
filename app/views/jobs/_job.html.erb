@@ -5,7 +5,6 @@
     <%# end_date_greater_30_days = job.end_date + 30.days %>
     <%# if job.completed == true and end_date_greater_30_days > job.end_date %>
     <%# else %>
-    <td><%= link_to job.id, job %></td>
     <td><%= link_to job.crew_name, job %></td>
     <td><%= job.phase %></td>
     <td><%= job.division_name %></td>

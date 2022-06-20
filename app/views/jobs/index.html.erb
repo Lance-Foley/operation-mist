@@ -23,12 +23,12 @@
       </thead>
       <tbody>
 
-      
+
       <% @jobs.each do |job| %>
-        <% if job.completed == true %>
-        <% else %>
-          <%= render job %>
-        <% end %>
+        <%# if job.completed == true %>
+        <%# else %>
+        <%= render job %>
+        <%# end %>
       <% end %>
 
       </tbody>

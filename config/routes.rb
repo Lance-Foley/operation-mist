@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'crew_work_load/show'
       get 'charts/index'
       get 'charts/show'
+      get 'cost_per_day/index'
 
     end
   end

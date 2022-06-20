@@ -11,6 +11,7 @@
     "chartkick": "^4.1.1",
     "esbuild": "^0.14.38",
     "highcharts": "^10.0.0",
+    "highcharts-gantt": "^0.1.7",
     "sass": "^1.51.0",
     "yarn": "^1.22.18"
   },

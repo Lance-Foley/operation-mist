@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 gem 'chartkick', '~> 4.1', '>= 4.1.3'
-gem 'highcharts-rails'
 gem "groupdate"
 gem 'whenever', require: false
 gem 'ransack', '~> 3.2'

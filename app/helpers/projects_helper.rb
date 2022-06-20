@@ -46,4 +46,16 @@ module ProjectsHelper
     Job.where(project_id: @project.id).sum(:hours_remaining)
   end
 
+  def cost_per_day
+    @job = Job.all
+
+    @job.each do |job|
+      (job.start_date.to_datetime.to_i).step(1.day) do |day|
+        day = job.cost_per_day
+        puts day
+      end
+    end
+
+  end
+
 end

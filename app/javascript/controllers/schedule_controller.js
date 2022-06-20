@@ -13,6 +13,7 @@ export default class extends Controller {
         today.setUTCMilliseconds(0);
         today = today.getTime();
 
+
         let dateFormat = Highgantt.dateFormat;
         let series
         let chart; // global
@@ -47,6 +48,7 @@ export default class extends Controller {
                 chart = Highgantt.ganttChart('container', {
 
                     series: series,
+
                     title: {
                         text: 'Crew Schedule'
                     },
@@ -70,7 +72,8 @@ export default class extends Controller {
 
                     rangeSelector: {
                         enabled: true,
-                        selected: 0
+                        selected: 0,
+
                     },
                     accessibility: {
                         keyboardNavigation: {
@@ -105,7 +108,7 @@ export default class extends Controller {
                         },
                         yAxis: {
                             min: 0,
-                            max: 3,
+                            max: 6,
                             reversed: true,
                             categories: []
                         }
@@ -130,8 +133,31 @@ export default class extends Controller {
             return chart;
         }
 
+
+        // document.getElementById('button').addEventListener('click', () => {
+        //     const date = new Date();
+        //
+        //     let day = date.getDate();
+        //     let month = date.getMonth() + 1;
+        //     let year = date.getFullYear();
+        //     const xAxis = chart.xAxis[0];
+        //     xAxis.setExtremes(Date.UTC(year, month, day), Date.UTC(year, month + 1, day));
+        // });
+
+        async function setDate() {
+            const date = new Date();
+
+            let day = date.getDate();
+            let month = date.getMonth();
+            let year = date.getFullYear();
+            const xAxis = chart.xAxis[0];
+            return xAxis.setExtremes(Date.UTC(year, month, day), Date.UTC(year, month, day + 21));
+        };
+        // window.addEventListener('load', () => {
+        //     setTimeout(setDate(), 5000);
+        // });
         window.addEventListener('load', (event) => {
-            requestData();
+            requestData().then(r => setDate());
         });
     }
 }

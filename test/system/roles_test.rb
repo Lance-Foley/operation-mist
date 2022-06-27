@@ -14,6 +14,7 @@ class RolesTest < ApplicationSystemTestCase
     visit roles_url
     click_on "New role"
 
+    fill_in "Description", with: @role.description
     fill_in "Name", with: @role.name
     click_on "Create Role"
 
@@ -25,6 +26,7 @@ class RolesTest < ApplicationSystemTestCase
     visit role_url(@role)
     click_on "Edit this role", match: :first
 
+    fill_in "Description", with: @role.description
     fill_in "Name", with: @role.name
     click_on "Update Role"
 

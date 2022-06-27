@@ -11,70 +11,48 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if current_user %>
-          <% if current_user.admin? %>
-            <li class="nav-item"><%= link_to "Dashboard", dashboard_index_path, class: "nav-link" %></li>
-
-            <li class="nav-item"><%= link_to "Schedule", schedule_index_path, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "All Jobs", jobs_path, class: "nav-link" %></li>
-
-
-            <%#= link_to "Log out (does not work)", destroy_user_session_path, method: :delete %>
-
-            <%#= link_to "Log out", destroy_user_session_path, 'data-turbo-method': :delete %>
-            <%#= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Clients
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "Clients", clients_path, class: "dropdown-item" %></li>
-                <li><%= link_to "New Client", new_client_path, class: "dropdown-item" %></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Employees
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "Employees", employees_path, class: "dropdown-item" %></li>
-                <li><%= link_to "New Employee", new_employee_path, class: "dropdown-item" %></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Settings
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "Phase", phases_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Divisions", divisions_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Roles", roles_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Crews", crews_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Variance", edit_variance_path(1), class: "dropdown-item" %></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item") %></li>
-
-              </ul>
-            </li>
-          <% end %>
-          </ul>
-          <div class="d-flex">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item"><%= link_to_unless_current current_user.name, edit_user_registration_path, class: "nav-link" %></li>
-              <li class="nav-item"><p class="nav-link">Role: <%= current_user.role %></p></li>
-            </ul>
-          </div>
+          <%= render "home/admin_header" %>
         <% else %>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><%= link_to_unless_current "Log in", new_user_session_path, class: "nav-link" %></li>
-            <li> <%= link_to_unless_current "Register", new_user_registration_path, class: "nav-link" %></li>
+          <% render "home/user_header" %>
         <% end %>
+
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!--          <li class="nav-item"><%#= link_to_unless_current current_user.name, edit_user_registration_path, class: "nav-link" %></li>-->
+          <!--          <li class="nav-item"><p class="nav-link">Role: <%#= current_user.role %></p></li>-->
         </ul>
+      </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!--        <li><%#= link_to_unless_current "Log in", new_user_session_path, class: "nav-link" %></li>-->
+        <!--        <li> <%#= link_to_unless_current "Register", new_user_registration_path, class: "nav-link" %></li>-->
+      </ul>
 
+      <div class="dropdown text-end  ">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzd8X0ajAhIncgOTl31Xm293tzRPvPKeqPZ6guwGcLIhjavLIfdQYohy_B6qMalZn5F6s&usqp=CAU" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg-end text-small " aria-labelledby="dropdownUser1">
+          <li> <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %></li>
 
-        </div>
+          <li><%= link_to "Roles", roles_path, class: "dropdown-item" %></li>
+
+          <li><%= link_to "Users", users_path, class: "dropdown-item" %></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <% if current_user %>
+            <li>       <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item") %></li>
+            </li>
+          <% else %>
+            <li> <%= link_to "Sign in", new_user_session_path, method: :delete, class: "dropdown-item" %></li>
+
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
 </nav>

@@ -80,6 +80,7 @@ group :test do
 end
 
 gem "importmap-rails", "~> 1.0"
-gem 'devise'
 gem 'foreman'
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'active_model_serializers', '~> 0.10.13'
+gem "cancancan", "~> 3.4"

@@ -2,6 +2,18 @@ module DashboardHelper
 
   # @crew_list = Employee.where(role: "Carpenter").where(crew_id: 1).map { |employee|
   #   employee.name }
+  jan = 0.08493151
+  feb = 0.07671233
+  mar = 0.08493151
+  apr = 0.08219178
+  may = 0.08493151
+  jun = 0.08219178
+  jul = 0.08493151
+  aug = 0.08493151
+  sep = 0.08219178
+  oct = 0.08493151
+  nov = 0.08219178
+  dec = 0.08493151
 
   def crew_week_workload(crew)
     @crew_workload = Job.where(crew_id: crew).where("start_date < ?", Date.today).sum(:hours_per_week) /
@@ -94,6 +106,11 @@ module DashboardHelper
       @crew = Crew.all[i]
 
     end
+  end
+
+  def project_duration
+    @project = Project.all
+
   end
 
 end

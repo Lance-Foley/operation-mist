@@ -1,18 +1,13 @@
-<div class="container">
+<div class="container mt-3">
 
   <h1>Editing role</h1>
 
   <%= render "form", role: @role %>
 
-  <br>
 
-  <div>
-    <%= link_to "Back", @role, class: "btn btn-secondary" %> |
-    <%= link_to "Roles", roles_path, class: "btn btn-secondary" %>
-    <hr>
-    <%= link_to "Delete Job", @role, method: :delete, data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    }, class: "btn btn-danger" %>
-  </div>
+  <span class="float-end">
+
+  <%= link_to "Back", roles_path, class: "btn btn-secondary " %><span class="m-1">|</span>
+</span>
+
 </div>

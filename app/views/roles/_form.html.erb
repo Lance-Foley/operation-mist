@@ -13,10 +13,16 @@
 
   <div>
     <%= form.label :name, style: "display: block", class: "form-label" %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.text_field :namem, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :description, style: "display: block", class: "form-label" %>
+    <%= form.text_field :descriptionm, class: "form-control" %>
+  </div>
+
+  <div>
+    <hr>
+    <%= form.submit class: "btn btn-warning float-end" %>
   </div>
 <% end %>

@@ -1,0 +1,23 @@
+<div class="container mt-3">
+  <%= link_to "New user", new_user_path, class: "btn btn-primary float-end" %>
+  <h1>Users</h1>
+  <div id="users">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Edit User</th>
+      </thead>
+      <tbody>
+
+      <% @users.each do |user| %>
+        <%= render user %>
+      <% end %>
+      </tbody>
+    </table>
+    <p>
+    </p>
+  </div>
+
+</div>

@@ -58,10 +58,10 @@
     <%#= form.label :division_name, style: "display: block", class: "form-label mt-3" %>
     <%#= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
     <!--    </div>-->
-    <div class="col">
-      <%= form.label :division_id, style: "display: block", class: "form-label" %>
-      <%= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %>
-    </div>
+    <!--    <div class="col">-->
+    <%#= form.label :division_id, style: "display: block", class: "form-label" %>
+    <%#= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %>
+    <!--    </div>-->
     <% if @job.new_record? %>
     <% else %>
       <div class="col">

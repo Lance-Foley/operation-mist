@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
   before_action :set_role, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /roles or /roles.json
   def index
     @roles = Role.all
@@ -8,6 +8,11 @@ class RolesController < ApplicationController
 
   # GET /roles/1 or /roles/1.json
   def show
+    if @role.users.empty?
+      @assosciated_user = 'None'
+    else
+      @assosciated_users = @role.users.map(&:name).join(', ')
+    end
   end
 
   # GET /roles/new
@@ -49,19 +54,23 @@ class RolesController < ApplicationController
 
   # DELETE /roles/1 or /roles/1.json
   def destroy
-    @role = Role.find(params[:id])
     @role.destroy
-    redirect_to roles_path,status: :see_other, notice: "Role was successfully deleted."
+
+    respond_to do |format|
+      format.html { redirect_to roles_url, notice: "Role was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_role
-      @role = Role.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def role_params
-      params.require(:role).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_role
+    @role = Role.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def role_params
+    params.require(:role).permit(:name, :description)
+  end
 end

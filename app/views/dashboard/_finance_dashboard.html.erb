@@ -1,1 +1,28 @@
 <%= line_chart Project.group_by_day(:created_at).sum(:cost) %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Quarter <small>(Total)</small></th>
+      <th scope="col">January</th>
+      <th scope="col">February</th>
+      <th scope="col">March</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">$1,575,768</th>
+      <td>$525,256</td>
+      <td>$525,256</td>
+      <td>$525,256</td>
+    </tr>
+    <tr>
+      <th scope="row">$1,575,768</th>
+      <td>$525,256</td>
+      <td>$525,256</td>
+      <td>$525,256</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

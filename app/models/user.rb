@@ -1,37 +1,29 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
-  enum role: [:user, :manager, :admin]
-  after_initialize :set_default_role, :if => :new_record?
+  belongs_to :role, optional: true
 
-  validate :validate_name
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/ }, length: { minimum: 3, maximum: 50 }
+  validates :email, uniqueness: true, presence: true
 
-  def set_default_role
-    self.role ||= :user
+  before_save :assign_role
+
+  def assign_role
+    self.role = Role.find_by name: 'Sales' if role.nil?
   end
 
-  attr_writer :login
-
-  def login
-    @login || self.name || self.email
+  def admin?
+    role.name == 'Admin'
   end
 
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    if (login = conditions.delete(:login))
-      where(conditions.to_h).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    elsif conditions.has_key?(:name) || conditions.has_key?(:email)
-      where(conditions.to_h).first
-    end
+  def manager?
+    role.name == 'Manager'
   end
 
-  def validate_name
-    if User.where(email: name).exists?
-      errors.add(:name, :invalid)
-    end
+  def sales?
+    role.name == 'Sales'
   end
-
 end

@@ -4,5 +4,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "chartkick"
 import Highcharts from "highcharts"
+import Highgantt from "highcharts-gantt"
 
 window.Highcharts = Highcharts
+window.Highgantt = Highgantt

@@ -8,7 +8,7 @@ class JobsController < ApplicationController
   def index
     @q = Job.ransack(params[:q])
     @jobs = @q.result(distinct: true)
-    
+
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -20,6 +20,7 @@ class JobsController < ApplicationController
     @job = Job.new
     @job.build_crew
     @job.build_division
+    
   end
 
   # GET /jobs/1/edit

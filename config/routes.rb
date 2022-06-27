@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
+  scope '/admin' do
+    resources :users
+  end
+  resources :roles
+  resources :users
+  get 'project_lead/index'
   resources :variances
   resources :budgets
   namespace :api do
@@ -16,18 +23,17 @@ Rails.application.routes.draw do
   resources :projects
   resources :clients
 
-  resources :roles
-
   get 'dashboard/index'
   get 'dashboard/three_month_workload'
   get 'dashboard/field_one_workload'
   get 'dashboard/field_two_workload'
   get 'dashboard/week_workload'
-  devise_for :users
   get 'client/:id/projects' => 'clients#projects', :as => :client_projects
   get 'projects/:id/phase' => 'projects#phase', :as => :project_phase
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
 
-  # devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :phases
   resources :divisions
   resources :crews

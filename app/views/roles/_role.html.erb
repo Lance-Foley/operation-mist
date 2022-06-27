@@ -1,7 +1,9 @@
 <div id="<%= dom_id role %>">
   <tr>
-    <td><%= link_to role.name, role %></td>
-    <td> <%= Employee.where(role: role.name).count %></td>
+    <td><%= role.name %></td>
+    <td><%= role.description %></td>
+    <td><%= link_to "Edit", edit_role_path(role) %></td>
+
   </tr>
 
 </div>

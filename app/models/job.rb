@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-  around_create :setDivision
+  before_validation :setDivision
   require 'date'
   belongs_to :project, autosave: true
   belongs_to :crew

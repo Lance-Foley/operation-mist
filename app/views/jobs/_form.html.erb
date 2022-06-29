@@ -59,8 +59,12 @@
     <%#= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
     <!--    </div>-->
     <!--    <div class="col">-->
-    <%= form.label :division_id, style: "display: block", class: "form-label" %>
-    <%= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %>
+    <%
+=begin%>
+ <%= form.label :division_id, style: "display: block", class: "form-label" %>
+    <%= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %> 
+<%
+=end%>
     <!--    </div>-->
     <% if @job.new_record? %>
     <% else %>

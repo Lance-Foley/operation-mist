@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h1>New forecast</h1>
+
+  <%= render "form", forecast: @forecast %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back", forecasts_path, class: "btn btn-secondary" %>
+  </div>
+</div>

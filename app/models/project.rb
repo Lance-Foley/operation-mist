@@ -43,4 +43,5 @@ class Project < ApplicationRecord
     self.e_rating = Job.where(project_id: id, completed: true).average(:e_rating)
     super
   end
+
 end

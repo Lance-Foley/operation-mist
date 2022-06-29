@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :forecasts
   devise_for :users
   scope '/admin' do
     resources :users
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
       get 'charts/index'
       get 'charts/show'
       get 'cost_per_day/index'
+      get 'forecast/index'
 
     end
   end

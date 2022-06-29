@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Forecasts</h1>
+
+<div id="forecasts">
+  <% @forecasts.each do |forecast| %>
+    <%= render forecast %>
+    <p>
+      <%= link_to "Show this forecast", forecast %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New forecast", new_forecast_path %>

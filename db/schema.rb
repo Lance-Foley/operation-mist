@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_23_151955) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_29_124821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_151955) do
     t.integer "tier"
     t.bigint "crew_id"
     t.index ["crew_id"], name: "index_employees_on_crew_id"
+  end
+
+  create_table "forecasts", force: :cascade do |t|
+    t.string "year", null: false
+    t.string "month", null: false
+    t.decimal "total_cost", null: false
+    t.decimal "total_sub_cost", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|

@@ -1,0 +1,27 @@
+<%= form_with(model: forecast) do |form| %>
+  <% if forecast.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(forecast.errors.count, "error") %> prohibited this forecast from being saved:</h2>
+
+      <ul>
+        <% forecast.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <%= form.label :year, style: "display: block", class: "form-label" %>
+      <%= form.text_field :year, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :month, style: "display: block", class: "form-label" %>
+      <%= form.text_field :month, class: "form-control" %>
+    </div>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

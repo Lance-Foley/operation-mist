@@ -22,8 +22,8 @@ export default class extends Controller {
          * Request data from the server, add it to the graph and set a timeout to request again
          */
         async function requestData() {
-            // const response = await fetch('http://localhost:3000/api/v1/charts/index');
-            const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+            const response = await fetch('http://localhost:3000/api/v1/charts/index');
+            // const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
 
             if (response.ok) {
                 const data = await response.json();

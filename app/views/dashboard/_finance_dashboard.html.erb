@@ -3,25 +3,47 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">Quarter <small>(Total)</small></th>
+      <th scope="col">Year</th>
+      <th scope="col">Days in start month</th>
+      <th scope="col">Days in end month</th>
+      <th scope="col">Duration of Project</th>
+      <th scope="col">Cost per day</th>
+      <th scope="col">First Month</th>
+      <th scope="col">End Month</th>
       <th scope="col">January</th>
-      <th scope="col">February</th>
+      <th scope="col">Feb</th>
       <th scope="col">March</th>
+      <th scope="col">April</th>
+      <th scope="col">May</th>
+      <th scope="col">June</th>
+      <th scope="col">July</th>
+      <th scope="col">August</th>
+      <th scope="col">September</th>
+      <th scope="col">December</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <th scope="row">$1,575,768</th>
-      <td>$525,256</td>
-      <td>$525,256</td>
-      <td>$525,256</td>
+      <td><%= Forecast.end_year_of_project(Project.first) %></td>
+      <td><%= Forecast.days_in_month %></td>
+      <td><%= Forecast.days_in_end_month %></td>
+      <td><%= Forecast.duration_of_project(Project.first) %></td>
+      <td><%= number_to_currency(Forecast.cost_per_day(Project.first)) %></td>
+      <td><%= Forecast.first_month(Project.first) %></td>
+      <td><%= Forecast.end_month(Project.first) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 01, 31)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 02, 28)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 03, 31)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 04, 30)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 05, 31)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 06, 30)) %></td>
+      <td><%= number_to_currency(Forecast.month_cost(2022, 07, 31)) %></td>
+      <!--      TODO August and September not working-->
+      <!--      <td><%#= number_to_currency(Forecast.month_cost(2022, 08, 31)) %></td>-->
+      <!--      <td><%#= number_to_currency(Forecast.month_cost(2022, 08, 30)) %></td>-->
+      <td><%= number_to_currency(Forecast.month_cost(2022, 12, 31)) %></td>
     </tr>
-    <tr>
-      <th scope="row">$1,575,768</th>
-      <td>$525,256</td>
-      <td>$525,256</td>
-      <td>$525,256</td>
-    </tr>
+
 
     </tbody>
   </table>

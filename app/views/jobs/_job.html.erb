@@ -21,11 +21,11 @@
     <td><%= job.three_month_hours %></td>
     <% begin %>
       <td><%= Project.where(id: job.project_id).first&.name %></td>
+      <td><%= Client.joins(:projects).where(:projects => { :id => job.project_id }).first&.name %></td>
     <% rescue %>
       <%= "Error" %>
 
     <% end %>
-    <td><%= Client.joins(:projects).where(:projects => { :id => job.project_id }).first.name %></td>
     <% if job.completed == true %>
       <td class="text-success capitalize"><%= job.completed.to_s.capitalize %></td>
     <% else %>

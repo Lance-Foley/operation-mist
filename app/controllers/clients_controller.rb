@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[ show edit update destroy ]
+
   def projects
     # todo turn into a partial render on client show view
     @client = Client.find(params[:id])
@@ -61,9 +62,16 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1 or /clients/1.json
   def destroy
+    @project = Project.where("client_id = ?", params[:id]).all
+    if @project
+      @project.each do |project|
+        project.destroy
+      end
+    else
+    end
+
     @client = Client.find(params[:id])
     @client.destroy
-
     redirect_to clients_path, status: :see_other, notice: "Client was successfully destroyed."
   end
 

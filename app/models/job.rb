@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
   before_validation :setDivision
-  require 'date'
   belongs_to :project, autosave: true
+  require 'date'
   belongs_to :crew
   belongs_to :division
 

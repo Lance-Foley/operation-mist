@@ -1,7 +1,6 @@
 class Project < ApplicationRecord
-  has_many :jobs, dependent: :delete_all, autosave: true
-
   belongs_to :client
+  has_many :jobs, dependent: :delete_all, autosave: true
 
   private def create_or_update(touch: nil, **)
     self.number_of_days = (end_date - start_date).to_i
@@ -43,4 +42,5 @@ class Project < ApplicationRecord
     self.e_rating = Job.where(project_id: id, completed: true).average(:e_rating)
     super
   end
+
 end

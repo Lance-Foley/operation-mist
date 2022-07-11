@@ -19,6 +19,7 @@
 
     <td><%= job.actual_worked_hours %> / <%= job.man_hours %></td>
     <td><%= job.three_month_hours %></td>
+    <!--    TODO Validate MODEL TO MAKE CLIENT NAME TRUE-->
     <% begin %>
       <td><%= Project.where(id: job.project_id).first&.name %></td>
       <td><%= Client.joins(:projects).where(:projects => { :id => job.project_id }).first&.name %></td>

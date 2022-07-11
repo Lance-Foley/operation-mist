@@ -19,7 +19,12 @@
 
     <td><%= job.actual_worked_hours %> / <%= job.man_hours %></td>
     <td><%= job.three_month_hours %></td>
-    <td><%= Project.where(id: job.project_id).first&.name %></td>
+    <% begin %>
+      <td><%= Project.where(id: job.project_id).first&.name %></td>
+    <% rescue %>
+      <%= "Error" %>
+
+    <% end %>
     <td><%= Client.joins(:projects).where(:projects => { :id => job.project_id }).first.name %></td>
     <% if job.completed == true %>
       <td class="text-success capitalize"><%= job.completed.to_s.capitalize %></td>

@@ -1,15 +1,16 @@
-<%= line_chart Project.group_by_day(:created_at).sum(:cost) %>
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table id="datatable" class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">Year</th>
-      <th scope="col">Days in start month</th>
-      <th scope="col">Days in end month</th>
-      <th scope="col">Duration of Project</th>
-      <th scope="col">Cost per day</th>
-      <th scope="col">First Month</th>
-      <th scope="col">End Month</th>
+      <!--      <th scope="col">Year</th>-->
+      <!--      <th scope="col">Days in start month</th>-->
+      <!--      <th scope="col">Days in end month</th>-->
+      <!--      <th scope="col">Duration of Project</th>-->
+      <!--      <th scope="col">Cost per day</th>-->
+      <!--      <th scope="col">First Month</th>-->
+      <!--      <th scope="col">End Month</th>-->
+      <th scope="col">Client</th>
+      <th scope="col">Project</th>
       <th scope="col">January</th>
       <th scope="col">Feb</th>
       <th scope="col">March</th>
@@ -19,29 +20,34 @@
       <th scope="col">July</th>
       <th scope="col">August</th>
       <th scope="col">September</th>
+      <th scope="col">October</th>
+      <th scope="col">November</th>
       <th scope="col">December</th>
     </tr>
     </thead>
     <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td id="Jan"> <%= Forecast.projects(project)[0][3] %></td>
+        <td> <%= Forecast.projects(project)[0][2] %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[0][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[1][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[2][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[3][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[4][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[5][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[6][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[7][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[8][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[9][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[10][1]) %></td>
+        <td> <%= number_to_currency(Forecast.projects(project)[11][1]) %></td>
+
+    <% end %>
     <tr>
-      <td><%= Forecast.end_year_of_project(Project.first) %></td>
-      <td><%= Forecast.days_in_month %></td>
-      <td><%= Forecast.days_in_end_month %></td>
-      <td><%= Forecast.duration_of_project(Project.first) %></td>
-      <td><%= number_to_currency(Forecast.cost_per_day(Project.first)) %></td>
-      <td><%= Forecast.first_month(Project.first) %></td>
-      <td><%= Forecast.end_month(Project.first) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 01, 31)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 02, 28)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 03, 31)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 04, 30)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 05, 31)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 06, 30)) %></td>
-      <td><%= number_to_currency(Forecast.month_cost(2022, 07, 31)) %></td>
-      <!--      TODO August and September not working-->
-      <!--      <td><%#= number_to_currency(Forecast.month_cost(2022, 08, 31)) %></td>-->
-      <!--      <td><%#= number_to_currency(Forecast.month_cost(2022, 08, 30)) %></td>-->
-      <td><%= number_to_currency(Forecast.month_cost(2022, 12, 31)) %></td>
+      <td></td>
+      <td>Total</td>
+
     </tr>
 
 

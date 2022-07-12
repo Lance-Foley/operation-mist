@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   private def create_or_update(touch: nil, **)
     self.number_of_days = (end_date - start_date).to_i
 
-    if sub_cost >= 0.0
+    if sub_cost >= 0
       if number_of_days > 1
         self.sub_cost_per_day = (sub_cost / number_of_days).to_f.round(2)
       else

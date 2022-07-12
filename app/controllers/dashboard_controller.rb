@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
     # @jobs = Job.all
     @q = Job.ransack(params[:q])
     @jobs = @q.result(distinct: true)
-   
+    @projects = Project.all
   end
 
   def crew_months_remaining(crew)

@@ -44,32 +44,58 @@ class Forecast
     return @end_month = project.end_date.strftime("%B")
   end
 
-  #returns cost per month
-  #
-  # TODO Not all months are rendering
-  def self.month_cost(year, month, day)
-    @month = Date.new(year, month, day)
-    @month_days = day
-    @date = @month.between?(@projects.first.start_date, @projects.first.end_date)
+  def self.month_cost(date, project)
+    @project = project
+    @month = date
+    @client = Client.where(id: project.client_id).first&.name
+    @month_days = @month.day
+    @date = @month.between?(@project.start_date, @project.end_date)
 
     if @date
-      if @month.month == @projects.first.start_date.month
-        @days = (@month - @projects.first.start_date).to_i
-        return @days * @projects.first.total_cost_per_day
-      elsif @month.month == @projects.first.end_date.month
-        @days = (@month - @projects.first.end_date).to_i
-        if @days > 0
-          return @days * @projects.first.total_cost_per_day
-        else
-          return @projects.first.total_cost_per_day * @month_days
-        end
+      if @month.month == @project.start_date.month
+        @days = @month.day - @project.start_date.day
+        @total = @days * @project.total_cost_per_day
+        value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
+      elsif @month.month == @project.end_date.month
+        @days = @project.end_date.day
+        @total = @days * @project.total_cost_per_day
+        value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
       else
-        return @month_days * @projects.first.total_cost_per_day
+        @total = @month_days * @project.total_cost_per_day
+        value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
       end
     else
-      return 0
+      value = [Date::MONTHNAMES[@month.month], 0, @project.name, @client]
     end
 
+    return @jobs_array.push(value)
+  end
+
+  def self.projects(project)
+    @jobs_array = []
+    year = Time.now.year
+    @month = Date.new(year, 1, -1)
+    @month_days = @month.day
+
+    i = 12
+    while i > 0 do
+      month_cost(@month, project)
+      i = i - 1
+      @month = @month + 1.month
+    end
+    return @jobs_array
+  end
+
+  def self.month_value
+    @projects.each do |project|
+
+      i = 12
+      while i > 0 do
+        value = Forecast.projects(project)[i][1]
+        i = i -1
+      end
+
+    end
   end
 
 end

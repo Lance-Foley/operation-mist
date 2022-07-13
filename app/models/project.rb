@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   private def create_or_update(touch: nil, **)
     self.number_of_days = (end_date - start_date).to_i
 
-    if sub_cost >= 0
+    if sub_cost > 0.0
       if number_of_days > 1
         self.sub_cost_per_day = (sub_cost / number_of_days).to_f.round(2)
       else
@@ -15,7 +15,7 @@ class Project < ApplicationRecord
       self.sub_cost_per_day = 0
     end
 
-    if cost >= 0
+    if cost > 0.0
       if number_of_days > 1
         self.total_cost_per_day = (cost / number_of_days).to_f.round(2)
       else
@@ -35,11 +35,6 @@ class Project < ApplicationRecord
   end
 
   def changed_for_autosave?
-    super
-  end
-
-  def changes_to_save
-    self.e_rating = Job.where(project_id: id, completed: true).average(:e_rating)
     super
   end
 

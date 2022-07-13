@@ -27,22 +27,22 @@
     </thead>
     <tbody>
     <% @projects.each do |project| %>
+      <% @jobs_array = Forecast.projects(project) %>
       <tr>
-        <td id="Jan"> <%= Forecast.projects(project)[0][3] %></td>
-        <td> <%= Forecast.projects(project)[0][2] %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[0][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[1][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[2][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[3][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[4][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[5][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[6][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[7][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[8][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[9][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[10][1]) %></td>
-        <td> <%= number_to_currency(Forecast.projects(project)[11][1]) %></td>
-
+        <td> <%= @jobs_array[0][3] %></td>
+        <td> <%= @jobs_array[0][2] %></td>
+        <td> <%= number_to_currency(@jobs_array[0][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[1][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[2][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[3][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[4][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[5][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[6][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[7][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[8][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[9][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[10][1]) %></td>
+        <td> <%= number_to_currency(@jobs_array[11][1]) %></td>
     <% end %>
     <tr>
       <td></td>
@@ -53,4 +53,6 @@
 
     </tbody>
   </table>
+  <%#= Forecast.test(Project.first) %>
+  <%= @jobs_array %>
 </div>

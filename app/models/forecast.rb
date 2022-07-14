@@ -1,18 +1,7 @@
 class Forecast
   @projects = Project.all
   @jobs_array = []
-
-  def self.all_jobs
-
-  end
-
-  def self.start_year_of_project(project)
-    return project.start_date.year
-  end
-
-  def self.end_year_of_project(project)
-    return project.end_date.year
-  end
+  @all_jobs_array = []
 
   def self.days_in_month
     @start_day = Project.first.start_date.day
@@ -78,12 +67,19 @@ class Forecast
     year = Time.now.year
     @jobs_array = []
     i = 1
+    m = 0
     while i < 13 do
       @month = Date.new(year, i, -1)
       month_cost(@month, project)
+      monthly_totals(@jobs_array)
+      m = m + 1
       i = i + 1
     end
     return @jobs_array
   end
 
+  def self.monthly_totals(jobs)
+    @all_jobs_array.push(jobs)
+    return @all_jobs_array
+  end
 end

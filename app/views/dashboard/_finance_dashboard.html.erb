@@ -26,6 +26,7 @@
     </tr>
     </thead>
     <tbody>
+    <% @all_jobs_array = [] %>
     <% @projects.each do |project| %>
       <% @jobs_array = Forecast.projects(project) %>
       <tr>
@@ -43,11 +44,23 @@
         <td> <%= number_to_currency(@jobs_array[9][1]) %></td>
         <td> <%= number_to_currency(@jobs_array[10][1]) %></td>
         <td> <%= number_to_currency(@jobs_array[11][1]) %></td>
+      </tr>
+      <% @all_jobs_array.push(@jobs_array) %>
     <% end %>
     <tr>
       <td></td>
       <td>Total</td>
+      <% count = Project.all.count %>
 
+      <% i = 0 %>
+      <% while i < 12 do %>
+        <% value = 0 %>
+        <% @all_jobs_array.each do |p| %>
+          <% value = value + p[i][1] %>
+        <% end %>
+        <td><%= number_to_currency(value) %></td>
+        <% i = i + 1 %>
+      <% end %>
     </tr>
 
 

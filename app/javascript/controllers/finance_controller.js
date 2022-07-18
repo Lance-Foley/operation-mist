@@ -1,7 +1,11 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-    connect() {
+    async connect() {
+        // const response = await fetch('http://localhost:3000/api/v1/charts/index');
+        const data = await fetch('http://localhost:3000/api/v1/finance/index');
+
+
         Highcharts.chart('container', {
             chart: {
                 type: 'column'
@@ -33,13 +37,20 @@ export default class extends Controller {
                     text: 'Dollars'
                 }
             },
+
             tooltip: {
+
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>${point.y:,.0f}</b></td></tr>',
+                valuePrefix: '$',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:,.2f}'
             },
             plotOptions: {
                 column: {
@@ -48,11 +59,12 @@ export default class extends Controller {
                 }
             },
             series: [{
-
-                data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+                name: "Gross Income",
+                data: [data.json]
 
 
             }]
         });
     }
+
 }

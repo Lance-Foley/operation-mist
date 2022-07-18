@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     @job = Job.new
     @job.build_crew
     @job.build_division
-    
+
   end
 
   # GET /jobs/1/edit
@@ -74,6 +74,8 @@ class JobsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def job_params
-    params.require(:job).permit!
+    params.require(:job).permit(:start_date, :end_date, :crew_name, :man_hours, :phase, :division_name, :hours_per_week,
+                                :weeks, :week_remaining, :hours_remaining, :three_month_hours, :six_month_hours,
+                                :nine_month_hours, :twelve_month_hours, :actual_worked_hours, :e_rating, :completed)
   end
 end

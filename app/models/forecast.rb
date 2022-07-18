@@ -34,7 +34,6 @@ class Forecast
   end
 
   def self.month_cost(date, project)
-    year = Time.now.year
     @project = project
     @month = date
     @client = Client.where(id: project.client_id).first&.name
@@ -70,23 +69,41 @@ class Forecast
     return @jobs_array.push(value)
   end
 
-  def self.projects(project)
-    year = Time.now.year
+  def self.projects(project, year)
     @jobs_array = []
     i = 1
-    m = 0
     while i < 13 do
       @month = Date.new(year, i, -1)
       month_cost(@month, project)
-      monthly_totals(@jobs_array)
-      m = m + 1
+      # jobs_monthly_totals(@jobs_array)
       i = i + 1
     end
     return @jobs_array
   end
 
-  def self.monthly_totals(jobs)
-    @all_jobs_array.push(jobs)
-    return @all_jobs_array
+  # def self.jobs_monthly_totals(jobs)
+  #   @all_jobs_array.push(jobs)
+  #   return @all_jobs_array
+  # end
+
+  def self.monthly_totals(year)
+    @projects = Project.all
+    @jobs_all_array = []
+    @monthly_totals = []
+
+    @projects.each do |project|
+      @jobs_array = Forecast.projects(project, year)
+      @jobs_all_array.push(@jobs_array)
+    end
+    i = 0
+    while i < 12 do
+      value = 0
+      @jobs_all_array.each do |p|
+        value = value + p[i][1]
+      end
+      @monthly_totals.push(value)
+      i = i + 1
+    end
+    @monthly_totals
   end
 end

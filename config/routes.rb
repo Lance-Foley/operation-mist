@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'charts/index'
       get 'charts/show'
       get 'cost_per_day/index'
+      get 'finance/index'
 
     end
   end
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :employees
   resources :jobs
-
+  resources :finance
   resources :schedule
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

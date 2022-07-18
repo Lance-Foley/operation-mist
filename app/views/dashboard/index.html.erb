@@ -1,51 +1,5 @@
 <div data-controller="dashboard" hidden></div>
 <div data-controller="finance" hidden></div>
-<div class="container-fluid">
-  <div class="row flex-nowrap">
-    <div class="col-auto col-md-1 col-xl-1 px-sm-1  bg-dark">
-      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          <li class="nav-item">
-            <button id="btnWorkload" href="#" class="nav-link align-middle ">
-              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Workload</span>
-            </button>
-          </li>
-          <li>
-            <button id="btnOverview" class="nav-link  align-middle"><i class="fs-4 bi-columns"></i>
-              <span class="ms-1 d-none d-sm-inline">Overview</span></button>
-          </li>
-          <li>
-            <button id="btnSchedule" href="#" class="nav-link  align-middle">
-              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Schedule</span></button>
-          </li>
-
-          <li>
-            <button id="btnFiance" href="#" class="nav-link  align-middle">
-              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Finance</span></button>
-          </li>
-        </ul>
-        <hr>
-
-      </div>
-    </div>
-    <div class="col py-3">
-      <div id="overview">
-        <%= render 'overview_dashboard' %>
-      </div>
-
-      <div id="schedule" hidden>
-        <%= render 'schedule' %>
-      </div>
-      <div id="workload" hidden>
-        <p>Workload</p>
-      </div>
-
-      <div id="finance" hidden>
-        <p>Finance</p>
-        <%= render 'finance_dashboard' %>
-      </div>
-
-    </div>
-  </div>
+<div class="container-fluid pt-3">
+  <%= render 'overview_dashboard' %>
 </div>

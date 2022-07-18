@@ -1,6 +1,6 @@
 <div class="card mb-3 mt-3">
   <div class="card-header">
-    <%= link_to "Back", clients_path, class: "btn btn-secondary float-end " %>
+    <%= link_to "Back", clients_path, class: "btn btn-primary float-end " %>
 
 
     <div class="card-title">
@@ -31,7 +31,7 @@
             <span class="badge bg-primary rounded-pill"><%= number_to_currency(Project.where(client_id: @client.id).sum(:sub_cost)) %></span>
           </li>
         </ul>
-      <%= link_to "Edit", edit_client_path(@client), class: "btn btn-warning  float-end mt-3" %>
+        <%= link_to "Edit", edit_client_path(@client), class: "btn btn-warning  float-end mt-3" %>
 
       </div>
 

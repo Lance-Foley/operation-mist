@@ -32,6 +32,12 @@ module ProjectsHelper
 
   def e_rating
     Job.where(project_id: @project.id).average(:e_rating)
+    @project_jobs = Job.where(project_id: @project.id).all
+    @total_man_hours = Job.where(project_id: @project.id).all.sum(man_hours)
+
+    @project_jobs.each do |p|
+      #todo e_rating multiplier per project then per division
+    end
   end
 
   def three_month_hours

@@ -1,23 +1,10 @@
-<div data-controller="finance" hidden></div>
-<!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/exporting.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/export-data.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+<div class="container-fluid p-3">
 
-<div class="container-fluid">
-
-
-  <div class="scrolling-container">
-    <div id="container"></div>
-  </div>
-  <script type="text/javascript" charset="utf-8">
-
-  </script>
-  <p>Finance</p>
+  <p>Financial Forecast 2022 </p>
 
 
   <table id="datatable" class="table table-striped">
-    <thead class="alert-success" style="position: sticky; top: 0">
+    <thead class="table-info" style="position: sticky; top: 0">
     <tr>
       <!--      <th scope="col">Year</th>-->
       <!--      <th scope="col">Days in start month</th>-->
@@ -64,7 +51,7 @@
       </tr>
       <% @all_jobs_array.push(@jobs_array) %>
     <% end %>
-    <tr class="alert-success">
+    <tr class="table-success">
       <td></td>
       <td>Total</td>
       <% monthly_totals = [] %>

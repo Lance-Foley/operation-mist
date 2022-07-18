@@ -34,6 +34,7 @@ class Forecast
   end
 
   def self.month_cost(date, project)
+    year = Time.now.year
     @project = project
     @month = date
     @client = Client.where(id: project.client_id).first&.name
@@ -48,14 +49,20 @@ class Forecast
         @days = @month.day - @project.start_date.day + 1
         @total = @days * @project.project_cost_per_day
         value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
+      elsif @month < @project.start_date or @month > @project.end_date
+        value = [Date::MONTHNAMES[@month.month], 0, @project.name, @client]
       else
         @total = @month.day * @project.project_cost_per_day
         value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
       end
     elsif @month.month === @project.end_date.month
-      @days = @project.end_date.day
-      @total = @days * @project.project_cost_per_day
-      value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
+      if @month < @project.start_date
+        value = [Date::MONTHNAMES[@month.month], 0, @project.name, @client]
+      else
+        @days = @project.end_date.day
+        @total = @days * @project.project_cost_per_day
+        value = [Date::MONTHNAMES[@month.month], @total, @project.name, @client]
+      end
     else
       value = [Date::MONTHNAMES[@month.month], 0, @project.name, @client]
     end

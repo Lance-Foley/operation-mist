@@ -1,21 +1,27 @@
-<div class="container">
+<div class="container-fluid mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card px-4 py-4">
 
-  <h1>Editing job</h1>
+        <h1>Editing job</h1>
 
-  <%= render "form", job: @job %>
+        <%= render "form", job: @job %>
 
-  <br>
+        <br>
 
-  <div>
+        <div>
 <span class="float-end">
-
-    <%= link_to "Back", :back, class: "btn btn-secondary" %> |
+<div class="btn-group btn-group float-end" role="group" aria-label="...">
   <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
-  <hr>
+
   <%= link_to "Delete Job", @job, method: :delete, data: {
     turbo_method: :delete,
     turbo_confirm: "Are you sure?"
   }, class: "btn btn-danger float-end" %>
+</div>
 </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

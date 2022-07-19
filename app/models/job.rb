@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-  before_validation :setDivision
+  before_validation :set_params
   belongs_to :project, autosave: true
   require 'date'
   belongs_to :crew
@@ -14,14 +14,15 @@ class Job < ApplicationRecord
   # # six_months_from_now = today + 182.5
   # # nine_months_from_now = today + 273.75
   # twelve_months_from_now = today + 365
-  def setDivision
+  def set_params
+
     self.crew_name = Crew.where(id: crew_id).pluck(:name).first
     self.division_id = Crew.where(id: crew_id).pluck(:division_id).first
     self.division_name = Division.where(id: division_id).pluck(:name).first
   end
 
   # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
-  private def create_or_update(touch: nil, **)
+  def create_or_update(touch: nil, **)
 
     self.crew_name = Crew.where(id: crew_id).pluck(:name).first
     self.division_id = Crew.where(id: crew_id).pluck(:division_id).first

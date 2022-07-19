@@ -76,6 +76,7 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:start_date, :end_date, :crew_name, :man_hours, :phase, :division_name, :hours_per_week,
                                 :weeks, :week_remaining, :hours_remaining, :three_month_hours, :six_month_hours,
-                                :nine_month_hours, :twelve_month_hours, :actual_worked_hours, :e_rating, :completed)
+                                :nine_month_hours, :twelve_month_hours, :actual_worked_hours, :e_rating, :completed,
+                                :project_id, :crew_id, :division_name, :division_id)
   end
 end

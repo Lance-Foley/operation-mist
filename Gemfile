@@ -6,7 +6,7 @@ gem 'chartkick', '~> 4.1', '>= 4.1.3'
 gem "groupdate"
 gem 'whenever', require: false
 gem 'ransack', '~> 3.2'
-
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 

@@ -1,21 +1,14 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-5">
 
-  <h1>Editing user</h1>
+        <h1>Editing user</h1>
 
-  <%= render "form", user: @user %>
+        <%= render "form", user: @user %>
 
 
-
-  <div>
-    <span class="float-end">
-
-    <%= link_to "Back", @user, class: "btn btn-secondary" %> |
-      <%= link_to "All Users", users_path, class: "btn btn-secondary" %>
-      <hr>
-      <%= button_to "Delete User", @user, method: :delete, data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      }, class: "btn btn-danger float-end" %>
-    </span>
+      </div>
+    </div>
   </div>
 </div>

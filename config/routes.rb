@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :phases
   resources :divisions
   resources :crews
-  root "home#index"
+  root "dashboard#index"
   resources :employees
   resources :jobs
   resources :finance

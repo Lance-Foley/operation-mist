@@ -1,5 +1,4 @@
 <div class="container mt-3">
-  <%= link_to "Back to Client", client_path(@client), class: "btn btn-secondary float-end" %>
   <h1>Projects</h1>
   <div class="row mt-5">
 
@@ -10,8 +9,7 @@
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <%= link_to "Info", project_path(p.id), class: " float-end" %>
-            <h2 class="card-title"><%= p.name %></h2>
+            <h2 class="card-title"><%= link_to p.name, project_path(p.id) %></h2>
             <p>Project Manager <%= p.project_manager %></p>
           </div>
           <div class="card-body">
@@ -23,8 +21,13 @@
     <% end %>
 
     <div class="container mt-5">
-
-      <%= render "projects/form", :object => @project %>
+      <div class="row d-flex justify-content-center">
+        <div class="col">
+          <div class="card px-4 py-4">
+            <%= render "projects/form", :object => @project %>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

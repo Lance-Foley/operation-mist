@@ -38,34 +38,14 @@
   </div>
 
   <div class="row">
-
-
     <div class="col">
       <%= form.label :crew_id, style: "display: block", class: "form-label" %>
       <%= form.collection_select(:crew_id, Crew.all.collect, :id, :name, {}, { class: "form-select" }) %>
     </div>
-    <!--    <div class="col">-->
-    <%#= form.label :crew_name, style: "display: block", class: "form-label" %>
-    <%#= form.collection_select(:crew_name, Crew.all.collect, :name, :name) %>
-    <!--    </div>-->
-
-
     <div class="col">
       <%= form.label :phase, style: "display: block", class: "form-label" %>
       <%= form.select :phase, Phase.all.collect { |p| [p.name] }, {}, { class: "form-select" } %>
     </div>
-    <!--    <div class="col">-->
-    <%#= form.label :division_name, style: "display: block", class: "form-label mt-3" %>
-    <%#= form.select :division_name, Division.all.collect { |p| [p.name] }, class: "form-select" %>
-    <!--    </div>-->
-    <!--    <div class="col">-->
-    <%
-=begin%>
- <%= form.label :division_id, style: "display: block", class: "form-label" %>
-    <%= form.collection_select(:division_id, Division.all.collect, :id, :name, {}, { class: "form-select" }) %> 
-<%
-=end%>
-    <!--    </div>-->
     <% if @job.new_record? %>
     <% else %>
       <div class="col">
@@ -73,14 +53,15 @@
         <div class="form-check">
           <%= form.check_box :completed, class: "form-check-input" %>
           <%= form.label :completed, style: "display: block", class: "form-check-label" %>
-
-
         </div>
       </div>
     <% end %>
     <span>
 <hr>
-      <%= form.submit class: "btn btn-warning float-end" %>
+<div class="btn-group btn-group  float-end" role="group" aria-label="...">
+      <%= form.submit "New Job", class: "btn btn-warning float-end" %>
+  <%= link_to "Back", :back, class: "btn btn-primary float-end" %>
+</div>
     </span>
   </div>
 <% end %>

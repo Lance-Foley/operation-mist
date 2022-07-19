@@ -1,12 +1,18 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-5">
 
-  <h1>New phase</h1>
+        <h1>New phase</h1>
 
-  <%= render "form", phase: @phase %>
+        <%= render "form", phase: @phase %>
 
-  <br>
+        <br>
 
-  <div>
-    <%= link_to "Back", phases_path, class: "btn btn-secondary" %>
+        <div>
+          <%= link_to "Back", phases_path, class: "btn btn-primary float-end" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

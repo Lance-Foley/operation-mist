@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+
   def index
     # @jobs = Job.all
     @q = Job.ransack(params[:q])

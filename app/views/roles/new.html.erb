@@ -1,9 +1,17 @@
-<h1>New role</h1>
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-5">
+        <h1>New Role</h1>
 
-<%= render "form", role: @role %>
+        <%= render "form", role: @role %>
 
-<br>
+        <br>
 
-<div>
-  <%= link_to "Back to roles", roles_path %>
+        <div>
+          <%= link_to "Back to roles", roles_path %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,22 +1,30 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-5">
 
-  <h1>Editing phase</h1>
+        <h1>Editing phase</h1>
 
-  <%= render "form", phase: @phase %>
+        <%= render "form", phase: @phase %>
 
-  <br>
+        <br>
 
-  <div>
+        <div>
     <span class="float-end">
+          <div class="btn-group btn-group" role="group" aria-label="...">
 
-    <%= link_to "Back", @phase, class: "btn btn-secondary" %> |
-      <%= link_to "Phases", phases_path, class: "btn btn-secondary" %>
-      <hr>
-      <%= link_to "Delete", @phase, method: :delete, data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      }, class: "btn btn-danger float-end" %>
+    <%= link_to "Back", @phase, class: "btn btn-primary" %>
+            <%= link_to "Phases", phases_path, class: "btn btn-primary" %>
 
+            <%= link_to "Delete", @phase, method: :delete, data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            }, class: "btn btn-danger" %>
+
+          </div>
     </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

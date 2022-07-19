@@ -47,9 +47,11 @@
 
   </div>
   <span class="float-end">
-  <%= link_to "All Jobs", jobs_path, class: " btn btn-secondary" %> |
-    <%= link_to "Project Jobs", project_phase_path(@job.project_id), class: " btn btn-secondary" %>
-    |
-    <%= link_to "Edit", edit_job_path(@job), class: " btn btn-warning" %>
+    <div class="btn-group btn-group  float-end" role="group" aria-label="...">
+  <%= link_to "Back", :back, class: " btn btn-primary" %>
+      <%= link_to "Project Jobs", project_phase_path(@job.project_id), class: " btn btn-secondary" %>
+
+      <%= link_to "Edit", edit_job_path(@job), class: " btn btn-warning" %>
+    </div>
     </span>
 </div>

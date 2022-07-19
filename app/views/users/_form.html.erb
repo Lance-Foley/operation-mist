@@ -11,33 +11,39 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col">
 
-      <%= form.label :name, style: "display: block", class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= form.label :email, class: "form-label" %><br>
-      <%= form.text_field :email, class: "form-control" %>
-    </div>
+  <div class="forms-inputs mb-4">
+
+    <%= form.label :name, style: "display: block", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="forms-inputs mb-4">
+    <%= form.label :email, class: "form-label" %><br>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <%= form.label :role_id, style: "display: block", class: "form-label" %>
-      <%= collection_select(
 
-            :user, :role_id, Role.all, :id, :name, { prompt: true }, { class: "form-select" }
-          ) %>
-    </div>
-    <div class="col">
-      <%= form.label :password, class: "form-label" %><br>
-      <%= form.password_field :password, placeholder: "Leave blank if unchanged", class: "form-control" %>
-    </div>
+
+  <div class="forms-inputs mb-4">
+    <%= form.label :role_id, style: "display: block", class: "form-label" %>
+    <%= collection_select(
+
+          :user, :role_id, Role.all, :id, :name, { prompt: true }, { class: "form-select" }
+        ) %>
   </div>
+  <div class="forms-inputs mb-4">
+    <%= form.label :password, class: "form-label" %><br>
+    <%= form.password_field :password, placeholder: "Leave blank if unchanged", class: "form-control" %>
+  </div>
+
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-warning" %>
+ 
+
+    <div class="btn-group btn-group float-end" role="group" aria-label="...">
+      <%= link_to "Back", @user, class: "btn btn-primary", target: @user %>
+      <%= link_to "All Users", users_path, class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

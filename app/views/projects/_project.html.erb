@@ -3,11 +3,12 @@
     <div class="container-fluid">
       <h4 class="card-title float-end ">Client:
         <% begin %>
-          <span class="text-light"><%= Client.where(id: project.client_id).first.name %></span></h4>
+          <span class="text-light"><%= link_to Client.where(id: project.client_id).first.name, client_path(project.client_id) %></span>
+          </h4>
           <h4 class="card-title   ">Project: <span class="text-light"><%= project.name %></span></h4>
           </div>
           <div class="card-header">
-            <a href="">        <%= link_to "Back", client_path(project.client_id), class: "float-end btn btn-primary" %></a>
+            <a href=""> </a>
             <div class="container-fluid">
               <div class="row">
                 <div class="col">

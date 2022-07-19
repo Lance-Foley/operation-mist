@@ -5,30 +5,44 @@
       <%= @user.name %>
     </div>
     <div class="card-body">
+
+
       <p>
-        <strong>Joined on:</strong>
-        <%= @joined_on %>
+        <strong>Joined on: </strong>
+        <span class="text-info"><%= @joined_on %></span>
       </p>
       <p>
-        <strong>Last logged in on:</strong>
-        <%= @last_login %>
+        <strong>Last logged in on: </strong>
+        <span class="text-info">   <%= @last_login %></span>
       </p>
       <p>
-        <strong>No. times logged in:</strong>
-        <%= @user.sign_in_count %>
+        <strong>No. times logged in: </strong>
+        <span class="text-info"><%= @user.sign_in_count %></span>
       </p>
+
+      <p>
+        <strong>Email: </strong>
+        <span class="text-info"><%= @user.email %></span>
+      </p>
+      <p>
+        <strong>Role: </strong>
+        <span class="text-info"><%= @user.role.name %></span>
+      </p>
+
 
     </div>
 
   </div>
 
   <span class="float-end">
+<div class="btn-group btn-group" role="group" aria-label="...">
+  <%= link_to "Edit", edit_user_path(@user), class: "btn btn-warning" %>
+  <%= link_to "Back", users_path, class: "btn btn-primary" %>
 
-  <%= link_to "Edit", edit_user_path(@user), class: "btn btn-warning" %> |
-    <%= link_to "All Users", users_path, class: "btn btn-secondary" %>   <%= button_to "Delete User", registration_path(@user), method: :delete, data: {
+  <%= button_to "Delete User", @user, method: :delete, data: {
     turbo_method: :delete,
     turbo_confirm: "Are you sure?"
-  }, class: "btn btn-danger float-end" %>
-
+  }, class: "btn btn-danger  rounded-0 background-none rounded-right  " %>
+</div>
   </span>
 </div>

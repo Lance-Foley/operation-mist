@@ -2,7 +2,7 @@
 //
 import {Turbo} from "@hotwired/turbo-rails"
 
-Turbo.session.drive = false
+Turbo.session.drive = true
 import "controllers"
 import "chartkick"
 import Highcharts from "highcharts"

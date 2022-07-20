@@ -1,11 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 //
-import "@hotwired/turbo-rails"
+import {Turbo} from "@hotwired/turbo-rails"
+
+Turbo.session.drive = false
 import "controllers"
 import "chartkick"
 import Highcharts from "highcharts"
-import Highgantt from "highcharts-gantt"
+import high_gantt from "highcharts-gantt"
 
 
 window.Highcharts = Highcharts
-window.Highgantt = Highgantt
+window.Highgantt = high_gantt

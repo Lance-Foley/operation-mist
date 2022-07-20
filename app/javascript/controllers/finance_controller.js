@@ -1,70 +1,103 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-    async connect() {
-        // const response = await fetch('http://localhost:3000/api/v1/charts/index');
-        const data = await fetch('http://localhost:3000/api/v1/finance/index');
+    connect() {
+        let series
+
+        async function requestData() {
 
 
-        Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Monthly Gross Income'
-            },
+            const response = await fetch('http://localhost:3000/api/v1/charts/index');
+            // const response = await fetch('http://localhost:3000/api/v1/finance/index');
 
-            xAxis: {
-                categories: [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec'
-                ],
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
+            if (response.ok) {
+                const data = await response.json()
+                series = data.map(function (month, i) {
+                    return {
+                        name: month[0],
+                        data: month[1]
+                    };
+                });
+                console.log(series)
+            }
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'column',
+                    backgroundColor: 'transparent',
+                    labels: {
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
+                },
+                label: {
+                    style: {
+                        color: '#ffffff'
+                    }
+                },
                 title: {
-                    text: 'Dollars'
-                }
-            },
+                    text: 'Monthly Gross Income(2022)',
+                    style: {
+                        color: '#ffffff',
+                        fontWeight: 'bold'
+                    }
+                },
 
-            tooltip: {
+                legend: {
+                    itemStyle: {
+                        color: 'white'
+                    }
+                },
+                subtitle: {
+                    text: ""
+                },
+                xAxis: {
+                    categories: [
+                        "Monthly Income"
+                    ],
+                    labels: {
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
 
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>${point.y:,.0f}</b></td></tr>',
-                valuePrefix: '$',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:,.2f}'
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: "Gross Income",
-                data: [data.json]
+                    crosshair: false
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Gross Income',
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>${point.y:,.1f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: series
+            });
+        }
 
-
-            }]
+        window.addEventListener('load', async () => {
+            await requestData();
         });
-    }
 
+    }
 }

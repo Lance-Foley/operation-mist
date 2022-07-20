@@ -1,87 +1,79 @@
 <div data-controller="finance" hidden></div>
-<!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/exporting.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/export-data.js"></script>-->
-<!--<script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<div class="container-fluid">
-
-
-  <div class="scrolling-container">
-    <div id="container"></div>
+<div class="card ">
+  <div class="card-body">
+    <div class="scrolling-container">
+      <div id="container2"></div>
+    </div>
   </div>
-  <script type="text/javascript" charset="utf-8">
-
-  </script>
-  <p>Finance</p>
-
-
-  <table id="datatable" class="table table-striped">
-    <thead class="alert-success" style="position: sticky; top: 0">
-    <tr>
-      <!--      <th scope="col">Year</th>-->
-      <!--      <th scope="col">Days in start month</th>-->
-      <!--      <th scope="col">Days in end month</th>-->
-      <!--      <th scope="col">Duration of Project</th>-->
-      <!--      <th scope="col">Cost per day</th>-->
-      <!--      <th scope="col">First Month</th>-->
-      <!--      <th scope="col">End Month</th>-->
-      <th class="header " scope="col">Client</th>
-      <th class="header" scope="col">Project</th>
-      <th class="header" scope="col">January</th>
-      <th class="header" scope="col">Feb</th>
-      <th class="header" scope="col">March</th>
-      <th class="header" scope="col">April</th>
-      <th class="header" scope="col">May</th>
-      <th class="header" scope="col">June</th>
-      <th class="header" scope="col">July</th>
-      <th class="header" scope="col">August</th>
-      <th class="header" scope="col">September</th>
-      <th class="header" scope="col">October</th>
-      <th class="header" scope="col">November</th>
-      <th class="header" scope="col">December</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @all_jobs_array = [] %>
-    <% @projects.each do |project| %>
-      <% @jobs_array = Forecast.projects(project, 2022) %>
-      <tr>
-        <td> <%= @jobs_array[0][3] %></td>
-        <td> <%= @jobs_array[0][2] %></td>
-        <td> <%= number_to_currency(@jobs_array[0][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[1][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[2][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[3][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[4][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[5][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[6][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[7][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[8][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[9][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[10][1]) %></td>
-        <td> <%= number_to_currency(@jobs_array[11][1]) %></td>
-      </tr>
-      <% @all_jobs_array.push(@jobs_array) %>
-    <% end %>
-    <tr class="alert-success">
-      <td></td>
-      <td>Total</td>
-      <% monthly_totals = [] %>
-
-      <% i = 0 %>
-      <% while i < 12 do %>
-        <% value = 0 %>
-        <% @all_jobs_array.each do |p| %>
-          <% value = value + p[i][1] %>
-        <% end %>
-        <% monthly_totals.push(value) %>
-        <td><%= number_to_currency(value) %></td>
-        <% i = i + 1 %>
-      <% end %>
-    </tr>
-
-
-    </tbody>
-  </table>
 </div>
+<!--  <p>Finance</p>-->
+
+
+<!--  <table id="datatable" class="table table-striped">-->
+<!--    <thead class="alert-success" style="position: sticky; top: 0">-->
+<!--    <tr>-->
+
+<!--      <th class="header " scope="col">Client</th>-->
+<!--      <th class="header" scope="col">Project</th>-->
+<!--      <th class="header" scope="col">January</th>-->
+<!--      <th class="header" scope="col">Feb</th>-->
+<!--      <th class="header" scope="col">March</th>-->
+<!--      <th class="header" scope="col">April</th>-->
+<!--      <th class="header" scope="col">May</th>-->
+<!--      <th class="header" scope="col">June</th>-->
+<!--      <th class="header" scope="col">July</th>-->
+<!--      <th class="header" scope="col">August</th>-->
+<!--      <th class="header" scope="col">September</th>-->
+<!--      <th class="header" scope="col">October</th>-->
+<!--      <th class="header" scope="col">November</th>-->
+<!--      <th class="header" scope="col">December</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<%# @all_jobs_array = [] %>
+<%# @projects.each do |project| %>
+<%# @jobs_array = Forecast.projects(project, 2022) %>
+<!--      <tr>-->
+<!--        <td> <%#= @jobs_array[0][3] %></td>-->
+<!--        <td> <%#= @jobs_array[0][2] %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[0][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[1][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[2][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[3][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[4][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[5][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[6][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[7][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[8][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[9][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[10][1]) %></td>-->
+<!--        <td> <%#= number_to_currency(@jobs_array[11][1]) %></td>-->
+<!--      </tr>-->
+<%# @all_jobs_array.push(@jobs_array) %>
+<%# end %>
+<!--    <tr class="alert-success">-->
+<!--      <td></td>-->
+<!--      <td>Total</td>-->
+<%# monthly_totals = [] %>
+
+<%# i = 0 %>
+<%# while i < 12 do %>
+<%# value = 0 %>
+<%# @all_jobs_array.each do |p| %>
+<%# value = value + p[i][1] %>
+<%# end %>
+<%# monthly_totals.push(value) %>
+<!--        <td><%#= number_to_currency(value) %></td>-->
+<%# i = i + 1 %>
+<%# end %>
+<!--    </tr>-->
+
+
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->

@@ -96,14 +96,18 @@ class Forecast
       @jobs_all_array.push(@jobs_array)
     end
     i = 0
+    m = 1
     while i < 12 do
       value = 0
       @jobs_all_array.each do |p|
         value = value + p[i][1]
       end
-      @monthly_totals.push(value)
+      @monthly_totals.push([Date::MONTHNAMES[m], [value.to_f]])
       i = i + 1
+      m = m + 1
     end
     @monthly_totals
   end
 end
+
+

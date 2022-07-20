@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   before_validation :set_params
+  # validates_presence_of :start_date
   belongs_to :project, autosave: true
   require 'date'
   belongs_to :crew
@@ -15,7 +16,7 @@ class Job < ApplicationRecord
   # # nine_months_from_now = today + 273.75
   # twelve_months_from_now = today + 365
   def set_params
-
+    # self.project_id = Project.find_by_id(params[:id])
     self.crew_name = Crew.where(id: crew_id).pluck(:name).first
     self.division_id = Crew.where(id: crew_id).pluck(:division_id).first
     self.division_name = Division.where(id: division_id).pluck(:name).first
@@ -23,6 +24,7 @@ class Job < ApplicationRecord
 
   # after_initialize calculate_hours_in_set_month_period(twelve_months_from_now, :twelve_month_hours)
   def create_or_update(touch: nil, **)
+    # self.project_id = Project.find_by_id(params[:id])
 
     self.crew_name = Crew.where(id: crew_id).pluck(:name).first
     self.division_id = Crew.where(id: crew_id).pluck(:division_id).first

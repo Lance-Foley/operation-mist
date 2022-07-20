@@ -1,4 +1,4 @@
-<li class="nav-item"><%= link_to "Dashboard", dashboard_index_path, class: "nav-link" %></li>
+<li class="nav-item"><%= link_to "Dashboard", dashboard_index_path, class: "nav-link", data: { turbo: "false" } %></li>
 <li class="nav-item"><%= link_to "Forecast", finance_index_path, class: "nav-link", data: { turbo: "false" } %></li>
 
 <li class="nav-item"><%= link_to "Schedule", schedule_index_path, class: "nav-link", data: { turbo: "false" } %></li>

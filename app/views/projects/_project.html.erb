@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <h4 class="card-title float-end ">Client:
         <% begin %>
-          <span class="text-light"><%= link_to Client.where(id: project.client_id).first.name, client_path(project.client_id) %></span>
+          <span class="text-light"><%= link_to Client.where(id: project.client_id).first&.name, client_path(project.client_id) %></span>
           </h4>
           <h4 class="card-title   ">Project: <span class="text-light"><%= project.name %></span></h4>
           </div>
@@ -19,14 +19,13 @@
                   <p>Email: <%= get_project_manger_email %> </p>
                 </div>
                 <div class="col">
-                  <p>E-Rating: <%= number_to_percentage(e_rating) %></p>
+                  <p>E-Rating: </p>
                   <p>Start Date: <%= project.start_date %></p>
                   <p>Start Date: <%= project.end_date %></p>
                 </div>
               </div>
 
             </div>
-            <%= link_to "Edit Project", edit_project_path, class: "btn btn-warning  float-end" %>
           </div>
           <div class="card-body">
             <div class="row">

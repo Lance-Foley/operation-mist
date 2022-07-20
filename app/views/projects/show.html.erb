@@ -4,18 +4,19 @@
 
       <%= render @project %>
 
+
+      <div>
+        <hr>
+      </div>
+
+      <div>
+        <div class="btn-group btn-group  float-end" role="group" aria-label="...">
+          <%= link_to "Add Phase", project_phase_path, class: "btn btn-info  float-end " %>
+          <%= link_to "Back", :back, class: "float-end btn btn-primary" %>
+        </div>
+      </div>
+      <%= render "projects/job_info_table" %>
+
     </div>
   </div>
-  <div>
-    <hr>
-  </div>
-
-  <div>
-    <div class="btn-group btn-group  float-end" role="group" aria-label="...">
-      <%= link_to "Add Phase", project_phase_path, class: "btn btn-info  float-end " %>
-      <%= link_to "Back", :back, class: "float-end btn btn-primary" %>
-    </div>
-  </div>
-  <%= render "projects/job_info_table" %>
-
 </div>

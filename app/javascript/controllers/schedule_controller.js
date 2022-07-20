@@ -46,7 +46,7 @@ export default class extends Controller {
                 });
 
 
-                chart = await Highgantt.ganttChart('container1', {
+                chart = high_gantt.ganttChart('container1', {
 
                     series: await series,
 

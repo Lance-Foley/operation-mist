@@ -3,7 +3,7 @@
 import {Turbo} from "@hotwired/turbo-rails"
 
 Turbo.session.drive = true
-import "./controllers"
+import "controllers"
 import "chartkick"
 import Highcharts from "highcharts"
 import high_gantt from "highcharts-gantt"

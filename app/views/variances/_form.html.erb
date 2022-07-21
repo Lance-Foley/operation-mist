@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="container">
 
+
+  <div class="form-group">
+    <h1 class="form-label ">Variance</h1>
     <div class="form-group">
-      <h1 class="form-label mt-4">Variance</h1>
-      <div class="form-group">
 
-        <div class="input-group mb-3">
-          <%= form.text_field :variance, class: "form-control", placeholder: @variance.variance %>
-          <%= form.submit "Update", class: "btn btn-primary" %>
+      <div class="input-group ">
+        <%= form.text_field :variance, class: "form-control", placeholder: @variance.variance %>
+        <%= form.submit "Update", class: "btn btn-primary" %>
 
-        </div>
       </div>
     </div>
-
   </div>
+
+
 
 
 <% end %>

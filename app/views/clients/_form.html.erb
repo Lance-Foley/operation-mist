@@ -25,6 +25,8 @@
       <%= form.label :future_address, style: "display: block", class: "form-label" %>
       <%= form.text_field :future_address, class: "form-control" %>
     </div>
+  </div>
+  <div class="row">
 
     <div class="col">
       <%= form.label :phone_number, style: "display: block", class: "form-label" %>
@@ -39,7 +41,10 @@
       <%= form.text_field :email, class: "form-control" %>
     </div>
     <div>
-      <%= form.submit class: "btn btn-primary" %>
+      <span>
+        <hr>
+        <%= form.submit "Submit", class: "btn btn-warning float-end" %>
+      </span>
     </div>
 <% end %>
 </div>

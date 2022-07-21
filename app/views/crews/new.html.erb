@@ -1,12 +1,17 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <div class="card px-4 py-4">
+        <h1>New crew</h1>
 
-  <h1>New crew</h1>
+        <%= render "form", crew: @crew %>
 
-  <%= render "form", crew: @crew %>
+        <br>
 
-  <br>
-
-  <div>
-    <%= link_to "Back to crews", crews_path %>
+        <div>
+          <%= link_to "Back ", crews_path, class: "btn btn-primary float-end" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

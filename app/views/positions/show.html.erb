@@ -1,0 +1,29 @@
+<div class="container mt-5">
+
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Per Week (<small>Hours</small>)</th>
+      <th>Three Month (<small>Hours</small>)</th>
+      <th>Six Month (<small>Hours</small>)</th>
+      <th>Nine Month (<small>Hours</small>)</th>
+      <th>Twelve Month (<small>Hours</small>)</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <%= render @position %>
+    </tbody>
+  </table>
+  <div>
+    <span class="float-end">
+    <%= link_to "Edit", edit_position_path(@position), class: "btn btn-warning" %> |
+      <%= link_to "Back", positions_path, class: "btn btn-primary" %>
+    </span>
+
+
+  </div>
+</div>

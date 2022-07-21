@@ -43,8 +43,8 @@
     </div>
 
     <div class="col">
-      <%= form.label :role, style: "display: block", class: "form-label" %>
-      <%= form.select :role, Role.all.collect { |p| [p.name] }, {}, class: "form-select" %>
+      <%= form.label :position_id, style: "display: block", class: "form-label" %>
+      <%= form.collection_select(:position_id, Position.all.collect, :id, :name, {}, class: "form-select") %>
 
     </div>
     <div class="col">

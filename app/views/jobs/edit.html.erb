@@ -9,19 +9,19 @@
 
         <br>
 
-        <div>
-<span class="float-end">
-<div class="btn-group btn-group float-end" role="group" aria-label="...">
+
+        <span class="float-end">
+        <div class="btn-group btn-group float-end" role="group" aria-label="...">
   <%= link_to "All Jobs", jobs_path, class: "btn btn-secondary" %>
 
-  <%= link_to "Delete Job", @job, method: :delete, data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  }, class: "btn btn-danger float-end" %>
-</div>
-</span>
+          <%= link_to "Delete Job", @job, method: :delete, data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          }, class: "btn btn-danger float-end" %>
         </div>
+</span>
       </div>
     </div>
   </div>
 </div>
+

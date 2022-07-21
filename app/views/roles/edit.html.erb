@@ -8,10 +8,18 @@
 
 
 
-        <div>
 
-          <%= link_to "Back", roles_path, class: "btn btn-primary float-end " %>
-        </div>
+        <span class="float-end mt-3">
+<div class="btn-group btn-group float-end" role="group" aria-label="...">
+            <%= link_to "Back", roles_path, class: "btn btn-primary float-end " %>
+
+
+  <%= link_to "Delete", @role, method: :delete, data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  }, class: "btn btn-danger float-end" %>
+</div>
+</span>
 
 
       </div>

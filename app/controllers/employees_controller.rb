@@ -71,6 +71,6 @@ class EmployeesController < ApplicationController
                                      :contr_hour_per_month, :contr_hours_three_months,
                                      :contr_hours_nine_months, :contr_hours_twelve_months,
                                      :true_man_hours_per_week, :role, :email, :phone_number,
-                                     :tier, :crew_id)
+                                     :tier, :crew_id, :position_id)
   end
 end

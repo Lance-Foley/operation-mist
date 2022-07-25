@@ -8,8 +8,8 @@
     <% end %>
     <th scope="col"><%= Employee.where(crew_name: crew.name).count %></th>
     <th scope="col">
-      <% if Employee.where(role: "Foreman", crew_name: crew.name).count > 0 %>
-        <%= Employee.where(role: "Foreman", crew_name: crew.name).first.name %>
+      <% if Employee.where(position: "Foreman", crew_name: crew.name)&.count > 0 %>
+        <%= Employee.where(position: "Foreman", crew_name: crew.name).first&.name %>
         </th>
       <% else %>
       <% end %>

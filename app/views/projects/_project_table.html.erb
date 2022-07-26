@@ -7,7 +7,7 @@
   <%# Ignored end %>
   <tr>
     <td><%= Client.where(id: project.client_id).first&.name %></td>
-    <td><%= link_to project.name, project %></td>
+    <td><%= link_to project.name, edit_project_path(project) %></td>
     <td><%= number_to_currency(project.cost) %></td>
     <td><%=
       if @project_cost

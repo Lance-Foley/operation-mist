@@ -35,16 +35,19 @@
         <ul class="dropdown-menu dropdown-menu-lg-end text-small " aria-labelledby="dropdownUser1">
           <li> <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %></li>
 
-          <li><%= link_to "Roles", roles_path, class: "dropdown-item" %></li>
+          <% if current_user&.admin? %>
+            <li><%= link_to "Roles", roles_path, class: "dropdown-item" %></li>
 
-          <li><%= link_to "Users", users_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Users", users_path, class: "dropdown-item" %></li>
 
+
+          <% end %>
           <li>
             <hr class="dropdown-divider">
           </li>
           <% if current_user %>
             <li>       <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item") %></li>
-            </li>
+
           <% else %>
             <li> <%= link_to "Sign in", new_user_session_path, method: :delete, class: "dropdown-item" %></li>
 

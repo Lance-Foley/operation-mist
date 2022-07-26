@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   def show
     @jobs = @project.jobs
     @total_bid_hours = Job.where(project_id: @project.id).sum(:man_hours)
-    @project_cost = (@project.material_cost + @project.actual_sub_cost) + @total_bid_hours * Variance.first.hour_rate
+    @project_cost = (@project.material_cost + @project.actual_sub_cost) + @total_bid_hours * Variance.first.hour_rate.to_s.to_d
   end
 
   # GET /projects/new

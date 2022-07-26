@@ -8,10 +8,11 @@
       <td><%= Job.where(division_name: division.name).sum(:six_month_hours) %></td>
       <td><%= Job.where(division_name: division.name).sum(:nine_month_hours) %></td>
       <td><%= Job.where(division_name: division.name).sum(:twelve_month_hours) %></td>
-      <td><%= number_to_percentage(Job.where(division_name: division.name, completed: true).average(:e_rating), precision: 2) %></td>
-      <td><%= number_to_percentage(Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division_name: division.name).sum(:three_month_hours) * 100, precision: 2) %></td>
+      <!--      <td><%#= number_to_percentage(Job.where(division_name: division.name, completed: true).average(:e_rating), precision: 2) %></td>-->
+      <td><%= number_to_percentage(ERating.division(division.name)) %></td>
+      <!--      <td><%#= number_to_percentage(Employee.where(division: division.name).sum(:man_hours_three_months) / Job.where(division_name: division.name).sum(:three_month_hours) * 100, precision: 2) %></td>-->
     <% rescue %>
-      0
+      1
     <% end %>
 
 

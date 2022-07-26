@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_201318) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_26_202804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -141,6 +141,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_201318) do
     t.decimal "sub_cost_per_day", default: "0.0", null: false
     t.decimal "project_cost_per_day", default: "0.0", null: false
     t.decimal "total_cost_per_day", default: "0.0", null: false
+    t.decimal "material_cost", default: "0.0"
+    t.decimal "actual_material_cost", default: "0.0"
+    t.decimal "actual_sub_cost", default: "0.0"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -171,9 +174,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_201318) do
   end
 
   create_table "variances", force: :cascade do |t|
-    t.decimal "variance"
+    t.decimal "hour_variance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "hour_rate"
   end
 
   add_foreign_key "users", "roles"

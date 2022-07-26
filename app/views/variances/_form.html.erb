@@ -14,12 +14,18 @@
 
 
   <div class="form-group">
-    <h1 class="form-label ">Variance</h1>
+    <h1 class="form-label ">Variances</h1>
     <div class="form-group">
 
-      <div class="input-group ">
-        <%= form.text_field :variance, class: "form-control", placeholder: @variance.variance %>
-        <%= form.submit "Update", class: "btn btn-primary" %>
+      <div class="col ">
+        <%= form.label :hour_variance, "Man Hour", class: "form-label" %>
+        <%= form.text_field :hour_variance, class: "form-control", placeholder: @variance.hour_variance %>
+
+      </div>
+      <div class="col ">
+        <%= form.label :hour_rate, "Hour Rate", class: "form-label" %>
+        <%= form.text_field :hour_rate, class: "form-control", placeholder: @variance.hour_rate %>
+        <%= form.submit "Update", class: "btn btn-primary float-end" %>
 
       </div>
     </div>

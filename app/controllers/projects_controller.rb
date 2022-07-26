@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1 or /projects/1.json
   def show
     @jobs = @project.jobs
+    @total_bid_hours = Job.where(project_id: @project.id).sum(:man_hours)
+    @project_cost = (@project.material_cost + @project.actual_sub_cost) + @total_bid_hours * Variance.first.hour_rate
   end
 
   # GET /projects/new
@@ -44,10 +46,21 @@ class ProjectsController < ApplicationController
   end
 
   # PATCH/PUT /projects/1 or /projects/1.json
+  def current_user?
+    @current_user ||= User.find_by(id: session[:user_id])
+    # code here
+  end
+
   def update
+
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
+        if current_user.admin?
+          format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
+        else
+          format.html { redirect_to projects_path, notice: "Project was successfully updated." }
+
+        end
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -74,7 +87,7 @@ class ProjectsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def project_params
     params.require(:project).permit(:name, :client_id, :project_manager, :info,
-                                    :start_date, :end_date, :cost, :sub_cost)
+                                    :start_date, :end_date, :cost, :sub_cost, :material_cost, :actual_material_cost, :actual_sub_cost)
   end
 
 end

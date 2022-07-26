@@ -10,16 +10,19 @@
   <div id="jobs">
     <table class="table  table-hover table-dark">
       <thead class="table-dark">
-      <th scope="col"><%= sort_link(@q, :crew_name, 'Crew', default_order: :desc) %></th>
-      <th scope="col">Phase</th>
-      <th scope="col">Division</th>
-      <th scope="col"><%= sort_link(@q, :start_date, 'Start Date', default_order: :desc) %></th>
-      <th scope="col"><%= sort_link(@q, :end_date, 'End Date', default_order: :desc) %></th>
-      <th scope="col">Hours <br><small>(Actual/Bid)</small></th>
-      <th scope="col">Three Month Hours <br><small>(Actual/Bid)</small></th>
-      <th scope="col">Project</th>
-      <th scope="col">Client</th>
-      <th scope="col">Completed</th>
+      <tr>
+
+        <th scope="col"><%= sort_link(@q, :crew_name, 'Crew', default_order: :desc) %></th>
+        <th scope="col">Phase</th>
+        <th scope="col">Division</th>
+        <th scope="col"><%= sort_link(@q, :start_date, 'Start Date', default_order: :desc) %></th>
+        <th scope="col"><%= sort_link(@q, :end_date, 'End Date', default_order: :desc) %></th>
+        <th scope="col">Hours <br><small>(Actual/Bid)</small></th>
+        <th scope="col">Three Month Hours <br><small>(Actual/Bid)</small></th>
+        <th scope="col">Project</th>
+        <th scope="col">Client</th>
+        <th scope="col">Completed</th>
+      </tr>
       </thead>
       <tbody>
 

@@ -80,6 +80,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
   private
 
   def needs_password?(_user, params)

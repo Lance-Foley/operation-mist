@@ -1,6 +1,6 @@
 <div id="<%= dom_id project %>">
-  <div class="card mt-3">
-    <div class="container-fluid">
+  <div class="card mt-3 ">
+    <div class="container-fluid pt-2">
       <h4 class="card-title float-end ">Client:
         <% begin %>
           <span class="text-light"><%= link_to Client.where(id: project.client_id).first&.name, client_path(project.client_id) %></span>
@@ -19,9 +19,15 @@
                   <p>Email: <%= get_project_manger_email %> </p>
                 </div>
                 <div class="col">
-                  <p>E-Rating: </p>
+                  <% if ERating.project(@project) > 100 %>
+                    <p>E-Rating: <span class="badge bg-success text-dark"> <%= ERating.project(@project) %>%</span>
+                    </p>
+                  <% else %>
+                    <p>E-Rating: <span class="badge bg-danger text-dark"> <%= ERating.project(@project) %>%</span>
+                    </p>
+                  <% end %>
                   <p>Start Date: <%= project.start_date %></p>
-                  <p>Start Date: <%= project.end_date %></p>
+                  <p>End Date: <%= project.end_date %></p>
                 </div>
               </div>
 
@@ -29,47 +35,123 @@
           </div>
           <div class="card-body">
             <div class="row">
-
               <div class="col">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Cost:
-                    <span class="fw-bold"><%= number_to_currency(project.cost) %></span>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Bid
+                      </div>
+                    </div>
+                    <span class="badge bg-primary"><%= number_to_currency(project.cost) %></span>
                   </li>
-                  <li class="list-group-item">Sub Cost:
-                    <span class="fw-bold"><%= number_to_currency(project.sub_cost) %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Sub Bid</div>
+                    </div>
+                    <span class="badge bg-primary "><%= number_to_currency(project.sub_cost) %></span>
                   </li>
-                  <li class="list-group-item">Duration <small>(days)</small>:
-                    <span class="fw-bold"><%= project.number_of_days %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Cost <small>(per day)</small></div>
+                    </div>
+                    <span class="badge bg-primary ">$<%= project.project_cost_per_day %></span>
                   </li>
-                  <li class="list-group-item">Sub Cost <small>(per day)</small>:
-                    <span class="fw-bold">$<%= project.sub_cost_per_day %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Sub Cost <small>(per day)</small></div>
+                    </div>
+                    <span class="badge bg-primary">$<%= project.sub_cost_per_day %></span>
                   </li>
-                  <li class="list-group-item">Our Cost <small>(per day)</small>:
-                    <span class="fw-bold">$<%= project.project_cost_per_day %></span>
-                  </li>
-                  <li class="list-group-item">Total Cost <small>(per day)</small>:
-                    <span class="fw-bold">$<%= project.total_cost_per_day %></span>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Total Cost <small>(per day)</small></div>
+                    </div>
+                    <span class="badge bg-primary ">$<%= project.total_cost_per_day %></span>
                   </li>
                 </ul>
               </div>
               <div class="col">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Bid Hours
+                      </div>
+                    </div>
+                    <span class="badge bg-primary"><%= total_bid_hours %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Per Week <small>(Hours)</small></div>
+                    </div>
+                    <span class="badge bg-primary "><%= total_hours_per_week %></span>
+                  </li>
 
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Total Bid <small>(Hours)</small>:
-                    <span class="fw-bold"><%= total_bid_hours %></span></li>
-                  <li class="list-group-item">Total Hours <small>(per week)</small>:
-                    <span class="fw-bold"><%= total_hours_per_week %></span></li>
-                  <li class="list-group-item">Three Month <small>(Hours)</small>:
-                    <span class="fw-bold"><%= three_month_hours %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Worked <small>(Hours)</small></div>
+                    </div>
+                    <span class="badge bg-primary"><%= total_hours_worked %></span>
                   </li>
-                  <li class="list-group-item">Worked <small>(Hours)</small>:
-                    <span class="fw-bold"><%= total_hours_worked %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Duration <small>(days)</small></div>
+                    </div>
+                    <span class="badge bg-primary "><%= project.number_of_days %></span>
                   </li>
-                  <li class="list-group-item">Remaining <small>(Hours)</small>:
-                    <span class="fw-bold"><%= total_hours_remaining %></span>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Remaining <small>(Weeks)</small></div>
+                    </div>
+                    <span class="badge bg-primary "><%= total_weeks_remaining %></span>
                   </li>
-                  <li class="list-group-item">Remaining <small>(Weeks)</small>:
-                    <span class="fw-bold"><%= total_weeks_remaining %></span>
+                </ul>
+              </div>
+              <div class="col">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Bid Material <small>(cost)</small>
+                      </div>
+                    </div>
+                    <span class="badge bg-primary"><%= number_to_currency(project.material_cost) %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Actual Material <small>(cost)</small></div>
+                    </div>
+                    <% if project.actual_material_cost > project.material_cost %>
+                      <span class="badge bg-danger "><%= number_to_currency(project.actual_material_cost) %></span>
+                    <% else %>
+                      <span class="badge bg-success "><%= number_to_currency(project.actual_material_cost) %></span>
+                    <% end %>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Actual Sub <small>(cost)</small></div>
+                    </div>
+                    <% if project.actual_sub_cost > project.sub_cost %>
+                      <span class="badge bg-danger "><%= number_to_currency(project.actual_sub_cost) %></span>
+                    <% else %>
+                      <span class="badge bg-success "><%= number_to_currency(project.actual_sub_cost) %></span>
+                    <% end %>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Project Cost</div>
+                    </div>
+                    <span class="badge bg-primary "><%= number_to_currency(@project_cost) %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Project Net</div>
+                    </div>
+                    <% if project.cost - @project_cost > 0 %>
+                      <span class="badge bg-success "><%= number_to_currency(project.cost - @project_cost) %></span>
+                    <% else %>
+                      <span class="badge bg-danger "><%= number_to_currency(project.cost - @project_cost) %></span>
+
+                    <% end %>
                   </li>
                 </ul>
               </div>

@@ -39,7 +39,11 @@ Rails.application.routes.draw do
   resources :phases
   resources :divisions
   resources :crews
-  root "dashboard#index"
+  authenticated :user do
+    root to: 'dashboard#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
+  
   resources :employees
   resources :jobs
   resources :finance

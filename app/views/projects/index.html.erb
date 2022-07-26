@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
 
-<% @projects.each do |project| %>
-  <div id="projects">
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-<% end %>
+<div>
+  <div class="container-fluid">
+    <h1>Project Reporting</h1>
+    <div class="row">
+      <div class="col">
+
+        <div id="projects">
+          <table class="table  table-hover table-dark">
+            <thead class="table-dark">
+            <tr>
+              <th scope="col">Client</th>
+              <th scope="col">Project</th>
+              <th scope="col">Bid Amount</th>
+              <th scope="col">Actual Amount</th>
+              <th scope="col">Sub Bid</th>
+              <th scope="col">Actual Sub</th>
+              <th scope="col">Bid Material</th>
+              <th scope="col">Actual Material</th>
+              <th scope="col">Bid Hours</th>
+              <th scope="col">Actual Hours</th>
+
+
+            </tr>
+            </thead>
+            <%= render "projects/project_table" %>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New project", new_project_path %>

@@ -1,0 +1,25 @@
+<% @projects.each do |project| %>
+  <% begin %>
+    <% @total_bid_hours = Job.where(project_id: project.id).sum(:man_hours) %>
+    <% @project_cost = (project.material_cost + project.actual_sub_cost) + @total_bid_hours * Variance.first.hour_rate %>
+  <% rescue %>
+  <% end %>
+  <%# Ignored end %>
+  <tr>
+    <td><%= Client.where(id: project.client_id).first&.name %></td>
+    <td><%= link_to project.name, project %></td>
+    <td><%= number_to_currency(project.cost) %></td>
+    <td><%=
+      if @project_cost
+        number_to_currency(@project_cost)
+      else
+        0
+      end %></td>
+    <td><%= number_to_currency(project.sub_cost) %></td>
+    <td><%= number_to_currency(project.actual_sub_cost) %></td>
+    <td><%= number_to_currency(project.material_cost) %></td>
+    <td><%= number_to_currency(project.actual_material_cost) %></td>
+    <td><%= Job.where(project_id: project.id).sum(:man_hours) %></td>
+    <td><%= Job.where(project_id: project.id).sum(:actual_worked_hours) %></td>
+  </tr>
+<% end %>

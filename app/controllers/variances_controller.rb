@@ -67,6 +67,6 @@ class VariancesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def variance_params
-    params.require(:variance).permit(:variance)
+    params.require(:variance).permit(:hour_variance, :hour_rate)
   end
 end

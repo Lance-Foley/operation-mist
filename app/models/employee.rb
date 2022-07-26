@@ -15,7 +15,7 @@ class Employee < ApplicationRecord
 
   private def create_or_update(touch: nil, **)
     self.crew_name = Crew.where(id: crew_id).pluck(:name).first
-    variance = Variance.first.variance
+    variance = Variance.first.hour_variance
     self.true_man_hours_per_week = (man_hours_per_week * variance).round(1)
     self.man_hours_per_month = (true_man_hours_per_week * 4.3)
     self.man_hours_three_months = (man_hours_per_month * 3)

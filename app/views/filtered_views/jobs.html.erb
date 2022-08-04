@@ -2,20 +2,17 @@
   <div class="row">
     <div class="col">
       <h1>Jobs</h1>
-      <div class="btn-group float-end" role="group" aria-label="Basic example">
-        <%= link_to 'Closed Jobs', filtered_views_jobs_path, class: "btn btn-primary" %>
-
-        <!--        <button type="button" class="btn btn-primary">-->
-        <!--          Closed-->
-        <!--        </button>-->
-      </div>
-      <%= render 'job_search_form' %>
+      <%= link_to 'Open Jobs', jobs_path, class: "btn btn-primary float-end" %>
+      <!--        <button type="button" class="btn btn-primary">-->
+      <!--          Closed-->
+      <!--        </button>-->
+      <%#= render 'jobs/job_search_form' %>
 
     </div>
   </div>
   <div id="jobs">
-    <table class="table  table-hover">
-      <thead class="">
+    <table class="table  table-hover table-dark">
+      <thead class="table-dark">
       <tr>
 
         <th scope="col"><%= sort_link(@q, :crew_name, 'Crew', default_order: :desc) %></th>
@@ -33,7 +30,7 @@
 
 
       <% @jobs.each do |job| %>
-        <% if job.completed == false %>
+        <% if job.completed == true %>
           <%= render job %>
         <% end %>
       <% end %>

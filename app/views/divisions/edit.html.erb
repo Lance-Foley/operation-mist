@@ -12,7 +12,7 @@
     <%= link_to "Back", @division, class: "btn btn-secondary" %> |
       <%= link_to "Divisions", divisions_path, class: "btn btn-secondary" %>
       <hr>
-      <%= link_to "Delete Job", @division, method: :delete, data: {
+      <%= link_to "Delete", @division, method: :delete, data: {
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
       }, class: "btn btn-danger float-end" %>

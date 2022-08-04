@@ -1,19 +1,19 @@
 <div class="container mt-3">
-<div data-controller="client">
-  <h1>Editing client</h1>
+  <div data-controller="client">
+    <h1>Editing client</h1>
 
-  <%= render "form", client: @client %>
+    <%= render "form", client: @client %>
 
-  <br>
+    <br>
 
-  <div>
-    <%= link_to "Back", @client, class: "btn btn-secondary" %> |
-    <%= link_to "Clients", clients_path, class: "btn btn-secondary" %>
-    <hr>
-    <%= link_to "Delete Client", @client, method: :delete, data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    }, class: "btn btn-danger" %>
+    <div class="float-end">
+      <%= link_to "Back", @client, class: "btn btn-secondary" %> |
+      <%= link_to "Clients", clients_path, class: "btn btn-secondary" %>
+      <hr>
+      <%= link_to "Delete", @client, method: :delete, data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      }, class: "btn btn-danger float-end" %>
+    </div>
   </div>
-</div>
 </div>

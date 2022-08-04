@@ -7,8 +7,8 @@ export default class extends Controller {
         async function requestData() {
 
 
-            const response = await fetch('https://operation-mist.herokuapp.com/api/v1/finance/index');
-            // const response = await fetch('http://localhost:3000/api/v1/finance/index');
+            // const response = await fetch('https://operation-mist.herokuapp.com/api/v1/finance/index');
+            const response = await fetch('http://localhost:3000/api/v1/finance/index');
 
             if (response.ok) {
                 const data = await response.json()

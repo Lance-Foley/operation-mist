@@ -7,7 +7,7 @@
         <%= column_chart [
                            { name: "Contracted Hours", data: Job
                              .group(:crew_name)
-                             .where(division_name: Division.find_by_name(n).name).sum(:three_month_hours) },
+                             .where(division_name: Division.find_by_name(n).name).where(completed: false).sum(:three_month_hours) },
                            { name: "Workforce Hours", data: Employee
                              .group(:crew_name)
                              .where(division: Division.find_by_name(n).name).sum(:man_hours_three_months) }],
@@ -17,6 +17,7 @@
                                color: '#ffffff'
                              }
                            },
+                           height: "5vh",
                            title: {
                              text: n,
                              style: {
@@ -53,7 +54,10 @@
                            }
                          }
         %>
-        <%= Job.all.where(division_name: Division.find_by_name(n).name).count %>
+
+        <small>Active
+          Jobs:   <%= Job.all.where(division_name: Division.find_by_name(n).name).where(completed: false).count %></small>
+
       </div>
     </div>
   <% end %>

@@ -20,8 +20,8 @@ export default class extends Controller {
 
 
         async function requestData() {
-            // const response = await fetch('http://localhost:3000/api/v1/charts/index');
-            const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
+            const response = await fetch('http://localhost:3000/api/v1/charts/index');
+            // const response = await fetch('https://operation-mist.herokuapp.com/api/v1/charts/index');
 
 
             if (response.ok) {

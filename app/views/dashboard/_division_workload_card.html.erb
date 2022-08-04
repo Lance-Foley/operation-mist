@@ -13,7 +13,7 @@
         <input type="checkbox" class="btn-check" id="twelve_month" autocomplete="off">
         <label class="btn border border-primary" for="twelve_month" id="twelve_month_label">12 Month</label>
       </div>
-      <div class="col-12">
+      <div class="container-fluid ">
 
         <div id="three_month_workload">
           <%= bar_chart [
@@ -45,7 +45,7 @@
                               style: {
                                 color: '#ffffff'
                               }
-                            },
+                            }
                           },
                           plotOptions: {
                             series: {
@@ -287,13 +287,21 @@
         </div>
       </div>
       <div class="col">
-        <h5 class="card-title text-center">Months Out</h5>
-
+        <h5 class="card-title text-center">Workforce
+        </h5>
+        <p class="card-title text-center"><small>Labor To Complete Next Three Months Of Scheduled Hours</small></p>
         <ul class="list-group">
           <% division_workload.each do |n| %>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= n.first[:name] %>
-              <span class="badge bg-primary rounded-pill"><%= n.first[:sum].round(2) %></span>
+              <% if n.first[:sum] > 3 and n.first[:sum] < 4 %>
+                <span class="badge bg-primary rounded-pill"><%= n.first[:sum].round(2) %></span>
+              <% elsif n.first[:sum] < 3 %>
+                <span class="badge bg-danger rounded-pill"><%= n.first[:sum].round(2) %></span>
+              <% else %>
+                <span class="badge bg-warning rounded-pill"><%= n.first[:sum].round(2) %></span>
+
+              <% end %>
             </li>
           <% end %>
 
@@ -303,7 +311,7 @@
       </div>
       <div class="col">
         <h5 class="card-title text-center">E-Rating</h5>
-
+        <br>
         <ul class="list-group">
           <% division_e_rating.each do |n| %>
             <li class="list-group-item d-flex justify-content-between align-items-center">

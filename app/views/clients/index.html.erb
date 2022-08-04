@@ -4,13 +4,13 @@
   <h1>Clients</h1>
   <%= render "clients/search_form" %>
   <div class="overflow-auto table-responsive" style="height: 90vh">
-    <table class="table  table-hover table-dark ">
+    <table class="table  table-hover  ">
       <thead>
       <tr>
         <th scope="col"><%= sort_link(@q, :name, "Name", default_order: :asc) %></th>
         <th scope="col">Projects</th>
         <th scope="col">Address</th>
-        <th scope="col">Future Address</th>
+
         <th scope="col">Phone Number</th>
         <th scope="col">Cell Number</th>
         <th scope="col">Email</th>

@@ -83,4 +83,3 @@ gem "importmap-rails", "~> 1.0"
 gem 'foreman'
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'active_model_serializers', '~> 0.10.13'
-gem "cancancan", "~> 3.4"

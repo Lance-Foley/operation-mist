@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'filtered_views/jobs'
+  get 'filtered_views/projects'
   resources :positions
   devise_for :users
   scope '/admin' do
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#index', as: :authenticated_root
   end
   root to: redirect('/users/sign_in')
-  
+
   resources :employees
   resources :jobs
   resources :finance
@@ -52,5 +54,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
 end

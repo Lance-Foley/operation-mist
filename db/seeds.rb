@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Variance.create(variance: 0.71)
+Variance.create(hour_variance: 0.71)
 r1 = Role.create({ name: 'Sales', description: 'Can read items' })
 r2 = Role.create({ name: 'Manager', description: 'Can read and create items. Can update and destroy own items' })
 r3 = Role.create({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
